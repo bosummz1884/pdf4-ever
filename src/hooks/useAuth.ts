@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { AuthContext } from "@/components/AuthProvider";
+import { AuthContext } from "./components/AuthProvider";
 
 interface User {
   id: string;

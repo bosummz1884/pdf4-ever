@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Separator } from "./ui/separator";
 import { 
   X, 
   Palette, 
@@ -198,6 +198,7 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
                     className="w-12 h-8 rounded border border-border cursor-pointer"
+                    title="Pick annotation color"
                   />
                   <Input
                     value={color}

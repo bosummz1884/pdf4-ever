@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import { Type, Highlighter, RotateCcw } from "lucide-react";
 
 interface AnnotationToolbarProps {

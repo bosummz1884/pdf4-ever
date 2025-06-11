@@ -1,7 +1,5 @@
-// Configure PDF.js worker
 import * as pdfjsLib from 'pdfjs-dist';
 
-// Use local worker file provided by user
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
 
 export { pdfjsLib };

@@ -1,19 +1,21 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { pdfjsLib, initializeWorker } from '@/lib/pdfWorker';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Slider } from '@/components/ui/slider';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Separator } from '@/components/ui/separator';
-import { Switch } from '@/components/ui/switch';
-import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { 
-  Download, Upload, Type, Edit3, Highlighter, Square, Circle, 
+import * as pdfjsLib from 'pdfjs-dist';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import { Slider } from './ui/slider';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Badge } from './ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Separator } from './ui/separator';
+import { Switch } from './ui/switch';
+import { Textarea } from './ui/textarea';
+import { Checkbox } from './ui/checkbox';
+import { ScrollArea } from './ui/scroll-area';
+import {
+  Download, Upload, Type, Edit3, Highlighter, Square, Circle,
   ZoomIn, ZoomOut, RotateCw, ChevronLeft, ChevronRight, ChevronDown,
   Undo, Redo, MousePointer, Trash2, Settings, Eye, EyeOff,
   Palette, Bold, Italic, AlignLeft, AlignCenter, AlignRight,
@@ -21,27 +23,24 @@ import {
   Split, Merge, FormInput, Signature, Calendar, Mail, Phone, Eraser, Copy,
   Image as ImageIcon
 } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { ChromePicker } from 'react-color';
-// Consolidated components now used instead of individual ones
 import TextBoxManager from './TextBoxManager';
 import AnnotationManager from './AnnotationManager';
 import FontManager from './FontManager';
 import OCRProcessor from './OCRProcessor';
 import PDFToolkit from './PDFToolkit';
 import FillablePDFViewer from './FillablePDFViewer';
-import type { TextBox } from './TextBoxManager';
-import type { Annotation as AnnotationType } from './AnnotationManager';
 import WhiteoutLayer, { type WhiteoutBlock } from './WhiteoutLayer';
 import TextLayer from './TextLayer';
-
-import { getAvailableFontNames } from '@/lib/loadFonts';
-import { hexToRgbNormalized } from '@/lib/colorUtils';
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
-import * as PDFUtils from '@/lib/ConsolidatedPDFUtils';
+import { getAvailableFontNames } from '../lib/loadFonts';
+import { hexToRgbNormalized } from '../lib/colorUtils';
+import * as PDFUtils from '../lib/ConsolidatedPDFUtils';
 import Draggable from 'react-draggable';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
 
 interface TextElement {
   id: string;
@@ -161,7 +160,7 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
   const [hasSelectedTextBox, setHasSelectedTextBox] = useState(false);
   
   // Annotation state
-  const [annotations, setAnnotations] = useState<AnnotationType[]>([]);
+  const [annotations, setAnnotations] = useState<Annotation[]>([]);
   const [selectedAnnotationId, setSelectedAnnotationId] = useState<string | null>(null);
   const [annotationColor, setAnnotationColor] = useState('#ffff00');
   const [strokeWidth, setStrokeWidth] = useState(2);
@@ -173,6 +172,18 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
   const [newFieldType, setNewFieldType] = useState<'text' | 'textarea' | 'checkbox' | 'dropdown' | 'signature' | 'date' | 'email' | 'phone'>('text');
   
   // Text box manager state
+  interface TextBox {
+    id: string;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    page: number;
+    value: string;
+    font: string;
+    size: number;
+    color: string;
+  }
   const [textBoxes, setTextBoxes] = useState<TextBox[]>([]);
   const [showTextBoxManager, setShowTextBoxManager] = useState(false);
   
@@ -252,7 +263,6 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
         const uint8Array = new Uint8Array(arrayBuffer);
         setOriginalFileData(uint8Array);
 
-        await initializeWorker();
         const loadingTask = pdfjsLib.getDocument({ data: uint8Array });
         
         loadingTask.onProgress = (progress: any) => {
@@ -393,7 +403,23 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
     
     // Only add annotation if it has some size
     if (Math.abs(currentAnnotation.current.width) > 5 || Math.abs(currentAnnotation.current.height) > 5) {
-      setAnnotations(prev => [...prev, currentAnnotation.current!]);
+      setAnnotations(prev => [
+        ...prev,
+        // Only add if type is allowed by AnnotationType
+        ...(currentAnnotation.current && [
+          "text",
+          "highlight",
+          "rectangle",
+          "circle",
+          "freeform",
+          "signature",
+          "checkmark",
+          "x-mark",
+          "line"
+        ].includes(currentAnnotation.current.type)
+          ? [currentAnnotation.current as Annotation]
+          : [])
+      ]);
       saveToHistory();
     }
     
@@ -1681,6 +1707,8 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                 accept="image/*"
                 onChange={handleImageUpload}
                 className="hidden"
+                title="Upload image file"
+                placeholder="Select an image file"
               />
               <Button
                 variant={currentTool === 'image' ? 'default' : 'outline'}
