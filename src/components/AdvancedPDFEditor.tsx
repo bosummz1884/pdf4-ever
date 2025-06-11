@@ -607,7 +607,7 @@ export function AdvancedPDFEditor({ className }: PDFEditorProps) {
       const pdfBytes = await pdfDoc.save();
       
       // Download the edited PDF
-      const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
       link.download = `edited-${pdfFile?.name || 'document.pdf'}`;
