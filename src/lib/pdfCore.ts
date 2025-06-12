@@ -1,6 +1,13 @@
 import { PDFDocument, StandardFonts, rgb, PDFPage, PDFFont } from 'pdf-lib';
 import { pdfjs } from 'pdfjs-dist';
 
+// This tells PDF.js to use the correct worker from node_modules
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
+
+
 export interface TextElement {
   id: string;
   x: number;
@@ -55,7 +62,12 @@ export class PDFCore {
   async initializeWorker(): Promise<void> {
     if (this.workerInitialized) return;
 
-    pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.js';
+    
+  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.js',
+    import.meta.url
+  ).toString();
+  
     this.workerInitialized = true;
   }
 

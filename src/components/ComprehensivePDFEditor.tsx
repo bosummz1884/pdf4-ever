@@ -1,6 +1,10 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import * as pdfjsLib from 'pdfjs-dist';
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+import { pdfjs } from 'pdfjs-dist';
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
+
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { Button } from './ui/button';
 import { Input } from './ui/input';

@@ -121,7 +121,6 @@ export function OCRTextExtractor({
       setOcrResult(null);
 
       const startTime = Date.now();
-      const worker = await initializeWorker();
 
       // Set up progress tracking
       worker.setParameters({
