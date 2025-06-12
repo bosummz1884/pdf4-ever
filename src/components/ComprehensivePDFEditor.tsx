@@ -40,7 +40,6 @@ import { hexToRgbNormalized } from '../lib/colorUtils';
 import * as PDFUtils from '../lib/ConsolidatedPDFUtils';
 import Draggable from 'react-draggable';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
 
 interface TextElement {
   id: string;
@@ -96,7 +95,7 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
   const annotationCanvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mergeFileInputRef = useRef<HTMLInputElement>(null);
-  
+                     
   // Core PDF state
   const [pdfDocument, setPdfDocument] = useState<any>(null);
   const [originalFileData, setOriginalFileData] = useState<Uint8Array | null>(null);

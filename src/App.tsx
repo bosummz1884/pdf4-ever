@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Switch, Route } from "wouter";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { PDFEditor } from "@/components/PDFEditor";
-import Home from "@/pages/home";
-import PrivacyPolicy from "@/pages/privacy-policy";
-import TermsOfService from "@/pages/terms-of-service";
-import NotFound from "@/pages/not-found";
+import { Toaster } from "./components/ui/toaster";
+import { TooltipProvider } from "./components/ui/tooltip";
+import { ThemeProvider } from "./components/ThemeProvider";
+import ComprehensivePDFEditor from "./components/ComprehensivePDFEditor";
+import Home from "./pages/home";
+import PrivacyPolicy from "./pages/privacy-policy";
+import TermsOfService from "./pages/terms-of-service";
+import NotFound from "./pages/not-found";
 
 function Router() {
   return (
@@ -25,7 +25,7 @@ function App() {
     <ThemeProvider defaultTheme="dark" storageKey="pdf4ever-theme">
       <TooltipProvider>
         <div className="h-screen bg-background text-foreground antialiased">
-          <PDFEditor />
+          <ComprehensivePDFEditor />
         </div>
         <Toaster />
       </TooltipProvider>

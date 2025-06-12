@@ -1,15 +1,15 @@
 import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 import { Resizable } from "react-resizable";
 import "react-resizable/css/styles.css";
-import { pdfjsLib } from "@/lib/pdfWorker";
-import { Button } from "@/components/ui/button";
+import { pdfjsLib } from "../lib/pdfWorker";
+import { Button } from "./ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "./ui/select";
 import {
   Bold,
   Italic,

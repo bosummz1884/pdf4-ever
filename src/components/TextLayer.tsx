@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import { Rnd } from "react-rnd";
 import { HexColorPicker } from "react-colorful";
 import { nanoid } from "nanoid";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Button } from './ui/button';
 import { Trash2, Bold, Italic } from 'lucide-react';
 
 type TextElement = {

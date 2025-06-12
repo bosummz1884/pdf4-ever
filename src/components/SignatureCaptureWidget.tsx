@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import { X, Check, RotateCcw } from "lucide-react";
 
 interface SignatureCaptureWidgetProps {

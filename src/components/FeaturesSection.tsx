@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import { Camera, Type, FileSignature, Layers, ScanText, Receipt } from "lucide-react";
 
 export default function FeaturesSection() {

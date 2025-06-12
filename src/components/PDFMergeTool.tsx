@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Upload, Download, X, ArrowUp, ArrowDown } from "lucide-react";
-import { mergePDFs } from "@/lib/pdfUtils";
+import { mergePDFs } from "../lib/pdfUtils";
 
 interface PDFFile {
   file: File;

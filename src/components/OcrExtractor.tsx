@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import { Camera, Loader2 } from "lucide-react";
 import Tesseract from "tesseract.js";
 

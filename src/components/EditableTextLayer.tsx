@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { pdfjsLib } from "@/lib/pdfWorker";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { pdfjsLib } from "../lib/pdfWorker";
 
 interface FontOptions {
   size?: number;

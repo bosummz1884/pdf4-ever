@@ -1,11 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { Rnd } from "react-rnd";
 import { nanoid } from "nanoid";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Slider } from "./ui/slider";
+import { Badge } from "./ui/badge";
 import { Bold, Italic, Underline, Trash2, Plus, Type, Palette } from "lucide-react";
 
 export interface TextBox {

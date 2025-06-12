@@ -1,21 +1,21 @@
 import React, { useState, useCallback, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Progress } from './ui/progress';
+import { Badge } from './ui/badge';
+import { ScrollArea } from './ui/scroll-area';
+import { Label } from './ui/label';
+import { Textarea } from './ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Separator } from './ui/separator';
 import { 
   Upload, Download, Split, Merge, RotateCw, FileText, 
   Trash2, Plus, Copy, Save, FileDown, Scissors, Combine,
-  RefreshCw, Compress, Shield, Eye, Settings
+  RefreshCw, Compass, Shield, Eye, Settings
 } from 'lucide-react';
-import { pdfCore } from '@/lib/pdfCore';
+import { pdfCore } from '../lib/pdfCore';
 
 interface PDFFile {
   id: string;

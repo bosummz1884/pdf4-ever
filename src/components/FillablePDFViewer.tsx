@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { pdfjsLib } from '@/lib/pdfWorker';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { pdfjsLib } from '../lib/pdfWorker';
+import { Button } from './ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Badge } from './ui/badge';
 import { Download, Save, FileText } from 'lucide-react';
 import { saveFilledFormFields } from '../utils/saveFilledFormFields';
 

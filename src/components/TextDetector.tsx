@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import { FileText, Loader2 } from "lucide-react";
-import { pdfjsLib } from "@/lib/pdfWorker";
+import { pdfjsLib } from "../lib/pdfWorker";
 
 interface TextPage {
   pageIndex: number;

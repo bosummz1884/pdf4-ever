@@ -15,8 +15,5 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "types": ["vite/client"],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
   }
 }

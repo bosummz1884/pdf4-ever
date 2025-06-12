@@ -6,7 +6,7 @@ import React, {
   forwardRef,
 } from "react";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
-import { pdfjsLib } from "@/lib/pdfWorker";
+import { pdfjsLib } from "../lib/pdfWorker";
 
 import ExportControls from "./ExportControls";
 import AnnotationCanvas from "./AnnotationCanvas";
