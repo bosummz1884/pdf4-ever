@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { Rnd } from "react-rnd";
 import { HexColorPicker } from "react-colorful";
-import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
-
-// Set the static worker URL for Cloudflare Pages compatibility
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 import { nanoid } from "nanoid";
 
 type WhiteoutBlock = {
