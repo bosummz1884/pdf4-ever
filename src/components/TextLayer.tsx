@@ -2,10 +2,8 @@ import React, { useState, useRef } from "react";
 import { Rnd } from "react-rnd";
 import { HexColorPicker } from "react-colorful";
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
-
-// Set the static worker URL for Cloudflare Pages compatibility
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+import 'pdfjs-dist/web/pdf_viewer.css';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
 import { nanoid } from "nanoid";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Button } from './ui/button';

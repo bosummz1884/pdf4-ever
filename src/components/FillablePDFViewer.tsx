@@ -4,6 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Download, Save, FileText } from 'lucide-react';
 import { saveFilledFormFields } from '../utils/saveFilledFormFields';
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+import 'pdfjs-dist/web/pdf_viewer.css';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
 
 type FieldEntry = {
   id: string;

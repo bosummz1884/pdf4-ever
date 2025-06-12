@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
+export { pdfjsLib };
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
