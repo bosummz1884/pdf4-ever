@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Rnd } from "react-rnd";
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
-export { pdfjsLib };
+import 'pdfjs-dist/web/pdf_viewer.css';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 import { nanoid } from "nanoid";
 
 type TextBox = {

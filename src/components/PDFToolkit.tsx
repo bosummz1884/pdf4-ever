@@ -19,7 +19,7 @@ import { pdfCore } from '../lib/pdfCore';
 
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
 import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 interface PDFFile {
   id: string;
@@ -108,20 +108,22 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
     setProgress(0);
     
     try {
-      const orderedFiles = mergeOrder
-        .map(id => files.find(f => f.id === id))
-        .filter(Boolean) as PDFFile[];
-      
-      const pdfDataArray = orderedFiles.map(f => f.data);
-      setProgress(50);
-      
-      const mergedPdfBytes = await pdfCore.mergePDFs(pdfDataArray);
-      setProgress(90);
-      
-      const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
-      pdfCore.downloadBlob(blob, 'merged-document.pdf');
-      
-      setProgress(100);
+        const orderedFiles = mergeOrder
+          .map(id => files.find(f => f.id === id))
+          .filter(Boolean) as PDFFile[];
+
+        const pdfDataArray = orderedFiles.map(f => f.data);
+        setProgress(50);
+
+        const mergedPdfBytes = await pdfCore.mergePDFs(pdfDataArray);
+        setProgress(90);
+
+        let mergedBytes;
+        mergedBytes = mergedPdfBytes instanceof Uint8Array ? mergedPdfBytes.buffer : mergedPdfBytes;
+        const blob = new Blob([mergedBytes], { type: 'application/pdf' });
+        pdfCore.downloadBlob(blob, 'merged-document.pdf');
+
+        setProgress(100);
     } catch (error) {
       console.error('Merge failed:', error);
     } finally {
@@ -329,13 +331,17 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
             Rotate
           </TabsTrigger>
           <TabsTrigger value="compress">
-            <Compress className="h-4 w-4 mr-1" />
+            <Compass className="h-4 w-4 mr-1" />
             Compress
           </TabsTrigger>
-          <TabsTrigger value="tools">
+            <TabsTrigger value="compress">
+            <Compass className="h-4 w-4 mr-1" />
+            Compress
+            </TabsTrigger>
+            <TabsTrigger value="tools">
             <Settings className="h-4 w-4 mr-1" />
             Tools
-          </TabsTrigger>
+            </TabsTrigger>
         </TabsList>
 
         {/* Merge Tab */}
@@ -568,7 +574,7 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
                     disabled={isProcessing}
                     className="w-full"
                   >
-                    <Compress className="h-4 w-4 mr-2" />
+                    <Compass className="h-4 w-4 mr-2" />
                     Compress PDF
                   </Button>
                 </>

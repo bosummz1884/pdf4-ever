@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { FileText, Loader2 } from "lucide-react";
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
 import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 interface TextPage {
   pageIndex: number;
   text: string;
