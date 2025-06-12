@@ -1,4 +1,4 @@
-declare module "pdfjs-dist/build/pdf.worker.mjs" {
+declare module "pdfjs-dist/build/pdf.mjs" {
     // You can be more specific if you know the exports, e.g.:
     // export * from 'pdfjs-dist/types/pdf';
     const pdfjsLib: any;
