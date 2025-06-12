@@ -18,9 +18,10 @@ import {
 import { pdfCore } from '../lib/pdfCore';
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
+import { GlobalWorkerOptions } from 'pdfjs-dist';
 
 // Set the static worker URL for Cloudflare Pages compatibility
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 interface PDFFile {
   id: string;
