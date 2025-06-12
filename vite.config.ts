@@ -22,6 +22,14 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: "index.html", // ✅ ensure Vite knows where your real entry point is
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            // Each dependency gets its own chunk (improves caching/splits big libs)
+            return id.toString().split('node_modules/')[1].split('/')[0].toString();
+          }
+        },
+      },
     },
   },
   server: {
