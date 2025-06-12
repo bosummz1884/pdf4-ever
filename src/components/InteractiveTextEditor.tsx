@@ -3,7 +3,7 @@ import { Resizable } from "react-resizable";
 import "react-resizable/css/styles.css";
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
 import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://4f959835.pdf4-ever.pages.dev/pdf.worker.min.mjs';
 import { Button } from "./ui/button";
 import {
   Select,
