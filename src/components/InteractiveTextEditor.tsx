@@ -1,7 +1,11 @@
 import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "react";
 import { Resizable } from "react-resizable";
 import "react-resizable/css/styles.css";
-import { pdfjsLib } from "../lib/pdfWorker";
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
 import { Button } from "./ui/button";
 import {
   Select,

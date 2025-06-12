@@ -1,5 +1,9 @@
 import { PDFDocument, rgb, StandardFonts, PageSizes } from 'pdf-lib';
-import { pdfjsLib } from './pdfWorker';
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
 
 // Merged functionality from pdfUtils.ts, livePdfProcessor.js, pageTools.js, pdfFormFiller.js, pdfInvoiceGenerator.js
 

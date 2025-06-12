@@ -1,8 +1,6 @@
-import { PDFDocument, StandardFonts, rgb, PDFPage, PDFFont } from 'pdf-lib';
-import { pdfjs } from 'pdfjs-dist';
-
-// This tells PDF.js to use the correct worker from node_modules
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+import { PDFDocument, StandardFonts, rgb, PDFPage, PDFFont, degrees } from 'pdf-lib';
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
   import.meta.url
 ).toString();
@@ -61,21 +59,13 @@ export class PDFCore {
 
   async initializeWorker(): Promise<void> {
     if (this.workerInitialized) return;
-
-    
-  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.js',
-    import.meta.url
-  ).toString();
-  
-    this.workerInitialized = true;
   }
 
   async loadPDF(file: File | ArrayBuffer): Promise<any> {
     await this.initializeWorker();
     
     const data = file instanceof File ? await file.arrayBuffer() : file;
-    return await pdfjs.getDocument({ data }).promise;
+    return await pdfjsLib.getDocument({ data }).promise;
   }
 
   async renderPage(
@@ -183,7 +173,7 @@ export class PDFCore {
         size: element.fontSize,
         font,
         color: rgb(color.r, color.g, color.b),
-        rotate: { type: 'degrees', angle: element.rotation }
+        rotate: degrees(element.rotation)
       });
     }
 
@@ -280,7 +270,8 @@ export class PDFCore {
             y,
             width: annotation.width,
             height: annotation.height,
-            color: rgb(color.r, color.g, color.b, 0.3)
+            color: rgb(color.r, color.g, color.b),
+            opacity: 0.3
           });
           break;
       }
@@ -318,13 +309,13 @@ export class PDFCore {
     return splitPdfs;
   }
 
-  async rotatePDF(pdfData: ArrayBuffer, pageNum: number, degrees: number): Promise<Uint8Array> {
+  async rotatePDF(pdfData: ArrayBuffer, pageNum: number, rotationDegrees: number): Promise<Uint8Array> {
     const pdfDoc = await PDFDocument.load(pdfData);
     const pages = pdfDoc.getPages();
     const page = pages[pageNum - 1];
     
     if (page) {
-      page.setRotation({ type: 'degrees', angle: degrees });
+      page.setRotation(degrees(rotationDegrees));
     }
 
     return await pdfDoc.save();
@@ -356,24 +347,24 @@ export class PDFCore {
     formFields: FormField[],
     annotations: AnnotationElement[]
   ): Promise<Uint8Array> {
-    let pdfBytes = new Uint8Array(originalPdfData);
+    let pdfBytes = originalPdfData;
 
     // Add text elements first
     if (textElements.length > 0) {
-      pdfBytes = await this.addTextElementsToPDF(pdfBytes, textElements);
+      pdfBytes = new Uint8Array(await this.addTextElementsToPDF(pdfBytes, textElements)).buffer;
     }
 
     // Fill form fields
     if (formFields.length > 0) {
-      pdfBytes = await this.fillFormFields(pdfBytes, formFields);
+      pdfBytes = new Uint8Array(await this.fillFormFields(pdfBytes, formFields)).buffer;
     }
 
     // Add annotations last
     if (annotations.length > 0) {
-      pdfBytes = await this.addAnnotationsToPDF(pdfBytes, annotations);
+      pdfBytes = new Uint8Array(await this.addAnnotationsToPDF(pdfBytes, annotations)).buffer;
     }
 
-    return pdfBytes;
+    return pdfBytes instanceof Uint8Array ? pdfBytes : new Uint8Array(pdfBytes);
   }
 }
 

@@ -6,7 +6,11 @@ import React, {
   forwardRef,
 } from "react";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
-import { pdfjsLib } from "../lib/pdfWorker";
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
 
 import ExportControls from "./ExportControls";
 import AnnotationCanvas from "./AnnotationCanvas";
@@ -57,10 +61,22 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
     const annotationRef = useRef<any>();
 
     const [pdfData, setPdfData] = useState<ArrayBuffer | null>(null);
-    const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
+    // Define your own type for PDFDocumentProxy if not available from pdfjs-dist types
+    interface MyPDFDocumentProxy {
+      numPages: number;
+      getPage: (pageNumber: number) => Promise<any>;
+      // Add other methods/properties you use from pdfjsLib.PDFDocumentProxy
+    }
+    const [pdfDoc, setPdfDoc] = useState<MyPDFDocumentProxy | null>(null);
     const [textItems, setTextItems] = useState<any[]>([]);
     const [userTextBoxes, setUserTextBoxes] = useState<TextBox[]>([]);
-    const [viewport, setViewport] = useState<pdfjsLib.PageViewport | null>(null);
+    // Define your own type for PageViewport since pdfjsLib.PageViewport may not be available
+    interface MyPageViewport {
+      width: number;
+      height: number;
+      // Add other properties you use from pdfjsLib.PageViewport if needed
+    }
+    const [viewport, setViewport] = useState<MyPageViewport | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [zoom, setZoom] = useState(1.5);
@@ -180,7 +196,9 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
         }
 
         const modifiedBytes = await pdfDoc.save();
-        const blob = new Blob([modifiedBytes], { type: "application/pdf" });
+        // Make sure the buffer is an ArrayBuffer, not SharedArrayBuffer
+        const fixedArrayBuffer = new Uint8Array(modifiedBytes).buffer;
+        const blob = new Blob([fixedArrayBuffer], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         
         // Create download link
@@ -224,8 +242,6 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
           setUserTextBoxes([]);
           setCurrentSignature(null);
           // Reset to original PDF
-          const blob = new Blob([originalPdfBytes], { type: 'application/pdf' });
-          const file = new File([blob], 'original.pdf', { type: 'application/pdf' });
           // Re-load the original file
           window.location.reload();
         }

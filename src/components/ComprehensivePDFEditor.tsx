@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { pdfjs } from 'pdfjs-dist';
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
   import.meta.url
 ).toString();
@@ -913,7 +914,7 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
         }
         
         const pdfBytes = await pdfDoc.save();
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
@@ -922,7 +923,7 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
         URL.revokeObjectURL(url);
       } else {
         // Fallback to original export if no advanced text
-        const blob = new Blob([originalFileData], { type: 'application/pdf' });
+        const blob = new Blob([new Uint8Array(originalFileData!)], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
@@ -1305,7 +1306,7 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
           annotations: annotations.filter(a => a && a.page === currentPage),
           textBoxes: textBoxes.filter(tb => tb.page === currentPage)
         };
-        saveToHistory(currentState);
+        saveToHistory();
         console.log('Saved drag/resize operation to history');
       }
     }
@@ -1374,29 +1375,36 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
         {/* Main Toolbar */}
         <div className="flex items-center justify-between px-4 py-2">
           {/* Left Side - File Upload */}
-          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
+            <Label htmlFor="file-upload" className="sr-only">
+              Upload PDF
+            </Label>
             <input
               ref={fileInputRef}
+              id="file-upload"
               type="file"
               accept=".pdf"
               onChange={handleFileUpload}
               className="hidden"
+              title="Choose a PDF file to upload"
+              placeholder="Select a PDF file"
             />
             <Button
               onClick={() => fileInputRef.current?.click()}
               variant="outline"
               size="sm"
               disabled={isLoading}
+              title="Upload PDF"
             >
               <Upload className="h-4 w-4 mr-2" />
               {isLoading ? 'Loading...' : 'Upload PDF'}
             </Button>
             {fileName && (
-              <span className="text-sm text-muted-foreground truncate max-w-48">
-                {fileName}
+              <span className="text-sm text-muted-foreground truncate max-w-48" title={fileName}>
+              {fileName}
               </span>
             )}
-          </div>
+            </div>
 
           {/* Right Side - Mode Selector */}
           <div className="flex items-center gap-2">
@@ -1509,7 +1517,7 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                 </Button>
                 
                 {showHighlightDropdown && currentTool === 'highlight' && (
-                  <div className="absolute top-full left-0 mt-1 z-50 bg-white border border-gray-200 rounded-md shadow-lg p-3 min-w-[160px]" style={{ backgroundColor: 'white' }}>
+                  <div className="absolute top-full left-0 mt-1 z-50 bg-white border border-gray-200 rounded-md shadow-lg p-3 min-w-[160px] pdf4ever-highlight-dropdown">
                     <div className="space-y-2">
                       <div className="text-sm font-medium text-black mb-2">Highlight Colors</div>
                       <div className="grid grid-cols-3 gap-2">
@@ -1521,15 +1529,16 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                           { color: '#FFA500', name: 'Orange' },
                           { color: '#FF0000', name: 'Red' }
                         ].map(({ color, name }) => (
-                          <button
+                          <Button
                             key={color}
-                            className={`w-8 h-8 rounded border-2 ${highlightColor === color ? 'border-black' : 'border-gray-300'}`}
-                            style={{ backgroundColor: color + '60' }}
+                            className={`w-8 h-8 rounded border-2 pdf4ever-highlight-color-btn ${highlightColor === color ? 'border-black' : 'border-gray-300'}`}
                             onClick={() => {
                               setHighlightColor(color);
                               setShowHighlightDropdown(false);
                             }}
                             title={name}
+                            style={{ backgroundColor: color + '60' }}
+                            variant="ghost"
                           />
                         ))}
                       </div>
@@ -1557,7 +1566,7 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                 </Button>
                 
                 {showShapeDropdown && (currentTool === 'rectangle' || currentTool === 'circle' || currentTool === 'checkmark' || currentTool === 'x-mark') && (
-                  <div className="absolute top-full left-0 mt-1 z-50 bg-white border border-gray-200 rounded-md shadow-lg p-2 min-w-[120px]" style={{ backgroundColor: 'white' }}>
+                  <div className="absolute top-full left-0 mt-1 z-50 bg-white border border-gray-200 rounded-md shadow-lg p-2 min-w-[120px] pdf4ever-shape-dropdown">
                     <div className="space-y-1">
                       <Button
                         variant={selectedShape === 'rectangle' ? 'default' : 'outline'}
@@ -1669,6 +1678,8 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                           value={lineStrokeWidth}
                           onChange={(e) => setLineStrokeWidth(Number(e.target.value))}
                           className="w-full"
+                          title="Adjust line stroke width"
+                          placeholder="Line stroke width"
                         />
                       </div>
                       
@@ -1690,8 +1701,8 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                               className="flex flex-col items-center gap-1 p-2 hover:bg-gray-100 rounded text-black"
                             >
                               <div 
-                                className="w-4 h-4 rounded border" 
-                                style={{ backgroundColor: color }}
+                                className="w-4 h-4 rounded border pdf4ever-line-color-preview" 
+                                data-color={color}
                               />
                               <span className="text-xs">{name}</span>
                             </button>
@@ -1937,9 +1948,9 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                     }}
                   />
                   {/* Text boxes - rendered persistently outside tabs */}
-                  <div style={{ 
-                    pointerEvents: ['rectangle', 'circle', 'line', 'checkmark', 'x-mark', 'signature', 'highlight', 'image'].includes(currentTool) ? 'none' : 'auto'
-                  }}>
+                  <div
+                    className={`pdf4ever-textbox-manager-container${['rectangle', 'circle', 'line', 'checkmark', 'x-mark', 'signature', 'highlight', 'image'].includes(currentTool) ? ' pointer-events-none' : ''}`}
+                  >
                     <TextBoxManager
                       canvasRef={canvasRef}
                       currentPage={currentPage}
@@ -1971,9 +1982,9 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                   )}
                   
                   {/* Whiteout Layer */}
-                  <div style={{ 
-                    pointerEvents: ['rectangle', 'circle', 'checkmark', 'x-mark'].includes(currentTool) ? 'none' : 'auto'
-                  }}>
+                  <div
+                    className={`pdf4ever-whiteout-layer-container${['rectangle', 'circle', 'checkmark', 'x-mark'].includes(currentTool) ? ' pointer-events-none' : ''}`}
+                  >
                     <WhiteoutLayer
                       isActive={whiteoutMode}
                       canvasRef={canvasRef}
@@ -2038,18 +2049,18 @@ export default function ComprehensivePDFEditor({ className }: ComprehensivePDFEd
                 id="signature-font"
                 value={signatureFont}
                 onChange={(e) => setSignatureFont(e.target.value)}
-                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black"
-                style={{ backgroundColor: 'white', color: 'black' }}
+                className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black signature-select"
+                title="Signature Style"
               >
-                <option value="Dancing Script" style={{ fontFamily: 'Dancing Script', color: 'black', backgroundColor: 'white' }}>Dancing Script (Cursive)</option>
-                <option value="Great Vibes" style={{ fontFamily: 'Great Vibes', color: 'black', backgroundColor: 'white' }}>Great Vibes (Elegant)</option>
-                <option value="Allura" style={{ fontFamily: 'Allura', color: 'black', backgroundColor: 'white' }}>Allura (Flowing)</option>
-                <option value="Pacifico" style={{ fontFamily: 'Pacifico', color: 'black', backgroundColor: 'white' }}>Pacifico (Friendly)</option>
-                <option value="Satisfy" style={{ fontFamily: 'Satisfy', color: 'black', backgroundColor: 'white' }}>Satisfy (Casual)</option>
-                <option value="Kaushan Script" style={{ fontFamily: 'Kaushan Script', color: 'black', backgroundColor: 'white' }}>Kaushan Script (Modern)</option>
-                <option value="Courgette" style={{ fontFamily: 'Courgette', color: 'black', backgroundColor: 'white' }}>Courgette (Rounded)</option>
-                <option value="serif" style={{ fontFamily: 'serif', color: 'black', backgroundColor: 'white' }}>Times New Roman (Traditional)</option>
-                <option value="sans-serif" style={{ fontFamily: 'sans-serif', color: 'black', backgroundColor: 'white' }}>Arial (Clean)</option>
+                <option value="Dancing Script">Dancing Script (Cursive)</option>
+                <option value="Great Vibes">Great Vibes (Elegant)</option>
+                <option value="Allura">Allura (Flowing)</option>
+                <option value="Pacifico">Pacifico (Friendly)</option>
+                <option value="Satisfy">Satisfy (Casual)</option>
+                <option value="Kaushan Script">Kaushan Script (Modern)</option>
+                <option value="Courgette">Courgette (Rounded)</option>
+                <option value="serif">Times New Roman (Traditional)</option>
+                <option value="sans-serif">Arial (Clean)</option>
               </select>
             </div>
             

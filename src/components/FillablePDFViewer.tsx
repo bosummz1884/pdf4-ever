@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { pdfjsLib } from '../lib/pdfWorker';
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
@@ -237,44 +241,82 @@ export default function FillablePDFViewer({
 
       case "Btn": // Button (checkbox or radio)
         if (field.radioGroup) {
-          return (
-            <input
+            return (
+            <label
               key={field.id}
+              className="pdf-radio-label"
+              title={field.fieldName}
+              style={{
+              ...baseStyle,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: Math.min(width, height),
+              height: Math.min(width, height),
+              margin: 0,
+              background: "none",
+              border: "none",
+              padding: 0,
+              cursor: "pointer"
+              }}
+            >
+              <input
               type="radio"
               name={field.radioGroup}
               checked={field.value === "Yes"}
               onChange={() => handleRadioChange(field.radioGroup!, field.id)}
+              className="pdf-radio-input"
+              title={field.fieldName}
+              aria-label={field.fieldName}
               style={{
-                ...baseStyle,
-                width: Math.min(width, height),
-                height: Math.min(width, height),
                 accentColor: "#3b82f6",
                 cursor: "pointer",
-                margin: "0",
+                margin: 0,
                 transform: "scale(1.2)"
               }}
-            />
-          );
+              />
+              <span className="sr-only">{field.fieldName}</span>
+            </label>
+            );
         } else {
-          return (
-            <input
+            return (
+            <label
               key={field.id}
+              className="pdf-checkbox-label"
+              title={field.fieldName}
+              style={{
+              ...baseStyle,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: Math.min(width, height),
+              height: Math.min(width, height),
+              margin: 0,
+              background: "none",
+              border: "none",
+              padding: 0,
+              cursor: "pointer"
+              }}
+            >
+              <input
               type="checkbox"
               checked={field.value === "Yes" || field.value === "On"}
               onChange={(e) =>
                 updateFieldValue(field.id, e.target.checked ? "Yes" : "Off")
               }
+              className="pdf-checkbox-input"
+              title={field.fieldName}
+              aria-label={field.fieldName}
               style={{
-                ...baseStyle,
-                width: Math.min(width, height),
-                height: Math.min(width, height),
                 accentColor: "#3b82f6",
                 cursor: "pointer",
-                margin: "0",
+                margin: 0,
                 transform: "scale(1.2)"
               }}
-            />
-          );
+              />
+              <span className="sr-only">{field.fieldName}</span>
+            </label>
+            );
         }
 
       case "Ch": // Choice (dropdown)
@@ -284,11 +326,9 @@ export default function FillablePDFViewer({
             value={field.value}
             onChange={(e) => updateFieldValue(field.id, e.target.value)}
             required={field.required}
-            style={{
-              ...baseStyle,
-              backgroundColor: "rgba(255, 255, 255, 0.9)",
-              padding: "2px"
-            }}
+            className="pdf-select"
+            title={field.fieldName}
+            aria-label={field.fieldName}
           >
             <option value="">Select...</option>
             {field.options?.map((opt, i) => (
@@ -477,7 +517,7 @@ export default function FillablePDFViewer({
       </div>
 
       {/* Field List for debugging */}
-      {process.env.NODE_ENV === 'development' && fields.length > 0 && (
+      {import.meta.env.MODE === 'development' && fields.length > 0 && (
         <details className="text-xs">
           <summary className="cursor-pointer text-gray-600">
             Debug: Show detected fields ({fields.filter(f => f.page === pageNum).length} on current page)

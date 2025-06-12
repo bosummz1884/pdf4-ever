@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { pdfjsLib } from "../lib/pdfWorker";
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
+
+
 
 interface FontOptions {
   size?: number;
@@ -12,7 +18,11 @@ interface FontOptions {
 interface EditableTextLayerProps {
   items: any[];
   onSubmit: (text: string, position: { x: number; y: number }) => void;
-  viewport: pdfjsLib.PageViewport;
+  viewport: {
+    width: number;
+    height: number;
+    [key: string]: any;
+  };
   fontOptions?: FontOptions;
 }
 

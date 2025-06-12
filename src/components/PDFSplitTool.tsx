@@ -6,7 +6,16 @@ import { Label } from "./ui/label";
 import { Checkbox } from "./ui/checkbox";
 import { Upload, Download, X, FileText } from "lucide-react";
 import { extractPagesFromPdf } from "../lib/pdfUtils";
-import { pdfjsLib } from "../lib/pdfWorker";
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
+
+interface PDFSplitToolProps {
+  onClose: () => void;
+  initialFile?: File | null;
+}
 
 const PDFSplitTool: React.FC<PDFSplitToolProps> = ({ onClose, initialFile }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(initialFile || null);
@@ -84,7 +93,7 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({ onClose, initialFile }) => 
       alert('Please select pages to extract');
       return;
     }
-
+  
     setIsProcessing(true);
     try {
       const arrayBuffer = await selectedFile.arrayBuffer();
@@ -94,7 +103,8 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({ onClose, initialFile }) => 
       const pageIndices = selectedPages.map(p => p - 1);
       const extractedPdf = await extractPagesFromPdf(pdfBytes, pageIndices);
       
-      const blob = new Blob([extractedPdf], { type: 'application/pdf' });
+      const blob = new Blob([new Uint8Array(extractedPdf as unknown as ArrayBuffer)], { type: 'application/pdf' });
+      // Use the extractedPdf directly as a BlobPart (Uint8Array is valid)
       const url = URL.createObjectURL(blob);
       
       const a = document.createElement('a');

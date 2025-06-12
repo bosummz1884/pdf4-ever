@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { FileText, Loader2 } from "lucide-react";
-import { pdfjsLib } from "../lib/pdfWorker";
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url
+).toString();
 
 interface TextPage {
   pageIndex: number;
