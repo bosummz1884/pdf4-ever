@@ -15,5 +15,6 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "types": ["vite/client"],
+    "forceConsistentCasingInFileNames": true
   }
 }

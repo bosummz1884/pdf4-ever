@@ -1,6 +1,15 @@
 // 📄 src/utils/savePdfWithText.ts
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
-import { TextBoxData } from '@/components/DraggableTextBox';
+// Define TextBoxData locally if the import fails
+export interface TextBoxData {
+  text: string;
+  page: number;
+  x: number;
+  y: number;
+  width?: number;
+  fontSize?: number;
+  color?: string;
+}
 
 /**
  * Embeds all text boxes into the correct pages of the original PDF,

@@ -1,4 +1,4 @@
-import { Button } from ".ui/button";
+import { Button } from "./ui/button";
 import { Rocket, Play } from "lucide-react";
 
 export default function HeroSection() {

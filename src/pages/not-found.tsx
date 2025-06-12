@@ -1,4 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
+// Update the import path below to the correct location of your Card components.
+// For example, if your components are in 'src/components/ui/card.tsx', use:
+import { Card, CardContent } from "../components/ui/card";
 import { AlertCircle } from "lucide-react";
 
 export default function NotFound() {

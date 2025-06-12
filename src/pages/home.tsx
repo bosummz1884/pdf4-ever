@@ -1,4 +1,5 @@
-import { AdvancedPDFEditor } from "@/components/AdvancedPDFEditor";
+// Make sure the file exists at the specified path, or update the path if necessary.
+import ComprehensivePDFEditor from "../components/ComprehensivePDFEditor";
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
 
       {/* Full-height PDF Editor */}
       <div className="flex-1 overflow-hidden">
-        <AdvancedPDFEditor className="h-full" />
+        <ComprehensivePDFEditor className="h-full" />
       </div>
     </div>
   );
