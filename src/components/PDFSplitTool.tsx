@@ -7,10 +7,10 @@ import { Checkbox } from "./ui/checkbox";
 import { Upload, Download, X, FileText } from "lucide-react";
 import { extractPagesFromPdf } from "../lib/pdfUtils";
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.js',
-  import.meta.url
-).toString();
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
+
+// Set the static worker URL for Cloudflare Pages compatibility
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 interface PDFSplitToolProps {
   onClose: () => void;

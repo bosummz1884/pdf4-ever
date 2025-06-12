@@ -3,6 +3,11 @@ import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Upload, Download, X, ArrowUp, ArrowDown } from "lucide-react";
 import { mergePDFs } from "../lib/pdfUtils";
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
+
+// Set the static worker URL for Cloudflare Pages compatibility
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 interface PDFFile {
   file: File;

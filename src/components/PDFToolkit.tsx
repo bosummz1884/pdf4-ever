@@ -16,6 +16,11 @@ import {
   RefreshCw, Compass, Shield, Eye, Settings
 } from 'lucide-react';
 import { pdfCore } from '../lib/pdfCore';
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
+
+// Set the static worker URL for Cloudflare Pages compatibility
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 interface PDFFile {
   id: string;

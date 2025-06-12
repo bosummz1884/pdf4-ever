@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.js',
-  import.meta.url
-).toString();
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
 
+// Set the static worker URL for Cloudflare Pages compatibility
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 
 interface FontOptions {

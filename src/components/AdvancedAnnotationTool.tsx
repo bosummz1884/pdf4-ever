@@ -1,4 +1,9 @@
 import React, { useState, useRef } from "react";
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
+
+// Set the static worker URL for Cloudflare Pages compatibility
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";

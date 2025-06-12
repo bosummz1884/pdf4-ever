@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { FileText, Loader2 } from "lucide-react";
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.js',
-  import.meta.url
-).toString();
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
 
+// Set the static worker URL for Cloudflare Pages compatibility
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 interface TextPage {
   pageIndex: number;
   text: string;

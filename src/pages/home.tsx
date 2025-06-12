@@ -1,7 +1,13 @@
 // Make sure the file exists at the specified path, or update the path if necessary.
+import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.js?url';
+
+// Set the static worker URL for Cloudflare Pages compatibility
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+import React, { useState } from 'react';
 import ComprehensivePDFEditor from "../components/ComprehensivePDFEditor";
 
-export default function Home() {
+function Home() {
   return (
     <div className="h-screen bg-background flex flex-col">
       {/* Minimal Header */}
@@ -25,3 +31,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
