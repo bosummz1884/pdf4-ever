@@ -6,7 +6,7 @@ import { Download, Save, FileText } from 'lucide-react';
 import { saveFilledFormFields } from '../utils/saveFilledFormFields';
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
 import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://4f959835.pdf4-ever.pages.dev/pdf.worker.min.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 type FieldEntry = {
   id: string;
