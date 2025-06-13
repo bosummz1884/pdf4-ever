@@ -12,7 +12,7 @@ const FONT_LIST = [
   "Comic Sans MS",
   "Helvetica",
   "Calibri",
-  "Roboto"
+  "Roboto",
 ];
 
 interface FontScannerProps {
@@ -50,25 +50,34 @@ const FontScanner: React.FC<FontScannerProps> = ({ onFontDetected }) => {
           canvas.width = uploadedImage.width;
           canvas.height = uploadedImage.height;
           const ctx = canvas.getContext("2d");
-          
+
           if (!ctx) {
             throw new Error("Could not get canvas context");
           }
 
           ctx.drawImage(uploadedImage, 0, 0);
-          const uploadedPixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+          const uploadedPixels = ctx.getImageData(
+            0,
+            0,
+            canvas.width,
+            canvas.height,
+          ).data;
 
           setStatus("Analyzing font patterns...");
-          const guess = await guessFont(uploadedPixels, uploadedImage.width, uploadedImage.height);
-          
+          const guess = await guessFont(
+            uploadedPixels,
+            uploadedImage.width,
+            uploadedImage.height,
+          );
+
           setStatus(`Detected font: ${guess}`);
           onFontDetected?.(guess);
-          
+
           // Clear status after 3 seconds
           setTimeout(() => setStatus(""), 3000);
         } catch (error) {
           setStatus("Error analyzing font");
-          alert('Error scanning font: ' + (error as Error).message);
+          alert("Error scanning font: " + (error as Error).message);
         } finally {
           setIsScanning(false);
           URL.revokeObjectURL(uploadedImage.src);
@@ -85,7 +94,11 @@ const FontScanner: React.FC<FontScannerProps> = ({ onFontDetected }) => {
     input.click();
   };
 
-  const guessFont = async (targetPixels: Uint8ClampedArray, width: number, height: number): Promise<string> => {
+  const guessFont = async (
+    targetPixels: Uint8ClampedArray,
+    width: number,
+    height: number,
+  ): Promise<string> => {
     const text = "Sample Text";
     let bestMatch = "";
     let bestDiff = Infinity;
@@ -93,15 +106,15 @@ const FontScanner: React.FC<FontScannerProps> = ({ onFontDetected }) => {
     for (let i = 0; i < FONT_LIST.length; i++) {
       const font = FONT_LIST[i];
       setStatus(`Comparing with ${font}... (${i + 1}/${FONT_LIST.length})`);
-      
+
       // Add small delay to allow UI update
-      await new Promise(resolve => setTimeout(resolve, 50));
+      await new Promise((resolve) => setTimeout(resolve, 50));
 
       const canvas = document.createElement("canvas");
       canvas.width = width;
       canvas.height = height;
       const ctx = canvas.getContext("2d");
-      
+
       if (!ctx) continue;
 
       ctx.fillStyle = "white";
@@ -131,27 +144,31 @@ const FontScanner: React.FC<FontScannerProps> = ({ onFontDetected }) => {
   };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2" data-oid="ql6xsnz">
       <Button
         onClick={handleFontScan}
         disabled={isScanning}
         variant="outline"
         className="border-accent text-accent hover:bg-accent/10"
+        data-oid="go00qrd"
       >
         {isScanning ? (
           <>
-            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="kp67r_8" />
             Scanning...
           </>
         ) : (
           <>
-            <Type className="w-4 h-4 mr-2" />
+            <Type className="w-4 h-4 mr-2" data-oid="_79no0d" />
             Scan Font From Image
           </>
         )}
       </Button>
       {status && (
-        <div className="text-sm text-muted-foreground bg-muted/50 p-2 rounded">
+        <div
+          className="text-sm text-muted-foreground bg-muted/50 p-2 rounded"
+          data-oid="cxn1m80"
+        >
           {status}
         </div>
       )}

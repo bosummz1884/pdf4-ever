@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Download, Save, FileText } from 'lucide-react';
-import { saveFilledFormFields } from '../utils/saveFilledFormFields';
-import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { Download, Save, FileText } from "lucide-react";
+import { saveFilledFormFields } from "../utils/saveFilledFormFields";
+import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import "pdfjs-dist/web/pdf_viewer.css";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
 type FieldEntry = {
   id: string;
@@ -29,13 +29,13 @@ interface FillablePDFViewerProps {
   className?: string;
 }
 
-export default function FillablePDFViewer({ 
-  file, 
+export default function FillablePDFViewer({
+  file,
   pdfDocument,
   currentPage: externalCurrentPage,
-  onFieldsDetected, 
-  onSave, 
-  className 
+  onFieldsDetected,
+  onSave,
+  className,
 }: FillablePDFViewerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -71,32 +71,32 @@ export default function FillablePDFViewer({
   const loadPDF = async (file: File) => {
     try {
       setIsLoading(true);
-      
+
       // Check if file has content
       if (file.size === 0) {
-        throw new Error('PDF file is empty');
+        throw new Error("PDF file is empty");
       }
-      
+
       const buffer = await file.arrayBuffer();
-      
+
       // Validate buffer has content
       if (buffer.byteLength === 0) {
-        throw new Error('PDF file has no content');
+        throw new Error("PDF file has no content");
       }
-      
-      const doc = await pdfjsLib.getDocument({ 
+
+      const doc = await pdfjsLib.getDocument({
         data: new Uint8Array(buffer),
-        verbosity: 0 // Reduce console noise
+        verbosity: 0, // Reduce console noise
       }).promise;
-      
+
       setPdfDoc(doc);
       setTotalPages(doc.numPages);
       setPageNum(1);
-      
+
       await renderPage(doc, 1);
       await detectAllFields(doc);
     } catch (error) {
-      console.error('Error loading PDF:', error);
+      console.error("Error loading PDF:", error);
       // Reset state on error
       setPdfDoc(null);
       setTotalPages(0);
@@ -108,21 +108,21 @@ export default function FillablePDFViewer({
 
   const renderPage = async (doc: any, num: number) => {
     if (!canvasRef.current) {
-      console.log('Canvas ref not available');
+      console.log("Canvas ref not available");
       return;
     }
-    
+
     try {
       const page = await doc.getPage(num);
       const viewport = page.getViewport({ scale });
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
-      
+
       if (!ctx) {
-        console.log('Canvas context not available');
+        console.log("Canvas context not available");
         return;
       }
-      
+
       canvas.height = viewport.height;
       canvas.width = viewport.width;
 
@@ -135,17 +135,20 @@ export default function FillablePDFViewer({
 
   const detectAllFields = async (doc: any) => {
     const allFields: FieldEntry[] = [];
-    
+
     for (let pageNum = 1; pageNum <= doc.numPages; pageNum++) {
       const pageFields = await detectFieldsOnPage(doc, pageNum);
       allFields.push(...pageFields);
     }
-    
+
     setFields(allFields);
     onFieldsDetected(allFields);
   };
 
-  const detectFieldsOnPage = async (doc: any, pageNum: number): Promise<FieldEntry[]> => {
+  const detectFieldsOnPage = async (
+    doc: any,
+    pageNum: number,
+  ): Promise<FieldEntry[]> => {
     const page = await doc.getPage(pageNum);
     const annotations = await page.getAnnotations();
 
@@ -160,7 +163,7 @@ export default function FillablePDFViewer({
         options: a.options || [],
         radioGroup: a.radioButton ? a.fieldName : undefined,
         page: pageNum,
-        required: a.required || false
+        required: a.required || false,
       }));
 
     return formFields;
@@ -168,32 +171,35 @@ export default function FillablePDFViewer({
 
   const updateFieldValue = useCallback((id: string, value: string) => {
     setFields((prev) => {
-      const updated = prev.map((field) => 
-        field.id === id ? { ...field, value } : field
+      const updated = prev.map((field) =>
+        field.id === id ? { ...field, value } : field,
       );
       return updated;
     });
   }, []);
 
-  const handleRadioChange = useCallback((groupName: string, fieldId: string) => {
-    setFields((prev) => 
-      prev.map((field) => {
-        if (field.radioGroup === groupName) {
-          return { ...field, value: field.id === fieldId ? "Yes" : "Off" };
-        }
-        return field;
-      })
-    );
-  }, []);
+  const handleRadioChange = useCallback(
+    (groupName: string, fieldId: string) => {
+      setFields((prev) =>
+        prev.map((field) => {
+          if (field.radioGroup === groupName) {
+            return { ...field, value: field.id === fieldId ? "Yes" : "Off" };
+          }
+          return field;
+        }),
+      );
+    },
+    [],
+  );
 
   const renderFormField = (field: FieldEntry) => {
     if (field.page !== pageNum) return null;
-    
+
     const canvas = canvasRef.current;
     if (!canvas) return null;
-    
+
     const [x1, y1, x2, y2] = field.rect;
-    
+
     // Use simpler, more direct positioning calculation for better zoom compatibility
     const width = (x2 - x1) * scale;
     const height = (y2 - y1) * scale;
@@ -212,14 +218,14 @@ export default function FillablePDFViewer({
       borderRadius: "3px",
       backgroundColor: "rgba(59, 130, 246, 0.1)",
       color: "#1e40af",
-      fontWeight: "500"
+      fontWeight: "500",
     };
 
     switch (field.fieldType) {
       case "Tx": // Text field
         const isDateField = field.fieldName.toLowerCase().includes("date");
         const isEmailField = field.fieldName.toLowerCase().includes("email");
-        
+
         return (
           <input
             key={field.id}
@@ -232,89 +238,100 @@ export default function FillablePDFViewer({
               ...baseStyle,
               padding: "4px 6px",
               boxSizing: "border-box",
-              backgroundColor: "rgba(255, 255, 255, 0.9)"
+              backgroundColor: "rgba(255, 255, 255, 0.9)",
             }}
+            data-oid="5tbd.sf"
           />
         );
 
       case "Btn": // Button (checkbox or radio)
         if (field.radioGroup) {
-            return (
+          return (
             <label
               key={field.id}
               className="pdf-radio-label"
               title={field.fieldName}
               style={{
-              ...baseStyle,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: Math.min(width, height),
-              height: Math.min(width, height),
-              margin: 0,
-              background: "none",
-              border: "none",
-              padding: 0,
-              cursor: "pointer"
+                ...baseStyle,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: Math.min(width, height),
+                height: Math.min(width, height),
+                margin: 0,
+                background: "none",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
               }}
+              data-oid="q-_xbkg"
             >
               <input
-              type="radio"
-              name={field.radioGroup}
-              checked={field.value === "Yes"}
-              onChange={() => handleRadioChange(field.radioGroup!, field.id)}
-              className="pdf-radio-input"
-              title={field.fieldName}
-              aria-label={field.fieldName}
-              style={{
-                accentColor: "#3b82f6",
-                cursor: "pointer",
-                margin: 0,
-                transform: "scale(1.2)"
-              }}
+                type="radio"
+                name={field.radioGroup}
+                checked={field.value === "Yes"}
+                onChange={() => handleRadioChange(field.radioGroup!, field.id)}
+                className="pdf-radio-input"
+                title={field.fieldName}
+                aria-label={field.fieldName}
+                style={{
+                  accentColor: "#3b82f6",
+                  cursor: "pointer",
+                  margin: 0,
+                  transform: "scale(1.2)",
+                }}
+                data-oid=":wu_gn5"
               />
-              <span className="sr-only">{field.fieldName}</span>
+
+              <span className="sr-only" data-oid="j48lj-d">
+                {field.fieldName}
+              </span>
             </label>
-            );
+          );
         } else {
-            return (
+          return (
             <label
               key={field.id}
               className="pdf-checkbox-label"
               title={field.fieldName}
               style={{
-              ...baseStyle,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: Math.min(width, height),
-              height: Math.min(width, height),
-              margin: 0,
-              background: "none",
-              border: "none",
-              padding: 0,
-              cursor: "pointer"
+                ...baseStyle,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: Math.min(width, height),
+                height: Math.min(width, height),
+                margin: 0,
+                background: "none",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
               }}
+              data-oid="cc0:k6-"
             >
               <input
-              type="checkbox"
-              checked={field.value === "Yes" || field.value === "On"}
-              onChange={(e) =>
-                updateFieldValue(field.id, e.target.checked ? "Yes" : "Off")
-              }
-              className="pdf-checkbox-input"
-              title={field.fieldName}
-              aria-label={field.fieldName}
-              style={{
-                accentColor: "#3b82f6",
-                cursor: "pointer",
-                margin: 0,
-                transform: "scale(1.2)"
-              }}
+                type="checkbox"
+                checked={field.value === "Yes" || field.value === "On"}
+                onChange={(e) =>
+                  updateFieldValue(field.id, e.target.checked ? "Yes" : "Off")
+                }
+                className="pdf-checkbox-input"
+                title={field.fieldName}
+                aria-label={field.fieldName}
+                style={{
+                  accentColor: "#3b82f6",
+                  cursor: "pointer",
+                  margin: 0,
+                  transform: "scale(1.2)",
+                }}
+                data-oid="rjqc7fb"
               />
-              <span className="sr-only">{field.fieldName}</span>
+
+              <span className="sr-only" data-oid="r3ishfb">
+                {field.fieldName}
+              </span>
             </label>
-            );
+          );
         }
 
       case "Ch": // Choice (dropdown)
@@ -327,10 +344,13 @@ export default function FillablePDFViewer({
             className="pdf-select"
             title={field.fieldName}
             aria-label={field.fieldName}
+            data-oid="tpb2.9k"
           >
-            <option value="">Select...</option>
+            <option value="" data-oid="345ggdc">
+              Select...
+            </option>
             {field.options?.map((opt, i) => (
-              <option key={i} value={opt}>
+              <option key={i} value={opt} data-oid="hden3tm">
                 {opt}
               </option>
             ))}
@@ -355,8 +375,9 @@ export default function FillablePDFViewer({
               borderLeft: "none",
               borderRight: "none",
               backgroundColor: "transparent",
-              padding: "2px 4px"
+              padding: "2px 4px",
             }}
+            data-oid="205_34_"
           />
         );
 
@@ -374,10 +395,14 @@ export default function FillablePDFViewer({
 
   const getFieldStats = () => {
     const total = fields.length;
-    const filled = fields.filter(f => f.value && f.value.trim() !== "").length;
-    const required = fields.filter(f => f.required).length;
-    const requiredFilled = fields.filter(f => f.required && f.value && f.value.trim() !== "").length;
-    
+    const filled = fields.filter(
+      (f) => f.value && f.value.trim() !== "",
+    ).length;
+    const required = fields.filter((f) => f.required).length;
+    const requiredFilled = fields.filter(
+      (f) => f.required && f.value && f.value.trim() !== "",
+    ).length;
+
     return { total, filled, required, requiredFilled };
   };
 
@@ -385,41 +410,59 @@ export default function FillablePDFViewer({
 
   if (!file && !pdfDocument) {
     return (
-      <div className={`flex items-center justify-center h-64 border-2 border-dashed border-gray-300 rounded-lg ${className}`}>
-        <div className="text-center">
-          <FileText className="h-12 w-12 mx-auto text-gray-400 mb-4" />
-          <p className="text-gray-500">Upload a PDF to view fillable form fields</p>
+      <div
+        className={`flex items-center justify-center h-64 border-2 border-dashed border-gray-300 rounded-lg ${className}`}
+        data-oid=":qfd.a_"
+      >
+        <div className="text-center" data-oid="9eyra0r">
+          <FileText
+            className="h-12 w-12 mx-auto text-gray-400 mb-4"
+            data-oid="bfm4oj5"
+          />
+          <p className="text-gray-500" data-oid="cr86hdf">
+            Upload a PDF to view fillable form fields
+          </p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`space-y-4 ${className}`}>
+    <div className={`space-y-4 ${className}`} data-oid="yfc0ilz">
       {/* Form Statistics */}
       {fields.length > 0 && (
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg">Form Fields</CardTitle>
+        <Card data-oid="anvwrwk">
+          <CardHeader className="pb-3" data-oid="fv3y6c6">
+            <CardTitle className="text-lg" data-oid="uapz37b">
+              Form Fields
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary">
+          <CardContent data-oid="6cyj5lm">
+            <div className="flex flex-wrap gap-2" data-oid="mpeb9ps">
+              <Badge variant="secondary" data-oid="i-zc107">
                 {stats.filled}/{stats.total} fields filled
               </Badge>
               {stats.required > 0 && (
-                <Badge variant={stats.requiredFilled === stats.required ? "default" : "destructive"}>
+                <Badge
+                  variant={
+                    stats.requiredFilled === stats.required
+                      ? "default"
+                      : "destructive"
+                  }
+                  data-oid="hhrzs_r"
+                >
                   {stats.requiredFilled}/{stats.required} required
                 </Badge>
               )}
             </div>
-            <div className="flex gap-2 mt-3">
+            <div className="flex gap-2 mt-3" data-oid="ul1xhgw">
               <Button
                 onClick={() => onSave(fields)}
                 disabled={isLoading}
                 size="sm"
+                data-oid="cle3l39"
               >
-                <Save className="h-4 w-4 mr-2" />
+                <Save className="h-4 w-4 mr-2" data-oid="ulwbivw" />
                 Save Form Data
               </Button>
               {file && (
@@ -428,8 +471,9 @@ export default function FillablePDFViewer({
                   disabled={isLoading}
                   size="sm"
                   variant="outline"
+                  data-oid="vx.rq.t"
                 >
-                  <Download className="h-4 w-4 mr-2" />
+                  <Download className="h-4 w-4 mr-2" data-oid="23wt_s8" />
                   Download Filled PDF
                 </Button>
               )}
@@ -439,20 +483,27 @@ export default function FillablePDFViewer({
       )}
 
       {/* PDF Viewer */}
-      <div className="border border-gray-200 rounded-lg overflow-hidden">
+      <div
+        className="border border-gray-200 rounded-lg overflow-hidden"
+        data-oid="s_.zfy6"
+      >
         {/* Navigation */}
         {totalPages > 1 && (
-          <div className="bg-gray-50 px-4 py-2 border-b flex items-center justify-between">
-            <div className="flex items-center gap-2">
+          <div
+            className="bg-gray-50 px-4 py-2 border-b flex items-center justify-between"
+            data-oid="435awwl"
+          >
+            <div className="flex items-center gap-2" data-oid="u9ejjzj">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => goToPage(pageNum - 1)}
                 disabled={pageNum <= 1}
+                data-oid="efzs.na"
               >
                 Previous
               </Button>
-              <span className="text-sm">
+              <span className="text-sm" data-oid="g6-5afp">
                 Page {pageNum} of {totalPages}
               </span>
               <Button
@@ -460,25 +511,30 @@ export default function FillablePDFViewer({
                 size="sm"
                 onClick={() => goToPage(pageNum + 1)}
                 disabled={pageNum >= totalPages}
+                data-oid="1..4gtn"
               >
                 Next
               </Button>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" data-oid="h0g09vv">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setScale(scale * 0.8)}
                 disabled={scale <= 0.5}
+                data-oid="cw9:2:1"
               >
                 Zoom Out
               </Button>
-              <span className="text-sm">{Math.round(scale * 100)}%</span>
+              <span className="text-sm" data-oid="ei:9wqq">
+                {Math.round(scale * 100)}%
+              </span>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setScale(scale * 1.25)}
                 disabled={scale >= 3}
+                data-oid="0lqbzs3"
               >
                 Zoom In
               </Button>
@@ -487,41 +543,59 @@ export default function FillablePDFViewer({
         )}
 
         {/* Canvas Container */}
-        <div 
+        <div
           ref={containerRef}
           className="relative bg-white overflow-auto"
-          style={{ maxHeight: '70vh' }}
+          style={{ maxHeight: "70vh" }}
+          data-oid="l4ovtqi"
         >
           {isLoading && (
-            <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-20">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
-                <p className="text-sm text-gray-600">Loading PDF...</p>
+            <div
+              className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-20"
+              data-oid="q1t4d1j"
+            >
+              <div className="text-center" data-oid="p.o_1st">
+                <div
+                  className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"
+                  data-oid="6twv5jn"
+                ></div>
+                <p className="text-sm text-gray-600" data-oid="3vf3.au">
+                  Loading PDF...
+                </p>
               </div>
             </div>
           )}
-          
-          <canvas 
-            ref={canvasRef} 
+
+          <canvas
+            ref={canvasRef}
             className="block"
-            style={{ maxWidth: '100%', height: 'auto' }}
+            style={{ maxWidth: "100%", height: "auto" }}
+            data-oid="ktkfpx2"
           />
-          
+
           {/* Form Fields Overlay */}
-          <div key={formFieldsKey}>
+          <div key={formFieldsKey} data-oid="wkmq8.b">
             {fields.map(renderFormField)}
           </div>
         </div>
       </div>
 
       {/* Field List for debugging */}
-      {import.meta.env.MODE === 'development' && fields.length > 0 && (
-        <details className="text-xs">
-          <summary className="cursor-pointer text-gray-600">
-            Debug: Show detected fields ({fields.filter(f => f.page === pageNum).length} on current page)
+      {import.meta.env.MODE === "development" && fields.length > 0 && (
+        <details className="text-xs" data-oid=".wdqqnd">
+          <summary className="cursor-pointer text-gray-600" data-oid="cih:lqo">
+            Debug: Show detected fields (
+            {fields.filter((f) => f.page === pageNum).length} on current page)
           </summary>
-          <pre className="mt-2 p-2 bg-gray-100 rounded text-xs overflow-auto max-h-32">
-            {JSON.stringify(fields.filter(f => f.page === pageNum), null, 2)}
+          <pre
+            className="mt-2 p-2 bg-gray-100 rounded text-xs overflow-auto max-h-32"
+            data-oid="nue5.e9"
+          >
+            {JSON.stringify(
+              fields.filter((f) => f.page === pageNum),
+              null,
+              2,
+            )}
           </pre>
         </details>
       )}

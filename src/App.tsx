@@ -13,20 +13,37 @@ import NotFound from "./pages/not-found";
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="pdf4ever-theme">
-      <TooltipProvider>
-        <div className="h-screen bg-background text-foreground antialiased">
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/privacy-policy" component={PrivacyPolicy} />
-            <Route path="/terms-of-service" component={TermsOfService} />
-            <Route component={NotFound} />
+    <ThemeProvider
+      defaultTheme="dark"
+      storageKey="pdf4ever-theme"
+      data-oid="o7_o2bt"
+    >
+      <TooltipProvider data-oid="vdy_7gw">
+        <div
+          className="h-screen bg-background text-foreground antialiased"
+          data-oid="0izju_s"
+        >
+          <Switch data-oid="it4gi7t">
+            <Route path="/" component={Home} data-oid="nacsukh" />
+            <Route
+              path="/privacy-policy"
+              component={PrivacyPolicy}
+              data-oid="q2.lb01"
+            />
+            <Route
+              path="/terms-of-service"
+              component={TermsOfService}
+              data-oid="re49o1q"
+            />
+            <Route component={NotFound} data-oid="3ck8fyh" />
           </Switch>
-          <footer className="flex justify-end">
-            <p className="text-sm text-gray-400">PDF4EVER &copy; 2023</p>
+          <footer className="flex justify-end" data-oid="7skdx3s">
+            <p className="text-sm text-gray-400" data-oid="eg2i-y4">
+              PDF4EVER &copy; 2023
+            </p>
           </footer>
         </div>
-        <Toaster />
+        <Toaster data-oid="bbml8s2" />
       </TooltipProvider>
     </ThemeProvider>
   );

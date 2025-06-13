@@ -27,15 +27,15 @@ const OcrExtractor: React.FC<OcrExtractorProps> = ({ onTextExtracted }) => {
       try {
         const result = await Tesseract.recognize(file, "eng", {
           logger: (m: any) => {
-            if (m.status === 'recognizing text') {
+            if (m.status === "recognizing text") {
               setProgress(Math.round(m.progress * 100));
             }
-          }
+          },
         });
 
         onTextExtracted?.(result.data.text);
       } catch (error) {
-        alert('Error extracting text: ' + (error as Error).message);
+        alert("Error extracting text: " + (error as Error).message);
       } finally {
         setIsProcessing(false);
         setProgress(0);
@@ -51,15 +51,16 @@ const OcrExtractor: React.FC<OcrExtractorProps> = ({ onTextExtracted }) => {
       disabled={isProcessing}
       variant="outline"
       className="border-secondary text-secondary hover:bg-secondary/10"
+      data-oid="enijzqd"
     >
       {isProcessing ? (
         <>
-          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+          <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="fibnwxz" />
           OCR Processing... {progress}%
         </>
       ) : (
         <>
-          <Camera className="w-4 h-4 mr-2" />
+          <Camera className="w-4 h-4 mr-2" data-oid="cbiye:k" />
           Extract Text from Image (OCR)
         </>
       )}

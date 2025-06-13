@@ -1,4 +1,10 @@
-import React, { useRef, useEffect, useState, forwardRef, useImperativeHandle } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 
 interface AnnotationCanvasProps {
   width: number;
@@ -14,7 +20,9 @@ const AnnotationCanvas = forwardRef<AnnotationCanvasRef, AnnotationCanvasProps>(
   ({ width, height }, ref) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isDrawing, setIsDrawing] = useState(false);
-    const [lastPoint, setLastPoint] = useState<{ x: number; y: number } | null>(null);
+    const [lastPoint, setLastPoint] = useState<{ x: number; y: number } | null>(
+      null,
+    );
 
     useEffect(() => {
       const canvas = canvasRef.current;
@@ -112,18 +120,19 @@ const AnnotationCanvas = forwardRef<AnnotationCanvasRef, AnnotationCanvasProps>(
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 pointer-events-auto cursor-crosshair"
-        style={{ 
-          width: "100%", 
+        style={{
+          width: "100%",
           height: "100%",
-          zIndex: 10
+          zIndex: 10,
         }}
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
         onMouseLeave={stopDrawing}
+        data-oid="c.uc6i3"
       />
     );
-  }
+  },
 );
 
 AnnotationCanvas.displayName = "AnnotationCanvas";

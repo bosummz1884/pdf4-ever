@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Rnd } from "react-rnd";
-import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import "pdfjs-dist/web/pdf_viewer.css";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 import { nanoid } from "nanoid";
 
 type TextBox = {
@@ -28,7 +28,11 @@ type Props = {
   onTextBoxesChange?: (textBoxes: TextBox[]) => void;
 };
 
-export default function AdvancedTextLayer({ canvasRef, page, onTextBoxesChange }: Props) {
+export default function AdvancedTextLayer({
+  canvasRef,
+  page,
+  onTextBoxesChange,
+}: Props) {
   const [textBoxes, setTextBoxes] = useState<TextBox[]>([]);
   const [selectedFont, setSelectedFont] = useState("Helvetica");
   const [fontSize, setFontSize] = useState(16);
@@ -55,7 +59,7 @@ export default function AdvancedTextLayer({ canvasRef, page, onTextBoxesChange }
         color: fontColor,
         bold: false,
         italic: false,
-        underline: false
+        underline: false,
       };
 
       const updatedBoxes = [...textBoxes, newBox];
@@ -66,13 +70,17 @@ export default function AdvancedTextLayer({ canvasRef, page, onTextBoxesChange }
   };
 
   const updateText = (id: string, value: string) => {
-    const updatedBoxes = textBoxes.map((tb) => (tb.id === id ? { ...tb, value } : tb));
+    const updatedBoxes = textBoxes.map((tb) =>
+      tb.id === id ? { ...tb, value } : tb,
+    );
     setTextBoxes(updatedBoxes);
     onTextBoxesChange?.(updatedBoxes);
   };
 
   const updateBox = (id: string, props: Partial<TextBox>) => {
-    const updatedBoxes = textBoxes.map((tb) => (tb.id === id ? { ...tb, ...props } : tb));
+    const updatedBoxes = textBoxes.map((tb) =>
+      tb.id === id ? { ...tb, ...props } : tb,
+    );
     setTextBoxes(updatedBoxes);
     onTextBoxesChange?.(updatedBoxes);
   };
@@ -83,9 +91,9 @@ export default function AdvancedTextLayer({ canvasRef, page, onTextBoxesChange }
     onTextBoxesChange?.(updatedBoxes);
   };
 
-  const toggleStyle = (id: string, style: 'bold' | 'italic' | 'underline') => {
-    const updatedBoxes = textBoxes.map((tb) => 
-      tb.id === id ? { ...tb, [style]: !tb[style] } : tb
+  const toggleStyle = (id: string, style: "bold" | "italic" | "underline") => {
+    const updatedBoxes = textBoxes.map((tb) =>
+      tb.id === id ? { ...tb, [style]: !tb[style] } : tb,
     );
     setTextBoxes(updatedBoxes);
     onTextBoxesChange?.(updatedBoxes);
@@ -93,7 +101,15 @@ export default function AdvancedTextLayer({ canvasRef, page, onTextBoxesChange }
 
   return (
     <>
-      <div style={{ marginBottom: "0.5rem", display: "flex", gap: "1rem", alignItems: "center" }}>
+      <div
+        style={{
+          marginBottom: "0.5rem",
+          display: "flex",
+          gap: "1rem",
+          alignItems: "center",
+        }}
+        data-oid="_1gz159"
+      >
         <button
           onClick={() => setIsAddMode(!isAddMode)}
           style={{
@@ -103,20 +119,32 @@ export default function AdvancedTextLayer({ canvasRef, page, onTextBoxesChange }
             backgroundColor: isAddMode ? "#3b82f6" : "#f8f9fa",
             color: isAddMode ? "white" : "#333",
             cursor: "pointer",
-            fontSize: "12px"
+            fontSize: "12px",
           }}
+          data-oid="_jztu:_"
         >
           {isAddMode ? "Cancel" : "Add Text"}
         </button>
-        
+
         <select
           value={selectedFont}
           onChange={(e) => setSelectedFont(e.target.value)}
-          style={{ padding: "4px", borderRadius: "4px", border: "1px solid #ccc" }}
+          style={{
+            padding: "4px",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
+          }}
+          data-oid="l1o40b7"
         >
-          <option value="Helvetica">Helvetica</option>
-          <option value="Times New Roman">Times New Roman</option>
-          <option value="Courier New">Courier New</option>
+          <option value="Helvetica" data-oid="rmuhhtl">
+            Helvetica
+          </option>
+          <option value="Times New Roman" data-oid="--5mnz5">
+            Times New Roman
+          </option>
+          <option value="Courier New" data-oid="k15:63s">
+            Courier New
+          </option>
         </select>
 
         <input
@@ -125,14 +153,27 @@ export default function AdvancedTextLayer({ canvasRef, page, onTextBoxesChange }
           max={72}
           value={fontSize}
           onChange={(e) => setFontSize(parseInt(e.target.value))}
-          style={{ width: "60px", padding: "4px", borderRadius: "4px", border: "1px solid #ccc" }}
+          style={{
+            width: "60px",
+            padding: "4px",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
+          }}
+          data-oid="u_f.62v"
         />
 
         <input
           type="color"
           value={fontColor}
           onChange={(e) => setFontColor(e.target.value)}
-          style={{ width: "40px", height: "32px", borderRadius: "4px", border: "1px solid #ccc", cursor: "pointer" }}
+          style={{
+            width: "40px",
+            height: "32px",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
+            cursor: "pointer",
+          }}
+          data-oid="ltb67mz"
         />
       </div>
 
@@ -141,107 +182,113 @@ export default function AdvancedTextLayer({ canvasRef, page, onTextBoxesChange }
           position: "relative",
           width: canvasRef.current?.width,
           height: canvasRef.current?.height,
-          cursor: isAddMode ? "crosshair" : "default"
+          cursor: isAddMode ? "crosshair" : "default",
         }}
         onClick={handleCanvasClick}
+        data-oid="0llogju"
       >
         {textBoxes
-          .filter(box => box.page === page)
+          .filter((box) => box.page === page)
           .map((box) => (
-          <Rnd
-            key={box.id}
-            size={{ width: box.width, height: box.height }}
-            position={{ x: box.x, y: box.y }}
-            bounds="parent"
-            onDragStop={(_, d) =>
-              updateBox(box.id, { x: d.x, y: d.y })
-            }
-            onResizeStop={(_, __, ref, ____, pos) =>
-              updateBox(box.id, {
-                width: parseInt(ref.style.width, 10),
-                height: parseInt(ref.style.height, 10),
-                x: pos.x,
-                y: pos.y
-              })
-            }
-            onClick={(e: React.MouseEvent) => e.stopPropagation()}
-          >
-            <div className="group relative">
-              {/* Hover Controls */}
-              <div className="absolute -top-8 left-0 hidden group-hover:flex gap-1 bg-white border rounded p-1 shadow-lg z-20">
-                <button
-                  onClick={() => toggleStyle(box.id, 'bold')}
-                  className={`px-2 py-1 text-xs font-bold rounded ${box.bold ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-                  title="Bold"
+            <Rnd
+              key={box.id}
+              size={{ width: box.width, height: box.height }}
+              position={{ x: box.x, y: box.y }}
+              bounds="parent"
+              onDragStop={(_, d) => updateBox(box.id, { x: d.x, y: d.y })}
+              onResizeStop={(_, __, ref, ____, pos) =>
+                updateBox(box.id, {
+                  width: parseInt(ref.style.width, 10),
+                  height: parseInt(ref.style.height, 10),
+                  x: pos.x,
+                  y: pos.y,
+                })
+              }
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+              data-oid="p-4aupd"
+            >
+              <div className="group relative" data-oid="tdss80e">
+                {/* Hover Controls */}
+                <div
+                  className="absolute -top-8 left-0 hidden group-hover:flex gap-1 bg-white border rounded p-1 shadow-lg z-20"
+                  data-oid="s:cb8_t"
                 >
-                  B
-                </button>
-                <button
-                  onClick={() => toggleStyle(box.id, 'italic')}
-                  className={`px-2 py-1 text-xs italic rounded ${box.italic ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-                  title="Italic"
-                >
-                  I
-                </button>
-                <button
-                  onClick={() => toggleStyle(box.id, 'underline')}
-                  className={`px-2 py-1 text-xs underline rounded ${box.underline ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-                  title="Underline"
-                >
-                  U
-                </button>
-                <button
-                  onClick={() => deleteTextBox(box.id)}
-                  className="px-2 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600"
-                  title="Delete"
-                >
-                  ×
-                </button>
-              </div>
+                  <button
+                    onClick={() => toggleStyle(box.id, "bold")}
+                    className={`px-2 py-1 text-xs font-bold rounded ${box.bold ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+                    title="Bold"
+                    data-oid="y.40:4y"
+                  >
+                    B
+                  </button>
+                  <button
+                    onClick={() => toggleStyle(box.id, "italic")}
+                    className={`px-2 py-1 text-xs italic rounded ${box.italic ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+                    title="Italic"
+                    data-oid="ok-z35u"
+                  >
+                    I
+                  </button>
+                  <button
+                    onClick={() => toggleStyle(box.id, "underline")}
+                    className={`px-2 py-1 text-xs underline rounded ${box.underline ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+                    title="Underline"
+                    data-oid="ha5l8pu"
+                  >
+                    U
+                  </button>
+                  <button
+                    onClick={() => deleteTextBox(box.id)}
+                    className="px-2 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600"
+                    title="Delete"
+                    data-oid="xu8uwxy"
+                  >
+                    ×
+                  </button>
+                </div>
 
-              <div
-                contentEditable
-                suppressContentEditableWarning
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  fontFamily: box.font,
-                  fontSize: box.size,
-                  color: box.color,
-                  fontWeight: box.bold ? "bold" : "normal",
-                  fontStyle: box.italic ? "italic" : "normal",
-                  textDecoration: box.underline ? "underline" : "none",
-                  background: "rgba(255,255,255,0.8)",
-                  padding: "6px",
-                  outline: "2px solid rgba(59, 130, 246, 0.3)",
-                  borderRadius: "3px",
-                  overflow: "hidden",
-                  whiteSpace: "pre-wrap",
-                  wordBreak: "break-word",
-                  boxSizing: "border-box",
-                  cursor: "text"
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.currentTarget.focus();
-                }}
-                onMouseDown={(e) => e.stopPropagation()}
-                onBlur={(e) =>
-                  updateText(box.id, e.currentTarget.innerText)
-                }
-                onKeyDown={(e) => {
-                  e.stopPropagation();
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    e.currentTarget.blur();
-                  }
-                }}
-              >
-                {box.value}
+                <div
+                  contentEditable
+                  suppressContentEditableWarning
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    fontFamily: box.font,
+                    fontSize: box.size,
+                    color: box.color,
+                    fontWeight: box.bold ? "bold" : "normal",
+                    fontStyle: box.italic ? "italic" : "normal",
+                    textDecoration: box.underline ? "underline" : "none",
+                    background: "rgba(255,255,255,0.8)",
+                    padding: "6px",
+                    outline: "2px solid rgba(59, 130, 246, 0.3)",
+                    borderRadius: "3px",
+                    overflow: "hidden",
+                    whiteSpace: "pre-wrap",
+                    wordBreak: "break-word",
+                    boxSizing: "border-box",
+                    cursor: "text",
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.currentTarget.focus();
+                  }}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onBlur={(e) => updateText(box.id, e.currentTarget.innerText)}
+                  onKeyDown={(e) => {
+                    e.stopPropagation();
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      e.currentTarget.blur();
+                    }
+                  }}
+                  data-oid="x97t12x"
+                >
+                  {box.value}
+                </div>
               </div>
-            </div>
-          </Rnd>
-        ))}
+            </Rnd>
+          ))}
       </div>
     </>
   );

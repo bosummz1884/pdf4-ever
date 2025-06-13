@@ -3,10 +3,24 @@ import { Rnd } from "react-rnd";
 import { nanoid } from "nanoid";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 import { Slider } from "./ui/slider";
 import { Badge } from "./ui/badge";
-import { Bold, Italic, Underline, Trash2, Plus, Type, Palette } from "lucide-react";
+import {
+  Bold,
+  Italic,
+  Underline,
+  Trash2,
+  Plus,
+  Type,
+  Palette,
+} from "lucide-react";
 
 export interface TextBox {
   id: string;
@@ -22,7 +36,7 @@ export interface TextBox {
   bold: boolean;
   italic: boolean;
   underline: boolean;
-  alignment: 'left' | 'center' | 'right';
+  alignment: "left" | "center" | "right";
   rotation: number;
 }
 
@@ -43,82 +57,113 @@ export default function TextBoxManager({
   onTextBoxesChange,
   onExport,
   showControls = true,
-  originalPdfData
+  originalPdfData,
 }: TextBoxManagerProps) {
   const [textBoxes, setTextBoxes] = useState<TextBox[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isAddMode, setIsAddMode] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
-  
+
   // Text properties
   const [selectedFont, setSelectedFont] = useState("Helvetica");
   const [fontSize, setFontSize] = useState(16);
   const [fontColor, setFontColor] = useState("#000000");
-  const [fontWeight, setFontWeight] = useState<'normal' | 'bold'>('normal');
-  const [fontStyle, setFontStyle] = useState<'normal' | 'italic'>('normal');
-  const [textAlign, setTextAlign] = useState<'left' | 'center' | 'right'>('left');
+  const [fontWeight, setFontWeight] = useState<"normal" | "bold">("normal");
+  const [fontStyle, setFontStyle] = useState<"normal" | "italic">("normal");
+  const [textAlign, setTextAlign] = useState<"left" | "center" | "right">(
+    "left",
+  );
 
-  const handleCanvasClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (isAddMode && e.target === e.currentTarget) {
-      const rect = canvasRef.current?.getBoundingClientRect();
-      if (!rect) return;
-      
-      const x = (e.clientX - rect.left) / zoom;
-      const y = (e.clientY - rect.top) / zoom;
+  const handleCanvasClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (isAddMode && e.target === e.currentTarget) {
+        const rect = canvasRef.current?.getBoundingClientRect();
+        if (!rect) return;
 
-      const newBox: TextBox = {
-        id: nanoid(),
-        page: currentPage,
-        x,
-        y,
-        width: 200,
-        height: 50,
-        value: "Edit me",
-        font: selectedFont,
-        size: fontSize,
-        color: fontColor,
-        bold: fontWeight === 'bold',
-        italic: fontStyle === 'italic',
-        underline: false,
-        alignment: textAlign,
-        rotation: 0
-      };
+        const x = (e.clientX - rect.left) / zoom;
+        const y = (e.clientY - rect.top) / zoom;
 
-      const updatedBoxes = [...textBoxes, newBox];
+        const newBox: TextBox = {
+          id: nanoid(),
+          page: currentPage,
+          x,
+          y,
+          width: 200,
+          height: 50,
+          value: "Edit me",
+          font: selectedFont,
+          size: fontSize,
+          color: fontColor,
+          bold: fontWeight === "bold",
+          italic: fontStyle === "italic",
+          underline: false,
+          alignment: textAlign,
+          rotation: 0,
+        };
+
+        const updatedBoxes = [...textBoxes, newBox];
+        setTextBoxes(updatedBoxes);
+        onTextBoxesChange?.(updatedBoxes);
+        setIsAddMode(false);
+        setSelectedId(newBox.id);
+      }
+    },
+    [
+      isAddMode,
+      canvasRef,
+      zoom,
+      currentPage,
+      selectedFont,
+      fontSize,
+      fontColor,
+      fontWeight,
+      fontStyle,
+      textAlign,
+      textBoxes,
+      onTextBoxesChange,
+    ],
+  );
+
+  const updateTextBox = useCallback(
+    (id: string, updates: Partial<TextBox>) => {
+      const updatedBoxes = textBoxes.map((box) =>
+        box.id === id ? { ...box, ...updates } : box,
+      );
       setTextBoxes(updatedBoxes);
       onTextBoxesChange?.(updatedBoxes);
-      setIsAddMode(false);
-      setSelectedId(newBox.id);
-    }
-  }, [isAddMode, canvasRef, zoom, currentPage, selectedFont, fontSize, fontColor, fontWeight, fontStyle, textAlign, textBoxes, onTextBoxesChange]);
+    },
+    [textBoxes, onTextBoxesChange],
+  );
 
-  const updateTextBox = useCallback((id: string, updates: Partial<TextBox>) => {
-    const updatedBoxes = textBoxes.map(box => 
-      box.id === id ? { ...box, ...updates } : box
-    );
-    setTextBoxes(updatedBoxes);
-    onTextBoxesChange?.(updatedBoxes);
-  }, [textBoxes, onTextBoxesChange]);
+  const deleteTextBox = useCallback(
+    (id: string) => {
+      const updatedBoxes = textBoxes.filter((box) => box.id !== id);
+      setTextBoxes(updatedBoxes);
+      onTextBoxesChange?.(updatedBoxes);
+      if (selectedId === id) setSelectedId(null);
+    },
+    [textBoxes, selectedId, onTextBoxesChange],
+  );
 
-  const deleteTextBox = useCallback((id: string) => {
-    const updatedBoxes = textBoxes.filter(box => box.id !== id);
-    setTextBoxes(updatedBoxes);
-    onTextBoxesChange?.(updatedBoxes);
-    if (selectedId === id) setSelectedId(null);
-  }, [textBoxes, selectedId, onTextBoxesChange]);
+  const toggleStyle = useCallback(
+    (id: string, style: "bold" | "italic" | "underline") => {
+      updateTextBox(id, {
+        [style]: !textBoxes.find((box) => box.id === id)?.[style],
+      });
+    },
+    [textBoxes, updateTextBox],
+  );
 
-  const toggleStyle = useCallback((id: string, style: 'bold' | 'italic' | 'underline') => {
-    updateTextBox(id, { [style]: !textBoxes.find(box => box.id === id)?.[style] });
-  }, [textBoxes, updateTextBox]);
-
-  const currentPageTextBoxes = textBoxes.filter(box => box.page === currentPage);
-  const selectedBox = textBoxes.find(box => box.id === selectedId);
+  const currentPageTextBoxes = textBoxes.filter(
+    (box) => box.page === currentPage,
+  );
+  const selectedBox = textBoxes.find((box) => box.id === selectedId);
 
   const exportWithTextBoxes = async () => {
     if (!originalPdfData || !onExport) return;
-    
+
     try {
-      const { PDFDocument, StandardFonts, rgb } = await import('pdf-lib');
+      const { PDFDocument, StandardFonts, rgb } = await import("pdf-lib");
       const pdfDoc = await PDFDocument.load(originalPdfData);
       const pages = pdfDoc.getPages();
 
@@ -128,9 +173,9 @@ export default function TextBoxManager({
 
         const { height: pageHeight } = page.getSize();
         const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-        
+
         // Convert hex color to RGB
-        const hex = textBox.color.replace('#', '');
+        const hex = textBox.color.replace("#", "");
         const r = parseInt(hex.substr(0, 2), 16) / 255;
         const g = parseInt(hex.substr(2, 2), 16) / 255;
         const b = parseInt(hex.substr(4, 2), 16) / 255;
@@ -147,32 +192,46 @@ export default function TextBoxManager({
       const pdfBytes = await pdfDoc.save();
       onExport(pdfBytes);
     } catch (error) {
-      console.error('Export error:', error);
+      console.error("Export error:", error);
     }
   };
 
   return (
     <>
       {showControls && (
-        <div className="flex flex-wrap items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg border mb-2">
+        <div
+          className="flex flex-wrap items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg border mb-2"
+          data-oid="a5w:uph"
+        >
           <Button
             size="sm"
             variant={isAddMode ? "default" : "outline"}
             onClick={() => setIsAddMode(!isAddMode)}
+            data-oid="30qjz1a"
           >
-            <Plus className="h-4 w-4 mr-1" />
+            <Plus className="h-4 w-4 mr-1" data-oid="r-dv-95" />
             {isAddMode ? "Cancel" : "Add Text"}
           </Button>
 
-          <div className="flex items-center gap-2">
-            <Select value={selectedFont} onValueChange={setSelectedFont}>
-              <SelectTrigger className="w-32">
-                <SelectValue />
+          <div className="flex items-center gap-2" data-oid="c6iysj0">
+            <Select
+              value={selectedFont}
+              onValueChange={setSelectedFont}
+              data-oid="kqdmk5o"
+            >
+              <SelectTrigger className="w-32" data-oid="v3h7h4y">
+                <SelectValue data-oid="w2zsfk9" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Helvetica">Helvetica</SelectItem>
-                <SelectItem value="Times-Roman">Times</SelectItem>
-                <SelectItem value="Courier">Courier</SelectItem>
+              <SelectContent data-oid="-fl6n7.">
+                <SelectItem value="Helvetica" data-oid="b56s7h8">
+                  Helvetica
+                </SelectItem>
+                <SelectItem value="Times-Roman" data-oid="wf.fqkd">
+                  Times
+                </SelectItem>
+                <SelectItem value="Courier" data-oid="icfurz:">
+                  Courier
+                </SelectItem>
               </SelectContent>
             </Select>
 
@@ -183,6 +242,7 @@ export default function TextBoxManager({
               className="w-16"
               min={8}
               max={72}
+              data-oid="nfjiy9q"
             />
 
             <input
@@ -190,49 +250,62 @@ export default function TextBoxManager({
               value={fontColor}
               onChange={(e) => setFontColor(e.target.value)}
               className="w-8 h-8 rounded border cursor-pointer"
+              data-oid="vdk4zo4"
             />
           </div>
 
           {selectedBox && (
-            <div className="flex items-center gap-1 ml-4 p-1 bg-blue-50 dark:bg-blue-900 rounded">
+            <div
+              className="flex items-center gap-1 ml-4 p-1 bg-blue-50 dark:bg-blue-900 rounded"
+              data-oid="5yz-g3x"
+            >
               <Button
                 size="sm"
                 variant={selectedBox.bold ? "default" : "outline"}
-                onClick={() => toggleStyle(selectedBox.id, 'bold')}
+                onClick={() => toggleStyle(selectedBox.id, "bold")}
+                data-oid="u6:4pj9"
               >
-                <Bold className="h-3 w-3" />
+                <Bold className="h-3 w-3" data-oid="dft1463" />
               </Button>
               <Button
                 size="sm"
                 variant={selectedBox.italic ? "default" : "outline"}
-                onClick={() => toggleStyle(selectedBox.id, 'italic')}
+                onClick={() => toggleStyle(selectedBox.id, "italic")}
+                data-oid="lku46ph"
               >
-                <Italic className="h-3 w-3" />
+                <Italic className="h-3 w-3" data-oid="u_.s.jz" />
               </Button>
               <Button
                 size="sm"
                 variant={selectedBox.underline ? "default" : "outline"}
-                onClick={() => toggleStyle(selectedBox.id, 'underline')}
+                onClick={() => toggleStyle(selectedBox.id, "underline")}
+                data-oid="xqz79r-"
               >
-                <Underline className="h-3 w-3" />
+                <Underline className="h-3 w-3" data-oid=".dzvr9q" />
               </Button>
               <Button
                 size="sm"
                 variant="destructive"
                 onClick={() => deleteTextBox(selectedBox.id)}
+                data-oid="w4jtq7."
               >
-                <Trash2 className="h-3 w-3" />
+                <Trash2 className="h-3 w-3" data-oid="q8fa3e2" />
               </Button>
             </div>
           )}
 
           {textBoxes.length > 0 && onExport && (
-            <Button size="sm" onClick={exportWithTextBoxes} className="ml-4">
+            <Button
+              size="sm"
+              onClick={exportWithTextBoxes}
+              className="ml-4"
+              data-oid="6ly3qng"
+            >
               Export PDF
             </Button>
           )}
 
-          <Badge variant="secondary">
+          <Badge variant="secondary" data-oid="aa8ho0u">
             {currentPageTextBoxes.length} text box(es)
           </Badge>
         </div>
@@ -246,26 +319,27 @@ export default function TextBoxManager({
           width: canvasRef.current?.width || "100%",
           height: canvasRef.current?.height || "100%",
           cursor: isAddMode ? "crosshair" : "default",
-          zIndex: 10
+          zIndex: 10,
         }}
         onClick={handleCanvasClick}
+        data-oid=":s4s8c:"
       >
         {currentPageTextBoxes.map((box) => (
           <Rnd
             key={box.id}
-            size={{ 
-              width: box.width * zoom, 
-              height: box.height * zoom 
+            size={{
+              width: box.width * zoom,
+              height: box.height * zoom,
             }}
-            position={{ 
-              x: box.x * zoom, 
-              y: box.y * zoom 
+            position={{
+              x: box.x * zoom,
+              y: box.y * zoom,
             }}
             bounds="parent"
             onDragStop={(_, d) =>
-              updateTextBox(box.id, { 
-                x: d.x / zoom, 
-                y: d.y / zoom 
+              updateTextBox(box.id, {
+                x: d.x / zoom,
+                y: d.y / zoom,
               })
             }
             onResizeStop={(_, __, ref, ____, pos) =>
@@ -273,44 +347,54 @@ export default function TextBoxManager({
                 width: parseInt(ref.style.width, 10) / zoom,
                 height: parseInt(ref.style.height, 10) / zoom,
                 x: pos.x / zoom,
-                y: pos.y / zoom
+                y: pos.y / zoom,
               })
             }
             onClick={(e: React.MouseEvent) => {
               e.stopPropagation();
               setSelectedId(box.id);
             }}
+            data-oid="wvk-68z"
           >
-            <div className={`group relative ${selectedId === box.id ? 'ring-2 ring-blue-500' : ''}`}>
+            <div
+              className={`group relative ${selectedId === box.id ? "ring-2 ring-blue-500" : ""}`}
+              data-oid="w9sjtfv"
+            >
               {/* Hover Controls */}
-              <div className="absolute -top-8 left-0 hidden group-hover:flex gap-1 bg-white dark:bg-gray-800 border rounded p-1 shadow-lg z-20">
+              <div
+                className="absolute -top-8 left-0 hidden group-hover:flex gap-1 bg-white dark:bg-gray-800 border rounded p-1 shadow-lg z-20"
+                data-oid="2z6fm2e"
+              >
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    toggleStyle(box.id, 'bold');
+                    toggleStyle(box.id, "bold");
                   }}
-                  className={`px-2 py-1 text-xs font-bold rounded ${box.bold ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
+                  className={`px-2 py-1 text-xs font-bold rounded ${box.bold ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
                   title="Bold"
+                  data-oid="tlwgzg2"
                 >
                   B
                 </button>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    toggleStyle(box.id, 'italic');
+                    toggleStyle(box.id, "italic");
                   }}
-                  className={`px-2 py-1 text-xs italic rounded ${box.italic ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
+                  className={`px-2 py-1 text-xs italic rounded ${box.italic ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
                   title="Italic"
+                  data-oid="5.qtj_k"
                 >
                   I
                 </button>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    toggleStyle(box.id, 'underline');
+                    toggleStyle(box.id, "underline");
                   }}
-                  className={`px-2 py-1 text-xs underline rounded ${box.underline ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
+                  className={`px-2 py-1 text-xs underline rounded ${box.underline ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
                   title="Underline"
+                  data-oid="gd68-1a"
                 >
                   U
                 </button>
@@ -321,6 +405,7 @@ export default function TextBoxManager({
                   }}
                   className="px-2 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600"
                   title="Delete"
+                  data-oid="gsexafk"
                 >
                   ×
                 </button>
@@ -339,16 +424,22 @@ export default function TextBoxManager({
                   fontStyle: box.italic ? "italic" : "normal",
                   textDecoration: box.underline ? "underline" : "none",
                   textAlign: box.alignment,
-                  background: selectedId === box.id ? "rgba(59, 130, 246, 0.1)" : "rgba(255,255,255,0.8)",
+                  background:
+                    selectedId === box.id
+                      ? "rgba(59, 130, 246, 0.1)"
+                      : "rgba(255,255,255,0.8)",
                   padding: "4px",
-                  outline: selectedId === box.id ? "2px solid #3b82f6" : "1px solid rgba(0,0,0,0.2)",
+                  outline:
+                    selectedId === box.id
+                      ? "2px solid #3b82f6"
+                      : "1px solid rgba(0,0,0,0.2)",
                   borderRadius: "3px",
                   overflow: "hidden",
                   whiteSpace: "pre-wrap",
                   wordBreak: "break-word",
                   boxSizing: "border-box",
                   cursor: "text",
-                  minHeight: "20px"
+                  minHeight: "20px",
                 }}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -361,11 +452,12 @@ export default function TextBoxManager({
                 }
                 onKeyDown={(e) => {
                   e.stopPropagation();
-                  if (e.key === 'Enter' && !e.shiftKey) {
+                  if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
                     e.currentTarget.blur();
                   }
                 }}
+                data-oid="a4yxer5"
               >
                 {box.value}
               </div>

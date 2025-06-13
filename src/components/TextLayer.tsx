@@ -1,13 +1,19 @@
 import React, { useState, useRef } from "react";
 import { Rnd } from "react-rnd";
 import { HexColorPicker } from "react-colorful";
-import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import "pdfjs-dist/web/pdf_viewer.css";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 import { nanoid } from "nanoid";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Button } from './ui/button';
-import { Trash2, Bold, Italic } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import { Button } from "./ui/button";
+import { Trash2, Bold, Italic } from "lucide-react";
 
 type TextElement = {
   id: string;
@@ -19,8 +25,8 @@ type TextElement = {
   fontSize: number;
   fontFamily: string;
   color: string;
-  fontWeight: 'normal' | 'bold';
-  fontStyle: 'normal' | 'italic';
+  fontWeight: "normal" | "bold";
+  fontStyle: "normal" | "italic";
 };
 
 type TextLayerProps = {
@@ -31,19 +37,33 @@ type TextLayerProps = {
 };
 
 const availableFonts = [
-  'Arial', 'Helvetica', 'Times New Roman', 'Courier New', 'Georgia', 
-  'Verdana', 'Trebuchet MS', 'Arial Black', 'Impact', 'Comic Sans MS',
-  'Palatino', 'Garamond', 'Bookman', 'Tahoma', 'Lucida Console'
+  "Arial",
+  "Helvetica",
+  "Times New Roman",
+  "Courier New",
+  "Georgia",
+  "Verdana",
+  "Trebuchet MS",
+  "Arial Black",
+  "Impact",
+  "Comic Sans MS",
+  "Palatino",
+  "Garamond",
+  "Bookman",
+  "Tahoma",
+  "Lucida Console",
 ];
 
-export default function TextLayer({ 
-  isActive, 
-  canvasRef, 
+export default function TextLayer({
+  isActive,
+  canvasRef,
   scale = 1,
-  onTextElementsChange 
+  onTextElementsChange,
 }: TextLayerProps): JSX.Element {
   const [textElements, setTextElements] = useState<TextElement[]>([]);
-  const [selectedElementId, setSelectedElementId] = useState<string | null>(null);
+  const [selectedElementId, setSelectedElementId] = useState<string | null>(
+    null,
+  );
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleCanvasClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -51,7 +71,8 @@ export default function TextLayer({
 
     // Prevent creating text boxes when clicking on existing ones
     const target = e.target as HTMLElement;
-    if (target.closest('[data-rnd]') || target.closest('[data-text-controls]')) return;
+    if (target.closest("[data-rnd]") || target.closest("[data-text-controls]"))
+      return;
 
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -67,10 +88,10 @@ export default function TextLayer({
       height: 35,
       text: "",
       fontSize: 14,
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       color: "#000000",
-      fontWeight: 'normal',
-      fontStyle: 'normal'
+      fontWeight: "normal",
+      fontStyle: "normal",
     };
 
     const updatedElements = [...textElements, newTextElement];
@@ -80,7 +101,9 @@ export default function TextLayer({
 
     // Focus the text input after a short delay
     setTimeout(() => {
-      const input = document.querySelector(`[data-text-id="${newTextElement.id}"] input`) as HTMLInputElement;
+      const input = document.querySelector(
+        `[data-text-id="${newTextElement.id}"] input`,
+      ) as HTMLInputElement;
       if (input) {
         input.focus();
       }
@@ -88,8 +111,8 @@ export default function TextLayer({
   };
 
   const updateTextElement = (id: string, updates: Partial<TextElement>) => {
-    const updatedElements = textElements.map((element) => 
-      element.id === id ? { ...element, ...updates } : element
+    const updatedElements = textElements.map((element) =>
+      element.id === id ? { ...element, ...updates } : element,
     );
     setTextElements(updatedElements);
     onTextElementsChange?.(updatedElements);
@@ -117,35 +140,42 @@ export default function TextLayer({
         left: 0,
         pointerEvents: isActive ? "auto" : "none",
         zIndex: isActive ? 10 : 1,
-        cursor: isActive ? "text" : "default"
+        cursor: isActive ? "text" : "default",
       }}
       onClick={handleCanvasClick}
+      data-oid="vbaozd-"
     >
       {textElements.map((element) => (
         <Rnd
           key={element.id}
           data-rnd="true"
           data-text-id={element.id}
-          size={{ width: element.width * scale, height: element.height * scale }}
+          size={{
+            width: element.width * scale,
+            height: element.height * scale,
+          }}
           position={{ x: element.x * scale, y: element.y * scale }}
           bounds="parent"
-          onDragStop={(_, d) => updateTextElement(element.id, { 
-            x: d.x / scale, 
-            y: d.y / scale 
-          })}
+          onDragStop={(_, d) =>
+            updateTextElement(element.id, {
+              x: d.x / scale,
+              y: d.y / scale,
+            })
+          }
           onResizeStop={(_, __, ref, ____, pos) =>
             updateTextElement(element.id, {
               width: parseInt(ref.style.width, 10) / scale,
               height: parseInt(ref.style.height, 10) / scale,
               x: pos.x / scale,
-              y: pos.y / scale
+              y: pos.y / scale,
             })
           }
           onClick={(e: any) => handleElementClick(e, element.id)}
-          style={{ 
+          style={{
             zIndex: selectedElementId === element.id ? 50 : 30,
-            position: "absolute"
+            position: "absolute",
           }}
+          data-oid="hghq5vx"
         >
           <div
             style={{
@@ -158,8 +188,9 @@ export default function TextLayer({
               display: "flex",
               alignItems: "center",
               background: "transparent",
-              borderRadius: "3px"
+              borderRadius: "3px",
             }}
+            data-oid="vdw_n1l"
           >
             {/* Floating toolbar above text field */}
             {selectedElementId === element.id && (
@@ -179,16 +210,26 @@ export default function TextLayer({
                   gap: "8px",
                   minWidth: "320px",
                   color: "white",
-                  fontSize: "12px"
+                  fontSize: "12px",
                 }}
                 onClick={(e) => e.stopPropagation()}
+                data-oid="l_lp_zc"
               >
-                <span style={{ fontWeight: "bold", marginRight: "8px" }}>Format Text:</span>
-                
+                <span
+                  style={{ fontWeight: "bold", marginRight: "8px" }}
+                  data-oid="mlpcjr:"
+                >
+                  Format Text:
+                </span>
+
                 {/* Font Selection */}
                 <select
                   value={element.fontFamily}
-                  onChange={(e) => updateTextElement(element.id, { fontFamily: e.target.value })}
+                  onChange={(e) =>
+                    updateTextElement(element.id, {
+                      fontFamily: e.target.value,
+                    })
+                  }
                   style={{
                     width: "120px",
                     height: "24px",
@@ -197,12 +238,15 @@ export default function TextLayer({
                     color: "black",
                     border: "1px solid #ddd",
                     borderRadius: "3px",
-                    padding: "2px 4px"
+                    padding: "2px 4px",
                   }}
                   onClick={(e) => e.stopPropagation()}
+                  data-oid="zg9aucs"
                 >
                   {availableFonts.map((font) => (
-                    <option key={font} value={font}>{font}</option>
+                    <option key={font} value={font} data-oid="tfb1jo1">
+                      {font}
+                    </option>
                   ))}
                 </select>
 
@@ -211,65 +255,88 @@ export default function TextLayer({
                   type="number"
                   value={element.fontSize}
                   onChange={(e) => {
-                    const newSize = Math.max(8, Math.min(72, parseInt(e.target.value) || 16));
+                    const newSize = Math.max(
+                      8,
+                      Math.min(72, parseInt(e.target.value) || 16),
+                    );
                     updateTextElement(element.id, { fontSize: newSize });
                   }}
-                  style={{ 
-                    width: "50px", 
+                  style={{
+                    width: "50px",
                     height: "24px",
-                    padding: "2px 4px", 
-                    border: "1px solid #ddd", 
+                    padding: "2px 4px",
+                    border: "1px solid #ddd",
                     borderRadius: "3px",
                     fontSize: "11px",
                     background: "white",
-                    color: "black"
+                    color: "black",
                   }}
                   min="8"
                   max="72"
                   onClick={(e) => e.stopPropagation()}
+                  data-oid="he8hth7"
                 />
-                
+
                 {/* Style buttons */}
                 <Button
-                  variant={element.fontWeight === 'bold' ? 'default' : 'outline'}
+                  variant={
+                    element.fontWeight === "bold" ? "default" : "outline"
+                  }
                   size="sm"
-                  onClick={() => updateTextElement(element.id, { 
-                    fontWeight: element.fontWeight === 'bold' ? 'normal' : 'bold' 
-                  })}
+                  onClick={() =>
+                    updateTextElement(element.id, {
+                      fontWeight:
+                        element.fontWeight === "bold" ? "normal" : "bold",
+                    })
+                  }
                   style={{ height: "24px", padding: "0 8px" }}
+                  data-oid="8yvj24w"
                 >
-                  <Bold className="h-3 w-3" />
+                  <Bold className="h-3 w-3" data-oid="u0011kl" />
                 </Button>
                 <Button
-                  variant={element.fontStyle === 'italic' ? 'default' : 'outline'}
+                  variant={
+                    element.fontStyle === "italic" ? "default" : "outline"
+                  }
                   size="sm"
-                  onClick={() => updateTextElement(element.id, { 
-                    fontStyle: element.fontStyle === 'italic' ? 'normal' : 'italic' 
-                  })}
+                  onClick={() =>
+                    updateTextElement(element.id, {
+                      fontStyle:
+                        element.fontStyle === "italic" ? "normal" : "italic",
+                    })
+                  }
                   style={{ height: "24px", padding: "0 8px" }}
+                  data-oid="bbojkag"
                 >
-                  <Italic className="h-3 w-3" />
+                  <Italic className="h-3 w-3" data-oid="wz_8htl" />
                 </Button>
 
                 {/* Color picker */}
-                <div style={{ position: "relative" }}>
-                  <div 
-                    style={{ 
-                      width: "20px", 
-                      height: "20px", 
+                <div style={{ position: "relative" }} data-oid="5_s.ke_">
+                  <div
+                    style={{
+                      width: "20px",
+                      height: "20px",
                       backgroundColor: element.color,
                       border: "2px solid white",
                       borderRadius: "3px",
-                      cursor: "pointer"
+                      cursor: "pointer",
                     }}
                     onClick={() => {
-                      const colorPicker = document.querySelector(`[data-color-picker="${element.id}"]`) as HTMLElement;
+                      const colorPicker = document.querySelector(
+                        `[data-color-picker="${element.id}"]`,
+                      ) as HTMLElement;
                       if (colorPicker) {
-                        colorPicker.style.display = colorPicker.style.display === 'none' ? 'block' : 'none';
+                        colorPicker.style.display =
+                          colorPicker.style.display === "none"
+                            ? "block"
+                            : "none";
                       }
                     }}
                     title="Click to change color"
+                    data-oid="1_aq2sa"
                   />
+
                   <div
                     data-color-picker={element.id}
                     style={{
@@ -277,13 +344,17 @@ export default function TextLayer({
                       top: "25px",
                       right: "0",
                       display: "none",
-                      zIndex: 1000
+                      zIndex: 1000,
                     }}
+                    data-oid="pwdlqt8"
                   >
                     <HexColorPicker
                       color={element.color}
-                      onChange={(color) => updateTextElement(element.id, { color })}
+                      onChange={(color) =>
+                        updateTextElement(element.id, { color })
+                      }
                       style={{ width: "150px", height: "100px" }}
+                      data-oid="tcm.hvl"
                     />
                   </div>
                 </div>
@@ -293,9 +364,14 @@ export default function TextLayer({
                   variant="destructive"
                   size="sm"
                   onClick={() => deleteTextElement(element.id)}
-                  style={{ height: "24px", padding: "0 8px", marginLeft: "8px" }}
+                  style={{
+                    height: "24px",
+                    padding: "0 8px",
+                    marginLeft: "8px",
+                  }}
+                  data-oid="b6en8fg"
                 >
-                  <Trash2 className="h-3 w-3" />
+                  <Trash2 className="h-3 w-3" data-oid="65f2bjb" />
                 </Button>
               </div>
             )}
@@ -303,7 +379,9 @@ export default function TextLayer({
             <input
               type="text"
               value={element.text}
-              onChange={(e) => updateTextElement(element.id, { text: e.target.value })}
+              onChange={(e) =>
+                updateTextElement(element.id, { text: e.target.value })
+              }
               style={{
                 width: "100%",
                 height: "100%",
@@ -317,11 +395,11 @@ export default function TextLayer({
                 fontStyle: element.fontStyle,
                 padding: "4px 8px",
                 margin: "0",
-                lineHeight: "1.2"
+                lineHeight: "1.2",
               }}
               placeholder="Type your text"
+              data-oid="n2edu:v"
             />
-
           </div>
         </Rnd>
       ))}

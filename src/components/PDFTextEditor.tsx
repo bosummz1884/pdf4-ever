@@ -6,9 +6,9 @@ import React, {
   forwardRef,
 } from "react";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
-import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import "pdfjs-dist/web/pdf_viewer.css";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 import ExportControls from "./ExportControls";
 import AnnotationCanvas from "./AnnotationCanvas";
 import EditableTextLayer from "./EditableTextLayer";
@@ -78,8 +78,12 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
     const [totalPages, setTotalPages] = useState(1);
     const [zoom, setZoom] = useState(1.5);
     const [showSignature, setShowSignature] = useState(false);
-    const [currentSignature, setCurrentSignature] = useState<string | null>(null);
-    const [originalPdfBytes, setOriginalPdfBytes] = useState<Uint8Array | null>(null);
+    const [currentSignature, setCurrentSignature] = useState<string | null>(
+      null,
+    );
+    const [originalPdfBytes, setOriginalPdfBytes] = useState<Uint8Array | null>(
+      null,
+    );
 
     useEffect(() => {
       if (!file) return;
@@ -90,7 +94,8 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
           const typedArray = new Uint8Array(fileReader.result as ArrayBuffer);
           setOriginalPdfBytes(typedArray);
           try {
-            const doc = await pdfjsLib.getDocument({ data: typedArray }).promise;
+            const doc = await pdfjsLib.getDocument({ data: typedArray })
+              .promise;
             setPdfDoc(doc);
             setTotalPages(doc.numPages);
             setPdfData(fileReader.result as ArrayBuffer);
@@ -134,7 +139,10 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
       }
     };
 
-    const handleTextSubmit = (text: string, position: { x: number; y: number }) => {
+    const handleTextSubmit = (
+      text: string,
+      position: { x: number; y: number },
+    ) => {
       setUserTextBoxes((prev) => [
         ...prev,
         {
@@ -197,15 +205,15 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
         const fixedArrayBuffer = new Uint8Array(modifiedBytes).buffer;
         const blob = new Blob([fixedArrayBuffer], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
-        
+
         // Create download link
-        const link = document.createElement('a');
+        const link = document.createElement("a");
         link.href = url;
         link.download = `edited-document-${Date.now()}.pdf`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        
+
         // Clean up object URL
         setTimeout(() => URL.revokeObjectURL(url), 100);
       } catch (error) {
@@ -252,7 +260,10 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
     }));
 
     return (
-      <div className="pdf-editor relative max-w-4xl mx-auto bg-white dark:bg-card p-4 rounded-lg shadow-lg border border-border">
+      <div
+        className="pdf-editor relative max-w-4xl mx-auto bg-white dark:bg-card p-4 rounded-lg shadow-lg border border-border"
+        data-oid="uct_n-."
+      >
         <ExportControls
           onExport={exportPDF}
           onToggleSignature={() => setShowSignature((prev) => !prev)}
@@ -261,6 +272,7 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
               annotationRef.current.clear();
             }
           }}
+          data-oid="mvjy7rg"
         />
 
         <PDFViewerControls
@@ -271,13 +283,18 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
           onNext={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
           onZoomIn={() => setZoom((z) => Math.min(z + 0.25, 3))}
           onZoomOut={() => setZoom((z) => Math.max(z - 0.25, 0.5))}
+          data-oid="8h049:f"
         />
 
-        <div className="relative border border-border rounded overflow-hidden">
-          <canvas 
-            ref={canvasRef} 
+        <div
+          className="relative border border-border rounded overflow-hidden"
+          data-oid="t5izj5y"
+        >
+          <canvas
+            ref={canvasRef}
             className="block max-w-full h-auto"
             style={{ backgroundColor: "#ffffff" }}
+            data-oid="6l0dshv"
           />
 
           {viewport && (
@@ -287,11 +304,14 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
                 onSubmit={handleTextSubmit}
                 viewport={viewport}
                 fontOptions={fontOptions}
+                data-oid="fo56q65"
               />
+
               <AnnotationCanvas
                 ref={annotationRef}
                 width={viewport.width}
                 height={viewport.height}
+                data-oid="852l9b:"
               />
             </>
           )}
@@ -301,11 +321,12 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
           <SignatureCaptureWidget
             onSigned={(data) => console.log("Signature:", data)}
             onClose={() => setShowSignature(false)}
+            data-oid="lmt9yr5"
           />
         )}
       </div>
     );
-  }
+  },
 );
 
 PDFTextEditor.displayName = "PDFTextEditor";

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
-
-
+import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import "pdfjs-dist/web/pdf_viewer.css";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
 interface FontOptions {
   size?: number;
@@ -67,6 +65,7 @@ const EditableTextLayer: React.FC<EditableTextLayerProps> = ({
       className="absolute top-0 left-0 w-full h-full pointer-events-auto cursor-text"
       style={{ zIndex: 5 }}
       onClick={handleCanvasClick}
+      data-oid="1_:glyq"
     >
       {editingText && (
         <div
@@ -77,13 +76,14 @@ const EditableTextLayer: React.FC<EditableTextLayerProps> = ({
             transform: "translate(-50%, -50%)",
             zIndex: 20,
           }}
+          data-oid="0qm0hmi"
         >
           <Input
             type="text"
             value={editingText.text}
             onChange={(e) =>
               setEditingText((prev) =>
-                prev ? { ...prev, text: e.target.value } : null
+                prev ? { ...prev, text: e.target.value } : null,
               )
             }
             onKeyDown={handleKeyDown}
@@ -95,15 +95,18 @@ const EditableTextLayer: React.FC<EditableTextLayerProps> = ({
               color: fontOptions.color || "#000000",
               fontFamily: fontOptions.family || "Helvetica",
             }}
+            data-oid="nj17fqk"
           />
-          <div className="flex gap-2">
-            <Button onClick={handleTextSubmit} size="sm">
+
+          <div className="flex gap-2" data-oid="w3syfrr">
+            <Button onClick={handleTextSubmit} size="sm" data-oid="fdcm2tl">
               Add
             </Button>
-            <Button 
-              onClick={() => setEditingText(null)} 
-              variant="outline" 
+            <Button
+              onClick={() => setEditingText(null)}
+              variant="outline"
               size="sm"
+              data-oid="spu-c73"
             >
               Cancel
             </Button>

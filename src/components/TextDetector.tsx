@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { FileText, Loader2 } from "lucide-react";
-import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import "pdfjs-dist/web/pdf_viewer.css";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 interface TextPage {
   pageIndex: number;
   text: string;
@@ -36,15 +36,13 @@ const TextDetector: React.FC<TextDetectorProps> = ({ onTextExtracted }) => {
         for (let i = 0; i < pdf.numPages; i++) {
           const page = await pdf.getPage(i + 1);
           const content = await page.getTextContent();
-          const text = content.items
-            .map((item: any) => item.str)
-            .join(" ");
+          const text = content.items.map((item: any) => item.str).join(" ");
           textPages.push({ pageIndex: i, text });
         }
 
         onTextExtracted?.(textPages);
       } catch (error) {
-        alert('Error extracting text: ' + (error as Error).message);
+        alert("Error extracting text: " + (error as Error).message);
       } finally {
         setIsProcessing(false);
       }
@@ -59,15 +57,16 @@ const TextDetector: React.FC<TextDetectorProps> = ({ onTextExtracted }) => {
       disabled={isProcessing}
       variant="outline"
       className="border-destructive text-destructive hover:bg-destructive/10"
+      data-oid="ap5xrb9"
     >
       {isProcessing ? (
         <>
-          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+          <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="uc_6ojs" />
           Extracting...
         </>
       ) : (
         <>
-          <FileText className="w-4 h-4 mr-2" />
+          <FileText className="w-4 h-4 mr-2" data-oid="t43m51w" />
           Detect Text in PDF
         </>
       )}

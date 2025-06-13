@@ -1,9 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
-import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import 'pdfjs-dist/web/pdf_viewer.css';
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
-import { Loader2, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from './ui/button';
+import { useEffect, useRef, useState } from "react";
+import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import "pdfjs-dist/web/pdf_viewer.css";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+import {
+  Loader2,
+  ZoomIn,
+  ZoomOut,
+  RotateCcw,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { Button } from "./ui/button";
 
 interface LivePdfViewerProps {
   pdfBytes: ArrayBuffer | null;
@@ -12,11 +19,11 @@ interface LivePdfViewerProps {
   className?: string;
 }
 
-export default function LivePdfViewer({ 
-  pdfBytes, 
-  onPageClick, 
+export default function LivePdfViewer({
+  pdfBytes,
+  onPageClick,
   onTextSelect,
-  className = '' 
+  className = "",
 }: LivePdfViewerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,12 +60,12 @@ export default function LivePdfViewer({
       setIsLoading(true);
       const loadingTask = pdfjsLib.getDocument(pdfBytes);
       const pdf = await loadingTask.promise;
-      
+
       setPdfDoc(pdf);
       setTotalPages(pdf.numPages);
       setCurrentPage(1);
     } catch (error) {
-      console.error('Error loading PDF:', error);
+      console.error("Error loading PDF:", error);
     } finally {
       setIsLoading(false);
     }
@@ -70,11 +77,11 @@ export default function LivePdfViewer({
     try {
       const page = await pdfDoc.getPage(currentPage);
       const canvas = canvasRef.current;
-      const context = canvas.getContext('2d');
+      const context = canvas.getContext("2d");
 
       // Calculate viewport
       const viewport = page.getViewport({ scale, rotation });
-      
+
       // Set canvas dimensions
       canvas.height = viewport.height;
       canvas.width = viewport.width;
@@ -101,7 +108,7 @@ export default function LivePdfViewer({
         (canvas as any).textContent = textContent;
       }
     } catch (error) {
-      console.error('Error rendering page:', error);
+      console.error("Error rendering page:", error);
     }
   };
 
@@ -117,11 +124,11 @@ export default function LivePdfViewer({
   };
 
   const zoomIn = () => {
-    setScale(prev => Math.min(prev + 0.25, 3));
+    setScale((prev) => Math.min(prev + 0.25, 3));
   };
 
   const zoomOut = () => {
-    setScale(prev => Math.max(prev - 0.25, 0.5));
+    setScale((prev) => Math.max(prev - 0.25, 0.5));
   };
 
   const resetZoom = () => {
@@ -130,39 +137,39 @@ export default function LivePdfViewer({
   };
 
   const rotatePage = () => {
-    setRotation(prev => (prev + 90) % 360);
+    setRotation((prev) => (prev + 90) % 360);
   };
 
   const goToPreviousPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
   const goToNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(prev => prev + 1);
+      setCurrentPage((prev) => prev + 1);
     }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     switch (event.key) {
-      case 'ArrowLeft':
+      case "ArrowLeft":
         goToPreviousPage();
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         goToNextPage();
         break;
-      case '+':
-      case '=':
+      case "+":
+      case "=":
         event.preventDefault();
         zoomIn();
         break;
-      case '-':
+      case "-":
         event.preventDefault();
         zoomOut();
         break;
-      case '0':
+      case "0":
         event.preventDefault();
         resetZoom();
         break;
@@ -171,94 +178,136 @@ export default function LivePdfViewer({
 
   if (!pdfBytes) {
     return (
-      <div className={`flex items-center justify-center min-h-[400px] bg-muted/20 rounded-lg ${className}`}>
-        <p className="text-muted-foreground">No PDF loaded</p>
+      <div
+        className={`flex items-center justify-center min-h-[400px] bg-muted/20 rounded-lg ${className}`}
+        data-oid="vw2nns1"
+      >
+        <p className="text-muted-foreground" data-oid="::0br58">
+          No PDF loaded
+        </p>
       </div>
     );
   }
 
   return (
-    <div 
+    <div
       className={`relative bg-white dark:bg-gray-900 rounded-lg shadow-sm border ${className}`}
       onKeyDown={handleKeyDown}
       tabIndex={0}
+      data-oid="18py27d"
     >
       {/* Controls */}
-      <div className="flex items-center justify-between p-3 border-b bg-muted/10">
-        <div className="flex items-center gap-2">
+      <div
+        className="flex items-center justify-between p-3 border-b bg-muted/10"
+        data-oid="ev49wu0"
+      >
+        <div className="flex items-center gap-2" data-oid="4jwltme">
           <Button
             onClick={goToPreviousPage}
             disabled={currentPage <= 1}
             size="sm"
             variant="outline"
+            data-oid="2mho9p."
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4" data-oid="fpue51z" />
           </Button>
-          
-          <span className="text-sm font-medium px-2">
+
+          <span className="text-sm font-medium px-2" data-oid="ywuamr1">
             {currentPage} / {totalPages}
           </span>
-          
+
           <Button
             onClick={goToNextPage}
             disabled={currentPage >= totalPages}
             size="sm"
             variant="outline"
+            data-oid="3q:ffsa"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4" data-oid="_hrxbu-" />
           </Button>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Button onClick={zoomOut} size="sm" variant="outline">
-            <ZoomOut className="h-4 w-4" />
+        <div className="flex items-center gap-2" data-oid="i70s-f4">
+          <Button
+            onClick={zoomOut}
+            size="sm"
+            variant="outline"
+            data-oid="91qkhij"
+          >
+            <ZoomOut className="h-4 w-4" data-oid="zc8u4nu" />
           </Button>
-          
-          <span className="text-sm px-2 min-w-[60px] text-center">
+
+          <span
+            className="text-sm px-2 min-w-[60px] text-center"
+            data-oid="yf-1.:p"
+          >
             {Math.round(scale * 100)}%
           </span>
-          
-          <Button onClick={zoomIn} size="sm" variant="outline">
-            <ZoomIn className="h-4 w-4" />
+
+          <Button
+            onClick={zoomIn}
+            size="sm"
+            variant="outline"
+            data-oid="scr7d81"
+          >
+            <ZoomIn className="h-4 w-4" data-oid="t_dxavx" />
           </Button>
-          
-          <Button onClick={rotatePage} size="sm" variant="outline">
-            <RotateCcw className="h-4 w-4" />
+
+          <Button
+            onClick={rotatePage}
+            size="sm"
+            variant="outline"
+            data-oid="nu9t:pi"
+          >
+            <RotateCcw className="h-4 w-4" data-oid="b-20owz" />
           </Button>
-          
-          <Button onClick={resetZoom} size="sm" variant="outline">
+
+          <Button
+            onClick={resetZoom}
+            size="sm"
+            variant="outline"
+            data-oid="x.x96:j"
+          >
             Reset
           </Button>
         </div>
       </div>
 
       {/* PDF Canvas Container */}
-      <div 
+      <div
         ref={containerRef}
         className="relative overflow-auto max-h-[600px] bg-gray-100 dark:bg-gray-800"
+        data-oid="b3_v3fg"
       >
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-900/80 z-10">
-            <Loader2 className="h-8 w-8 animate-spin" />
+          <div
+            className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-900/80 z-10"
+            data-oid="bo1j.2x"
+          >
+            <Loader2 className="h-8 w-8 animate-spin" data-oid="zt4zic7" />
           </div>
         )}
-        
-        <div className="flex justify-center p-4">
+
+        <div className="flex justify-center p-4" data-oid="z03_lun">
           <canvas
             ref={canvasRef}
             onClick={handleCanvasClick}
             className="border shadow-lg cursor-crosshair max-w-full"
-            style={{ 
+            style={{
               transform: `scale(${Math.min(1, (containerRef.current?.clientWidth || 800) / 800)})`,
-              transformOrigin: 'top center'
+              transformOrigin: "top center",
             }}
+            data-oid="n0z3fmk"
           />
         </div>
       </div>
 
       {/* Status indicator */}
       {isLoading && (
-        <div className="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded text-xs">
+        <div
+          className="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded text-xs"
+          data-oid="bf5.l6n"
+        >
           Processing...
         </div>
       )}

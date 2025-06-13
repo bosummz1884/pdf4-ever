@@ -55,6 +55,7 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mergeInputRef = useRef<HTMLInputElement>(null);
+  const originalSize = currentFile.size;
 
   const handleFileUpload = useCallback(async (files: FileList, isMerge = false) => {
     setIsProcessing(true);
@@ -118,10 +119,27 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
         const mergedPdfBytes = await pdfCore.mergePDFs(pdfDataArray);
         setProgress(90);
 
-        let mergedBytes;
-        mergedBytes = mergedPdfBytes instanceof Uint8Array ? mergedPdfBytes.buffer : mergedPdfBytes;
-        const blob = new Blob([mergedBytes], { type: 'application/pdf' });
-        pdfCore.downloadBlob(blob, 'merged-document.pdf');
+      // Save PDF bytes as file, compatible with ArrayBuffer or Uint8Array, never detaches buffer
+      const savePdfFile = (pdfBytes, filename = "my-edited.pdf") =>
+        // Make sure we have a fresh Uint8Array (handles ArrayBuffer or Uint8Array)
+        {const bytes = pdfBytes instanceof Uint8Array ? pdfBytes : new Uint8Array(pdfBytes.slice(0));
+        const blob = new Blob([bytes], { type: 'application/pdf' });
+        
+
+          function savePdfFile(pdfBytes: ArrayBuffer | Uint8Array, filename: string) {
+            // ...
+      
+          // Manual download fallback
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = filename;
+          document.body.appendChild(link); // needed for Firefox
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        }
+      };
 
         setProgress(100);
     } catch (error) {
@@ -150,12 +168,26 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
       const splitPdfs = await pdfCore.splitPDF(currentFile.data, pageRanges);
       setProgress(80);
       
-      splitPdfs.forEach((pdfBytes, index) => {
+      // Ensure correct typing for splitPdfs
+      // splitPdfs: (Uint8Array | ArrayBuffer)[]
+      // pdfCore.downloadBlob: (blob: Blob, filename: string) => void
+
+      splitPdfs.forEach((pdfBytes: Uint8Array | ArrayBuffer, index: number) => {
         const range = splitRanges[index];
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+        // Normalize to Uint8Array using ArrayBuffer as needed
+        let bytes: Uint8Array<ArrayBuffer>;
+        if (pdfBytes instanceof Uint8Array) {
+          bytes = new Uint8Array(pdfBytes);
+        } else {
+          throw new Error("Invalid PDF bytes type: must be Uint8Array or ArrayBuffer");
+        }
+
+        const blob = new Blob([bytes], { type: "application/pdf" });
         const filename = range.name || `${currentFile.name}-part-${index + 1}.pdf`;
         pdfCore.downloadBlob(blob, filename);
       });
+
       
       setProgress(100);
     } catch (error) {
@@ -174,7 +206,9 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
       const targetPage = pageNum || 1;
       const rotatedPdfBytes = await pdfCore.rotatePDF(currentFile.data, targetPage, rotationAngle);
       
-      const blob = new Blob([rotatedPdfBytes], { type: 'application/pdf' });
+      // Ensure rotatedPdfBytes is a Uint8Array
+      const safeBytes = new Uint8Array(rotatedPdfBytes);
+      const blob = new Blob([safeBytes], { type: 'application/pdf' });
       pdfCore.downloadBlob(blob, `${currentFile.name}-rotated.pdf`);
     } catch (error) {
       console.error('Rotation failed:', error);
@@ -183,8 +217,9 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
     }
   }, [currentFile, rotationAngle]);
 
-  const compressPDF = useCallback(async () => {
+  const compressPDF = useCallback(async ( ) => {
     if (!currentFile) return;
+  }, [currentFile]);
     
     setIsProcessing(true);
     setProgress(0);
@@ -193,22 +228,29 @@ export default function PDFToolkit({ onFileProcessed, currentFile }: PDFToolkitP
       setProgress(50);
       const compressedPdfBytes = await pdfCore.compressPDF(currentFile.data);
       setProgress(90);
-      
+
       const originalSize = currentFile.size;
       const compressedSize = compressedPdfBytes.length;
       const reduction = ((originalSize - compressedSize) / originalSize * 100).toFixed(1);
-      
-      const blob = new Blob([compressedPdfBytes], { type: 'application/pdf' });
+
+      // --- Robust conversion to a safe Uint8Array backed by ArrayBuffer:
+      const safeBytes = new Uint8Array(
+        compressedPdfBytes.buffer.slice(
+          compressedPdfBytes.byteOffset,
+          compressedPdfBytes.byteOffset + compressedPdfBytes.byteLength
+        )
+      );
+
+      const blob = new Blob([safeBytes], { type: 'application/pdf' });
       pdfCore.downloadBlob(blob, `${currentFile.name}-compressed.pdf`);
-      
+
       alert(`Compression complete! Size reduced by ${reduction}%`);
       setProgress(100);
     } catch (error) {
       console.error('Compression failed:', error);
     } finally {
       setIsProcessing(false);
-    }
-  }, [currentFile]);
+    } [currentFile];
 
   const addSplitRange = () => {
     const newRange: SplitRange = {
