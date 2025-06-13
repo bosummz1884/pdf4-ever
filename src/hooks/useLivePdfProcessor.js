@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import LivePdfProcessor from '@/lib/livePdfProcessor';
+import LivePdfProcessor from './src/lib/livePdfProcessor';
 
 export function useLivePdfProcessor() {
   const processorRef = useRef(null);
