@@ -71,19 +71,19 @@ const SignatureCaptureWidget: React.FC<SignatureCaptureWidgetProps> = ({
   return (
     <div
       className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-      data-oid="hdp-8r9"
+      data-oid="q7.y-41"
     >
       <div
         className="bg-white dark:bg-card p-6 rounded-lg shadow-xl border border-border max-w-md w-full mx-4"
-        data-oid="knbt5.b"
+        data-oid="y33ru0e"
       >
         <div
           className="flex justify-between items-center mb-4"
-          data-oid="y.mq46e"
+          data-oid="rf98458"
         >
           <h3
             className="text-lg font-semibold text-foreground"
-            data-oid="oqrhtcp"
+            data-oid="7sym_49"
           >
             Add Signature
           </h3>
@@ -91,13 +91,13 @@ const SignatureCaptureWidget: React.FC<SignatureCaptureWidgetProps> = ({
             onClick={onClose}
             variant="ghost"
             size="sm"
-            data-oid="y0ebarz"
+            data-oid="iuzeo.-"
           >
-            <X className="w-4 h-4" data-oid="fmca79j" />
+            <X className="w-4 h-4" data-oid="lx-310e" />
           </Button>
         </div>
 
-        <div className="border border-border rounded mb-4" data-oid=".pk9:gl">
+        <div className="border border-border rounded mb-4" data-oid=":kd8wrq">
           <canvas
             ref={canvasRef}
             width={400}
@@ -107,22 +107,22 @@ const SignatureCaptureWidget: React.FC<SignatureCaptureWidgetProps> = ({
             onMouseMove={draw}
             onMouseUp={stopDrawing}
             onMouseLeave={stopDrawing}
-            data-oid="dwt7wq4"
+            data-oid="ra3pk7."
           />
         </div>
 
-        <div className="flex gap-2 justify-end" data-oid="g.y.xrg">
+        <div className="flex gap-2 justify-end" data-oid="ogi6mv:">
           <Button
             onClick={clearSignature}
             variant="outline"
             size="sm"
-            data-oid="0dni9o3"
+            data-oid="7wkz:_1"
           >
-            <RotateCcw className="w-4 h-4 mr-2" data-oid="9zmdk4a" />
+            <RotateCcw className="w-4 h-4 mr-2" data-oid="g480au7" />
             Clear
           </Button>
-          <Button onClick={saveSignature} size="sm" data-oid="ts7c7cr">
-            <Check className="w-4 h-4 mr-2" data-oid="_3xxv2v" />
+          <Button onClick={saveSignature} size="sm" data-oid="aa:7lb6">
+            <Check className="w-4 h-4 mr-2" data-oid="fs7d_an" />
             Save
           </Button>
         </div>

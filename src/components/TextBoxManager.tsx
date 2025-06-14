@@ -201,35 +201,35 @@ export default function TextBoxManager({
       {showControls && (
         <div
           className="flex flex-wrap items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg border mb-2"
-          data-oid="a5w:uph"
+          data-oid="d0qpwc0"
         >
           <Button
             size="sm"
             variant={isAddMode ? "default" : "outline"}
             onClick={() => setIsAddMode(!isAddMode)}
-            data-oid="30qjz1a"
+            data-oid="-7go.fc"
           >
-            <Plus className="h-4 w-4 mr-1" data-oid="r-dv-95" />
+            <Plus className="h-4 w-4 mr-1" data-oid="dzgkrwt" />
             {isAddMode ? "Cancel" : "Add Text"}
           </Button>
 
-          <div className="flex items-center gap-2" data-oid="c6iysj0">
+          <div className="flex items-center gap-2" data-oid="p:o-i-4">
             <Select
               value={selectedFont}
               onValueChange={setSelectedFont}
-              data-oid="kqdmk5o"
+              data-oid="iuboemw"
             >
-              <SelectTrigger className="w-32" data-oid="v3h7h4y">
-                <SelectValue data-oid="w2zsfk9" />
+              <SelectTrigger className="w-32" data-oid="cfanzz7">
+                <SelectValue data-oid="9dwfca0" />
               </SelectTrigger>
-              <SelectContent data-oid="-fl6n7.">
-                <SelectItem value="Helvetica" data-oid="b56s7h8">
+              <SelectContent data-oid="z1k00g-">
+                <SelectItem value="Helvetica" data-oid="o34y3er">
                   Helvetica
                 </SelectItem>
-                <SelectItem value="Times-Roman" data-oid="wf.fqkd">
+                <SelectItem value="Times-Roman" data-oid="2yhnh3u">
                   Times
                 </SelectItem>
-                <SelectItem value="Courier" data-oid="icfurz:">
+                <SelectItem value="Courier" data-oid="_f4fl7r">
                   Courier
                 </SelectItem>
               </SelectContent>
@@ -242,7 +242,7 @@ export default function TextBoxManager({
               className="w-16"
               min={8}
               max={72}
-              data-oid="nfjiy9q"
+              data-oid="pgi5ea8"
             />
 
             <input
@@ -250,46 +250,46 @@ export default function TextBoxManager({
               value={fontColor}
               onChange={(e) => setFontColor(e.target.value)}
               className="w-8 h-8 rounded border cursor-pointer"
-              data-oid="vdk4zo4"
+              data-oid="a4tm_8-"
             />
           </div>
 
           {selectedBox && (
             <div
               className="flex items-center gap-1 ml-4 p-1 bg-blue-50 dark:bg-blue-900 rounded"
-              data-oid="5yz-g3x"
+              data-oid="bfpu:zp"
             >
               <Button
                 size="sm"
                 variant={selectedBox.bold ? "default" : "outline"}
                 onClick={() => toggleStyle(selectedBox.id, "bold")}
-                data-oid="u6:4pj9"
+                data-oid="plf4nhr"
               >
-                <Bold className="h-3 w-3" data-oid="dft1463" />
+                <Bold className="h-3 w-3" data-oid="-kq__1s" />
               </Button>
               <Button
                 size="sm"
                 variant={selectedBox.italic ? "default" : "outline"}
                 onClick={() => toggleStyle(selectedBox.id, "italic")}
-                data-oid="lku46ph"
+                data-oid="h_ihsk3"
               >
-                <Italic className="h-3 w-3" data-oid="u_.s.jz" />
+                <Italic className="h-3 w-3" data-oid="ysncdti" />
               </Button>
               <Button
                 size="sm"
                 variant={selectedBox.underline ? "default" : "outline"}
                 onClick={() => toggleStyle(selectedBox.id, "underline")}
-                data-oid="xqz79r-"
+                data-oid="bjchnt-"
               >
-                <Underline className="h-3 w-3" data-oid=".dzvr9q" />
+                <Underline className="h-3 w-3" data-oid="b5_qm9." />
               </Button>
               <Button
                 size="sm"
                 variant="destructive"
                 onClick={() => deleteTextBox(selectedBox.id)}
-                data-oid="w4jtq7."
+                data-oid="03tekdy"
               >
-                <Trash2 className="h-3 w-3" data-oid="q8fa3e2" />
+                <Trash2 className="h-3 w-3" data-oid="-rso1zb" />
               </Button>
             </div>
           )}
@@ -299,13 +299,13 @@ export default function TextBoxManager({
               size="sm"
               onClick={exportWithTextBoxes}
               className="ml-4"
-              data-oid="6ly3qng"
+              data-oid="kigk-cq"
             >
               Export PDF
             </Button>
           )}
 
-          <Badge variant="secondary" data-oid="aa8ho0u">
+          <Badge variant="secondary" data-oid="n5.-d:n">
             {currentPageTextBoxes.length} text box(es)
           </Badge>
         </div>
@@ -322,7 +322,7 @@ export default function TextBoxManager({
           zIndex: 10,
         }}
         onClick={handleCanvasClick}
-        data-oid=":s4s8c:"
+        data-oid="hr0m0.y"
       >
         {currentPageTextBoxes.map((box) => (
           <Rnd
@@ -354,16 +354,16 @@ export default function TextBoxManager({
               e.stopPropagation();
               setSelectedId(box.id);
             }}
-            data-oid="wvk-68z"
+            data-oid="81cstoy"
           >
             <div
               className={`group relative ${selectedId === box.id ? "ring-2 ring-blue-500" : ""}`}
-              data-oid="w9sjtfv"
+              data-oid="--z559a"
             >
               {/* Hover Controls */}
               <div
                 className="absolute -top-8 left-0 hidden group-hover:flex gap-1 bg-white dark:bg-gray-800 border rounded p-1 shadow-lg z-20"
-                data-oid="2z6fm2e"
+                data-oid="2p1jlcb"
               >
                 <button
                   onClick={(e) => {
@@ -372,7 +372,7 @@ export default function TextBoxManager({
                   }}
                   className={`px-2 py-1 text-xs font-bold rounded ${box.bold ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
                   title="Bold"
-                  data-oid="tlwgzg2"
+                  data-oid="n7ain:0"
                 >
                   B
                 </button>
@@ -383,7 +383,7 @@ export default function TextBoxManager({
                   }}
                   className={`px-2 py-1 text-xs italic rounded ${box.italic ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
                   title="Italic"
-                  data-oid="5.qtj_k"
+                  data-oid=".3x-_1i"
                 >
                   I
                 </button>
@@ -394,7 +394,7 @@ export default function TextBoxManager({
                   }}
                   className={`px-2 py-1 text-xs underline rounded ${box.underline ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
                   title="Underline"
-                  data-oid="gd68-1a"
+                  data-oid="l0bcsb5"
                 >
                   U
                 </button>
@@ -405,7 +405,7 @@ export default function TextBoxManager({
                   }}
                   className="px-2 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600"
                   title="Delete"
-                  data-oid="gsexafk"
+                  data-oid="xug91e0"
                 >
                   ×
                 </button>
@@ -457,7 +457,7 @@ export default function TextBoxManager({
                     e.currentTarget.blur();
                   }
                 }}
-                data-oid="a4yxer5"
+                data-oid=":yr79mj"
               >
                 {box.value}
               </div>

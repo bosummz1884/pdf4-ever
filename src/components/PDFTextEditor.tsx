@@ -262,7 +262,7 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
     return (
       <div
         className="pdf-editor relative max-w-4xl mx-auto bg-white dark:bg-card p-4 rounded-lg shadow-lg border border-border"
-        data-oid="uct_n-."
+        data-oid="doq9s_n"
       >
         <ExportControls
           onExport={exportPDF}
@@ -272,7 +272,7 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
               annotationRef.current.clear();
             }
           }}
-          data-oid="mvjy7rg"
+          data-oid="eef7vzo"
         />
 
         <PDFViewerControls
@@ -283,18 +283,18 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
           onNext={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
           onZoomIn={() => setZoom((z) => Math.min(z + 0.25, 3))}
           onZoomOut={() => setZoom((z) => Math.max(z - 0.25, 0.5))}
-          data-oid="8h049:f"
+          data-oid="s2ilhkv"
         />
 
         <div
           className="relative border border-border rounded overflow-hidden"
-          data-oid="t5izj5y"
+          data-oid="1myzmjy"
         >
           <canvas
             ref={canvasRef}
             className="block max-w-full h-auto"
             style={{ backgroundColor: "#ffffff" }}
-            data-oid="6l0dshv"
+            data-oid="a-h04u_"
           />
 
           {viewport && (
@@ -304,14 +304,14 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
                 onSubmit={handleTextSubmit}
                 viewport={viewport}
                 fontOptions={fontOptions}
-                data-oid="fo56q65"
+                data-oid="tzj62x_"
               />
 
               <AnnotationCanvas
                 ref={annotationRef}
                 width={viewport.width}
                 height={viewport.height}
-                data-oid="852l9b:"
+                data-oid="6oueyr-"
               />
             </>
           )}
@@ -321,7 +321,7 @@ const PDFTextEditor = forwardRef<PDFTextEditorRef, PDFTextEditorProps>(
           <SignatureCaptureWidget
             onSigned={(data) => console.log("Signature:", data)}
             onClose={() => setShowSignature(false)}
-            data-oid="lmt9yr5"
+            data-oid="m6v48bk"
           />
         )}
       </div>

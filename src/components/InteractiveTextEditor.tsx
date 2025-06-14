@@ -437,7 +437,7 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
       <div
         className="absolute -top-12 left-0 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg p-2 flex items-center gap-1"
         style={{ zIndex: 9999 }}
-        data-oid="gnwwv8c"
+        data-oid="vdkmkfy"
       >
         {/* Font Size */}
         <Select
@@ -445,40 +445,40 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
           onValueChange={(value) =>
             updateTextBoxProperty(textBox.id, "fontSize", parseInt(value))
           }
-          data-oid="i.wa48n"
+          data-oid="hhac6c2"
         >
-          <SelectTrigger className="w-16 h-8" data-oid="hue33y3">
-            <SelectValue data-oid="p-ts:ev" />
+          <SelectTrigger className="w-16 h-8" data-oid="2ckom-:">
+            <SelectValue data-oid="ctk7qi:" />
           </SelectTrigger>
-          <SelectContent className="z-[10000]" data-oid="2vk1g:0">
-            <SelectItem value="8" data-oid="x9c3f1q">
+          <SelectContent className="z-[10000]" data-oid="y1f:cor">
+            <SelectItem value="8" data-oid="z6m5r36">
               8
             </SelectItem>
-            <SelectItem value="10" data-oid="bt9o1hz">
+            <SelectItem value="10" data-oid="fr9s7y_">
               10
             </SelectItem>
-            <SelectItem value="12" data-oid="4sztb6i">
+            <SelectItem value="12" data-oid="34x4.v.">
               12
             </SelectItem>
-            <SelectItem value="14" data-oid="oexs0n_">
+            <SelectItem value="14" data-oid="hxotd6k">
               14
             </SelectItem>
-            <SelectItem value="16" data-oid="0055u8l">
+            <SelectItem value="16" data-oid="j02mfph">
               16
             </SelectItem>
-            <SelectItem value="18" data-oid="nwnhv0p">
+            <SelectItem value="18" data-oid=".:auj0z">
               18
             </SelectItem>
-            <SelectItem value="20" data-oid="eqs25ye">
+            <SelectItem value="20" data-oid="fem_ks0">
               20
             </SelectItem>
-            <SelectItem value="24" data-oid="6npuz3w">
+            <SelectItem value="24" data-oid="v785w1f">
               24
             </SelectItem>
-            <SelectItem value="28" data-oid="i354:hb">
+            <SelectItem value="28" data-oid="_-50z:j">
               28
             </SelectItem>
-            <SelectItem value="32" data-oid="wb8a38m">
+            <SelectItem value="32" data-oid="zfkr.0j">
               32
             </SelectItem>
           </SelectContent>
@@ -490,28 +490,28 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
           onValueChange={(value) =>
             updateTextBoxProperty(textBox.id, "fontFamily", value)
           }
-          data-oid="4aeo:0o"
+          data-oid="eixz9g0"
         >
-          <SelectTrigger className="w-24 h-8" data-oid=":ojwchb">
-            <SelectValue data-oid="yeknzpx" />
+          <SelectTrigger className="w-24 h-8" data-oid="r-8--p8">
+            <SelectValue data-oid="qrzzcnh" />
           </SelectTrigger>
-          <SelectContent className="z-[10000]" data-oid=":29l068">
-            <SelectItem value="Arial" data-oid="y19o5it">
+          <SelectContent className="z-[10000]" data-oid="49b_lfi">
+            <SelectItem value="Arial" data-oid="2e3rawb">
               Arial
             </SelectItem>
-            <SelectItem value="Helvetica" data-oid="qqcea-y">
+            <SelectItem value="Helvetica" data-oid="x79bqeo">
               Helvetica
             </SelectItem>
-            <SelectItem value="Times New Roman" data-oid="1c0wk:7">
+            <SelectItem value="Times New Roman" data-oid="mwbztn2">
               Times
             </SelectItem>
-            <SelectItem value="Courier New" data-oid="ejmeznk">
+            <SelectItem value="Courier New" data-oid="v9--wx5">
               Courier
             </SelectItem>
-            <SelectItem value="Georgia" data-oid="i2i4f.z">
+            <SelectItem value="Georgia" data-oid="xbcji-y">
               Georgia
             </SelectItem>
-            <SelectItem value="Verdana" data-oid=":uvcbld">
+            <SelectItem value="Verdana" data-oid="jedt2hn">
               Verdana
             </SelectItem>
           </SelectContent>
@@ -525,9 +525,9 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
           onClick={() =>
             updateTextBoxProperty(textBox.id, "bold", !textBox.bold)
           }
-          data-oid=".g52:vo"
+          data-oid="s.7wzb0"
         >
-          <Bold className="h-4 w-4" data-oid="iez6h.7" />
+          <Bold className="h-4 w-4" data-oid="6c426bm" />
         </Button>
 
         {/* Italic */}
@@ -538,9 +538,9 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
           onClick={() =>
             updateTextBoxProperty(textBox.id, "italic", !textBox.italic)
           }
-          data-oid="bk01h94"
+          data-oid="h7biz8z"
         >
-          <Italic className="h-4 w-4" data-oid="1oyi4:o" />
+          <Italic className="h-4 w-4" data-oid="4d0dsyb" />
         </Button>
 
         {/* Underline */}
@@ -551,9 +551,9 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
           onClick={() =>
             updateTextBoxProperty(textBox.id, "underline", !textBox.underline)
           }
-          data-oid="trv4:rg"
+          data-oid="9mal:2:"
         >
-          <Underline className="h-4 w-4" data-oid="stf7oa1" />
+          <Underline className="h-4 w-4" data-oid="xm-qrvj" />
         </Button>
 
         {/* Text Color */}
@@ -565,11 +565,11 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
           }
           className="w-8 h-8 border border-gray-300 rounded cursor-pointer"
           title="Text Color"
-          data-oid="38hph-y"
+          data-oid="xj46bae"
         />
 
         {/* Alignment */}
-        <div className="flex" data-oid="5fs5nlm">
+        <div className="flex" data-oid="z2j4265">
           <Button
             variant={textBox.alignment === "left" ? "default" : "outline"}
             size="sm"
@@ -577,9 +577,9 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
             onClick={() =>
               updateTextBoxProperty(textBox.id, "alignment", "left")
             }
-            data-oid="78pzuyt"
+            data-oid="i:-1.av"
           >
-            <AlignLeft className="h-4 w-4" data-oid="z6-e7h0" />
+            <AlignLeft className="h-4 w-4" data-oid=":bv5d7r" />
           </Button>
           <Button
             variant={textBox.alignment === "center" ? "default" : "outline"}
@@ -588,9 +588,9 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
             onClick={() =>
               updateTextBoxProperty(textBox.id, "alignment", "center")
             }
-            data-oid="g8eulpk"
+            data-oid="6x19o.x"
           >
-            <AlignCenter className="h-4 w-4" data-oid="j8-dt1b" />
+            <AlignCenter className="h-4 w-4" data-oid="mcbjhnk" />
           </Button>
           <Button
             variant={textBox.alignment === "right" ? "default" : "outline"}
@@ -599,9 +599,9 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
             onClick={() =>
               updateTextBoxProperty(textBox.id, "alignment", "right")
             }
-            data-oid="-69z3z8"
+            data-oid="sn:fmno"
           >
-            <AlignRight className="h-4 w-4" data-oid="mop-s_9" />
+            <AlignRight className="h-4 w-4" data-oid="93x60vy" />
           </Button>
         </div>
       </div>
@@ -613,12 +613,12 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
         className="relative w-full h-full bg-gray-100 dark:bg-gray-900 rounded-lg overflow-hidden"
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        data-oid="j5gys3o"
+        data-oid="kjhgdxe"
       >
         {/* Undo/Redo Controls */}
         <div
           className="absolute top-4 left-4 flex gap-2 z-50"
-          data-oid="4f4cfz3"
+          data-oid="5hlp0j_"
         >
           <Button
             variant="outline"
@@ -626,9 +626,9 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
             onClick={undo}
             disabled={historyIndex <= 0}
             className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 shadow-lg"
-            data-oid="l03qwy4"
+            data-oid="g6e_6fa"
           >
-            <Undo className="w-4 h-4" data-oid="xwj0.tv" />
+            <Undo className="w-4 h-4" data-oid=".4yzqop" />
           </Button>
           <Button
             variant="outline"
@@ -636,9 +636,9 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
             onClick={redo}
             disabled={historyIndex >= editHistory.length - 1}
             className="bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 shadow-lg"
-            data-oid="msn-h1j"
+            data-oid="-57es-e"
           >
-            <Redo className="w-4 h-4" data-oid="3--rtdu" />
+            <Redo className="w-4 h-4" data-oid="jr_m5pq" />
           </Button>
         </div>
 
@@ -646,7 +646,7 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
         {isTextMode && (
           <div
             className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg z-50"
-            data-oid="nz0kkum"
+            data-oid="izt341l"
           >
             Click anywhere on the document to add text
           </div>
@@ -656,14 +656,14 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
         {isEraserMode && (
           <div
             className="absolute top-16 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50"
-            data-oid="82f_89j"
+            data-oid="g4ahv1j"
           >
             Eraser Mode Active - Click and drag to erase content
           </div>
         )}
 
         {/* PDF Canvas */}
-        <div className="relative" data-oid="jk93l:o">
+        <div className="relative" data-oid="a_q2hsk">
           <canvas
             ref={canvasRef}
             className="block mx-auto shadow-lg"
@@ -681,7 +681,7 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
             onMouseMove={handleCanvasMouseMove}
             onMouseUp={handleCanvasMouseUp}
             onMouseLeave={handleCanvasMouseUp}
-            data-oid="p6vtt:0"
+            data-oid="motv5k4"
           />
 
           {/* Text Boxes Overlay */}
@@ -706,7 +706,7 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
                     ? ["se", "sw", "ne", "nw", "n", "s", "e", "w"]
                     : []
                 }
-                data-oid="lq84ugx"
+                data-oid="t9hxir0"
               >
                 <div
                   className={`absolute border-2 ${
@@ -734,13 +734,13 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
                       }
                     }, 0);
                   }}
-                  data-oid="dmew4k2"
+                  data-oid="pd7mzrl"
                 >
                   {/* Formatting Toolbar */}
                   {selectedTextBox === textBox.id && (
                     <FontFormattingToolbar
                       textBox={textBox}
-                      data-oid="khuksjo"
+                      data-oid="o12:hf_"
                     />
                   )}
 
@@ -752,7 +752,7 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
                         selectedTextBox === textBox.id ? "block" : "none",
                     }}
                     onMouseDown={(e) => handleMouseDown(e, textBox.id)}
-                    data-oid="phs1wss"
+                    data-oid="4:jg5j1"
                   />
 
                   <textarea
@@ -848,7 +848,7 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
                       // Don't deselect immediately to allow formatting changes
                     }}
                     autoFocus={selectedTextBox === textBox.id}
-                    data-oid="a-bfw0-"
+                    data-oid="ojlr27p"
                   />
 
                   {selectedTextBox === textBox.id && (
@@ -859,13 +859,13 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
                           e.stopPropagation();
                           deleteTextBox(textBox.id);
                         }}
-                        data-oid="bc:micn"
+                        data-oid="5mm87n."
                       >
                         ×
                       </button>
                       <div
                         className="absolute top-1 left-1 text-xs text-blue-600 font-medium pointer-events-none"
-                        data-oid="1t_kg8o"
+                        data-oid="680npx5"
                       >
                         {textBox.text === ""
                           ? "Type to add text"
@@ -881,20 +881,20 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
         {/* Navigation Controls */}
         <div
           className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg px-4 py-2 flex items-center space-x-4"
-          data-oid="e3dw7gn"
+          data-oid="ayd1l2c"
         >
           <button
             onClick={previousPage}
             disabled={currentPage <= 1}
             className="px-3 py-1 bg-blue-500 text-white rounded disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors"
-            data-oid="9cq4yzz"
+            data-oid="zi50mjz"
           >
             Previous
           </button>
 
           <span
             className="text-sm font-medium text-gray-700 dark:text-gray-300"
-            data-oid="o:cy0zq"
+            data-oid="e6vdx12"
           >
             Page {currentPage} of {numPages}
           </span>
@@ -903,29 +903,29 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
             onClick={nextPage}
             disabled={currentPage >= numPages}
             className="px-3 py-1 bg-blue-500 text-white rounded disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors"
-            data-oid="m8yru76"
+            data-oid="n-g_xb5"
           >
             Next
           </button>
 
-          <div className="flex items-center space-x-2" data-oid="raagink">
+          <div className="flex items-center space-x-2" data-oid="yb28a7c">
             <button
               onClick={() => setScale((prev) => Math.max(0.5, prev - 0.1))}
               className="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
-              data-oid="kdflwhb"
+              data-oid="7e9__df"
             >
               -
             </button>
             <span
               className="text-sm text-gray-600 dark:text-gray-400"
-              data-oid="fhr-h29"
+              data-oid="r-:.0c1"
             >
               {Math.round(scale * 100)}%
             </span>
             <button
               onClick={() => setScale((prev) => Math.min(2, prev + 0.1))}
               className="px-2 py-1 bg-gray-200 dark:bg-gray-600 rounded hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
-              data-oid="1tv0im4"
+              data-oid="pcfy66k"
             >
               +
             </button>
@@ -938,7 +938,7 @@ const InteractiveTextEditor = forwardRef<any, InteractiveTextEditorProps>(
                 ? "bg-green-500 text-white hover:bg-green-600"
                 : "bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-500"
             }`}
-            data-oid="qy8i:q-"
+            data-oid="tr10z:t"
           >
             {isTextMode ? "Exit Text Mode" : "Add Text"}
           </button>

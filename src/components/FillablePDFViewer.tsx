@@ -240,7 +240,7 @@ export default function FillablePDFViewer({
               boxSizing: "border-box",
               backgroundColor: "rgba(255, 255, 255, 0.9)",
             }}
-            data-oid="5tbd.sf"
+            data-oid="s.9h7pi"
           />
         );
 
@@ -264,7 +264,7 @@ export default function FillablePDFViewer({
                 padding: 0,
                 cursor: "pointer",
               }}
-              data-oid="q-_xbkg"
+              data-oid="a405.hs"
             >
               <input
                 type="radio"
@@ -280,10 +280,10 @@ export default function FillablePDFViewer({
                   margin: 0,
                   transform: "scale(1.2)",
                 }}
-                data-oid=":wu_gn5"
+                data-oid="es98:qb"
               />
 
-              <span className="sr-only" data-oid="j48lj-d">
+              <span className="sr-only" data-oid="60it0bo">
                 {field.fieldName}
               </span>
             </label>
@@ -307,7 +307,7 @@ export default function FillablePDFViewer({
                 padding: 0,
                 cursor: "pointer",
               }}
-              data-oid="cc0:k6-"
+              data-oid="xhxy85j"
             >
               <input
                 type="checkbox"
@@ -324,10 +324,10 @@ export default function FillablePDFViewer({
                   margin: 0,
                   transform: "scale(1.2)",
                 }}
-                data-oid="rjqc7fb"
+                data-oid="qb6habk"
               />
 
-              <span className="sr-only" data-oid="r3ishfb">
+              <span className="sr-only" data-oid="jjvmq2v">
                 {field.fieldName}
               </span>
             </label>
@@ -344,13 +344,13 @@ export default function FillablePDFViewer({
             className="pdf-select"
             title={field.fieldName}
             aria-label={field.fieldName}
-            data-oid="tpb2.9k"
+            data-oid="dzne_7l"
           >
-            <option value="" data-oid="345ggdc">
+            <option value="" data-oid="cf7fo3.">
               Select...
             </option>
             {field.options?.map((opt, i) => (
-              <option key={i} value={opt} data-oid="hden3tm">
+              <option key={i} value={opt} data-oid="afzu_v-">
                 {opt}
               </option>
             ))}
@@ -377,7 +377,7 @@ export default function FillablePDFViewer({
               backgroundColor: "transparent",
               padding: "2px 4px",
             }}
-            data-oid="205_34_"
+            data-oid="v1vvace"
           />
         );
 
@@ -412,14 +412,15 @@ export default function FillablePDFViewer({
     return (
       <div
         className={`flex items-center justify-center h-64 border-2 border-dashed border-gray-300 rounded-lg ${className}`}
-        data-oid=":qfd.a_"
+        data-oid="5dzq6rp"
       >
-        <div className="text-center" data-oid="9eyra0r">
+        <div className="text-center" data-oid="4mb2kni">
           <FileText
             className="h-12 w-12 mx-auto text-gray-400 mb-4"
-            data-oid="bfm4oj5"
+            data-oid="ek5f9sy"
           />
-          <p className="text-gray-500" data-oid="cr86hdf">
+
+          <p className="text-gray-500" data-oid="hilbufv">
             Upload a PDF to view fillable form fields
           </p>
         </div>
@@ -428,18 +429,18 @@ export default function FillablePDFViewer({
   }
 
   return (
-    <div className={`space-y-4 ${className}`} data-oid="yfc0ilz">
+    <div className={`space-y-4 ${className}`} data-oid="ntai4iy">
       {/* Form Statistics */}
       {fields.length > 0 && (
-        <Card data-oid="anvwrwk">
-          <CardHeader className="pb-3" data-oid="fv3y6c6">
-            <CardTitle className="text-lg" data-oid="uapz37b">
+        <Card data-oid="912d655">
+          <CardHeader className="pb-3" data-oid="k720y:_">
+            <CardTitle className="text-lg" data-oid="s-3g6i6">
               Form Fields
             </CardTitle>
           </CardHeader>
-          <CardContent data-oid="6cyj5lm">
-            <div className="flex flex-wrap gap-2" data-oid="mpeb9ps">
-              <Badge variant="secondary" data-oid="i-zc107">
+          <CardContent data-oid="mk:q:qz">
+            <div className="flex flex-wrap gap-2" data-oid="xys:ues">
+              <Badge variant="secondary" data-oid="y993q8g">
                 {stats.filled}/{stats.total} fields filled
               </Badge>
               {stats.required > 0 && (
@@ -449,20 +450,20 @@ export default function FillablePDFViewer({
                       ? "default"
                       : "destructive"
                   }
-                  data-oid="hhrzs_r"
+                  data-oid="4929.-s"
                 >
                   {stats.requiredFilled}/{stats.required} required
                 </Badge>
               )}
             </div>
-            <div className="flex gap-2 mt-3" data-oid="ul1xhgw">
+            <div className="flex gap-2 mt-3" data-oid="6y-bskc">
               <Button
                 onClick={() => onSave(fields)}
                 disabled={isLoading}
                 size="sm"
-                data-oid="cle3l39"
+                data-oid="e.j1_ud"
               >
-                <Save className="h-4 w-4 mr-2" data-oid="ulwbivw" />
+                <Save className="h-4 w-4 mr-2" data-oid="2p_-i0g" />
                 Save Form Data
               </Button>
               {file && (
@@ -471,9 +472,9 @@ export default function FillablePDFViewer({
                   disabled={isLoading}
                   size="sm"
                   variant="outline"
-                  data-oid="vx.rq.t"
+                  data-oid="00vz6o9"
                 >
-                  <Download className="h-4 w-4 mr-2" data-oid="23wt_s8" />
+                  <Download className="h-4 w-4 mr-2" data-oid="vjeopw7" />
                   Download Filled PDF
                 </Button>
               )}
@@ -485,25 +486,25 @@ export default function FillablePDFViewer({
       {/* PDF Viewer */}
       <div
         className="border border-gray-200 rounded-lg overflow-hidden"
-        data-oid="s_.zfy6"
+        data-oid="ddl60va"
       >
         {/* Navigation */}
         {totalPages > 1 && (
           <div
             className="bg-gray-50 px-4 py-2 border-b flex items-center justify-between"
-            data-oid="435awwl"
+            data-oid="vnh5.e."
           >
-            <div className="flex items-center gap-2" data-oid="u9ejjzj">
+            <div className="flex items-center gap-2" data-oid="6dh1kr6">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => goToPage(pageNum - 1)}
                 disabled={pageNum <= 1}
-                data-oid="efzs.na"
+                data-oid="6ufrsz7"
               >
                 Previous
               </Button>
-              <span className="text-sm" data-oid="g6-5afp">
+              <span className="text-sm" data-oid="ivu7dz4">
                 Page {pageNum} of {totalPages}
               </span>
               <Button
@@ -511,22 +512,22 @@ export default function FillablePDFViewer({
                 size="sm"
                 onClick={() => goToPage(pageNum + 1)}
                 disabled={pageNum >= totalPages}
-                data-oid="1..4gtn"
+                data-oid="r6z2pur"
               >
                 Next
               </Button>
             </div>
-            <div className="flex items-center gap-2" data-oid="h0g09vv">
+            <div className="flex items-center gap-2" data-oid="g17-c7w">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setScale(scale * 0.8)}
                 disabled={scale <= 0.5}
-                data-oid="cw9:2:1"
+                data-oid="0mc7yb8"
               >
                 Zoom Out
               </Button>
-              <span className="text-sm" data-oid="ei:9wqq">
+              <span className="text-sm" data-oid="8htl0jk">
                 {Math.round(scale * 100)}%
               </span>
               <Button
@@ -534,7 +535,7 @@ export default function FillablePDFViewer({
                 size="sm"
                 onClick={() => setScale(scale * 1.25)}
                 disabled={scale >= 3}
-                data-oid="0lqbzs3"
+                data-oid="nhpu52v"
               >
                 Zoom In
               </Button>
@@ -547,19 +548,19 @@ export default function FillablePDFViewer({
           ref={containerRef}
           className="relative bg-white overflow-auto"
           style={{ maxHeight: "70vh" }}
-          data-oid="l4ovtqi"
+          data-oid="-48w7s_"
         >
           {isLoading && (
             <div
               className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-20"
-              data-oid="q1t4d1j"
+              data-oid="fol5r7z"
             >
-              <div className="text-center" data-oid="p.o_1st">
+              <div className="text-center" data-oid="bm3aa92">
                 <div
                   className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"
-                  data-oid="6twv5jn"
+                  data-oid="mft74m7"
                 ></div>
-                <p className="text-sm text-gray-600" data-oid="3vf3.au">
+                <p className="text-sm text-gray-600" data-oid=":e9i7:0">
                   Loading PDF...
                 </p>
               </div>
@@ -570,11 +571,11 @@ export default function FillablePDFViewer({
             ref={canvasRef}
             className="block"
             style={{ maxWidth: "100%", height: "auto" }}
-            data-oid="ktkfpx2"
+            data-oid="wyom_68"
           />
 
           {/* Form Fields Overlay */}
-          <div key={formFieldsKey} data-oid="wkmq8.b">
+          <div key={formFieldsKey} data-oid="y9je7e6">
             {fields.map(renderFormField)}
           </div>
         </div>
@@ -582,14 +583,14 @@ export default function FillablePDFViewer({
 
       {/* Field List for debugging */}
       {import.meta.env.MODE === "development" && fields.length > 0 && (
-        <details className="text-xs" data-oid=".wdqqnd">
-          <summary className="cursor-pointer text-gray-600" data-oid="cih:lqo">
+        <details className="text-xs" data-oid="5d6_19x">
+          <summary className="cursor-pointer text-gray-600" data-oid="-zitc4f">
             Debug: Show detected fields (
             {fields.filter((f) => f.page === pageNum).length} on current page)
           </summary>
           <pre
             className="mt-2 p-2 bg-gray-100 rounded text-xs overflow-auto max-h-32"
-            data-oid="nue5.e9"
+            data-oid="mhy2-fg"
           >
             {JSON.stringify(
               fields.filter((f) => f.page === pageNum),

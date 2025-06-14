@@ -130,42 +130,42 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
   return (
     <div
       className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-      data-oid="y:r3twq"
+      data-oid="u.i4a24"
     >
       <Card
         className="w-full max-w-4xl max-h-[90vh] overflow-hidden"
-        data-oid="c.383_y"
+        data-oid="fa13rfu"
       >
-        <CardHeader data-oid="vbz57wp">
-          <div className="flex justify-between items-center" data-oid="f4v791q">
-            <CardTitle data-oid="4yv49jw">
+        <CardHeader data-oid="ru1j9k.">
+          <div className="flex justify-between items-center" data-oid="vn16k8q">
+            <CardTitle data-oid="dzg-6jm">
               Advanced PDF Annotation Tools
             </CardTitle>
             <Button
               variant="ghost"
               size="sm"
               onClick={onClose}
-              data-oid="27yqvy:"
+              data-oid="y7y29xw"
             >
-              <X className="w-4 h-4" data-oid="ckmd:nk" />
+              <X className="w-4 h-4" data-oid="6do1lg5" />
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-6" data-oid="ucp3.to">
+        <CardContent className="space-y-6" data-oid="1pwu:ig">
           {/* Tool Selection */}
-          <div className="space-y-3" data-oid="t-kfcz7">
-            <Label className="text-sm font-medium" data-oid=":uy3yuk">
+          <div className="space-y-3" data-oid="9xps_8q">
+            <Label className="text-sm font-medium" data-oid="-n1bolq">
               Annotation Tools
             </Label>
-            <div className="grid grid-cols-3 gap-2" data-oid="1k1dab4">
+            <div className="grid grid-cols-3 gap-2" data-oid="pvdtl6-">
               <Button
                 variant={selectedTool === "text" ? "default" : "outline"}
                 onClick={() => handleToolChange("text")}
                 className="flex flex-col items-center gap-1 h-16"
-                data-oid="2n4ppxw"
+                data-oid=".96hi0i"
               >
-                <Type className="w-5 h-5" data-oid="v_c7okf" />
-                <span className="text-xs" data-oid="q_jqjug">
+                <Type className="w-5 h-5" data-oid="zr6:35v" />
+                <span className="text-xs" data-oid="38gm7uj">
                   Text
                 </span>
               </Button>
@@ -173,10 +173,10 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                 variant={selectedTool === "highlight" ? "default" : "outline"}
                 onClick={() => handleToolChange("highlight")}
                 className="flex flex-col items-center gap-1 h-16"
-                data-oid="ahock9m"
+                data-oid="5zw8ufl"
               >
-                <Highlighter className="w-5 h-5" data-oid="xdds.i9" />
-                <span className="text-xs" data-oid="y-d8dcx">
+                <Highlighter className="w-5 h-5" data-oid="-jt130x" />
+                <span className="text-xs" data-oid="jvhykxa">
                   Highlight
                 </span>
               </Button>
@@ -184,10 +184,10 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                 variant={selectedTool === "rectangle" ? "default" : "outline"}
                 onClick={() => handleToolChange("rectangle")}
                 className="flex flex-col items-center gap-1 h-16"
-                data-oid="yylbsph"
+                data-oid="5izv804"
               >
-                <Square className="w-5 h-5" data-oid="-9yj2ir" />
-                <span className="text-xs" data-oid="e..49ou">
+                <Square className="w-5 h-5" data-oid="mg0v2sr" />
+                <span className="text-xs" data-oid="0s4dcp9">
                   Rectangle
                 </span>
               </Button>
@@ -195,10 +195,10 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                 variant={selectedTool === "circle" ? "default" : "outline"}
                 onClick={() => handleToolChange("circle")}
                 className="flex flex-col items-center gap-1 h-16"
-                data-oid="1cgqa6p"
+                data-oid="57n4orc"
               >
-                <Circle className="w-5 h-5" data-oid="30149xd" />
-                <span className="text-xs" data-oid="1btbbk3">
+                <Circle className="w-5 h-5" data-oid="di.gcs1" />
+                <span className="text-xs" data-oid="94a0qyb">
                   Circle
                 </span>
               </Button>
@@ -206,10 +206,10 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                 variant={selectedTool === "line" ? "default" : "outline"}
                 onClick={() => handleToolChange("line")}
                 className="flex flex-col items-center gap-1 h-16"
-                data-oid="3n.mkij"
+                data-oid="12nhkc3"
               >
-                <Minus className="w-5 h-5" data-oid="1uhja_8" />
-                <span className="text-xs" data-oid="x5l2to4">
+                <Minus className="w-5 h-5" data-oid="1xfic7-" />
+                <span className="text-xs" data-oid="90iicou">
                   Line
                 </span>
               </Button>
@@ -217,28 +217,28 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                 variant={selectedTool === "freehand" ? "default" : "outline"}
                 onClick={() => handleToolChange("freehand")}
                 className="flex flex-col items-center gap-1 h-16"
-                data-oid="nop55x_"
+                data-oid="8mg7h4z"
               >
-                <PenTool className="w-5 h-5" data-oid="kx-sitq" />
-                <span className="text-xs" data-oid="gygbu94">
+                <PenTool className="w-5 h-5" data-oid="m3r_bci" />
+                <span className="text-xs" data-oid=".bzh8nv">
                   Freehand
                 </span>
               </Button>
             </div>
           </div>
 
-          <Separator data-oid="bt-ts1f" />
+          <Separator data-oid="3ysikso" />
 
           {/* Properties */}
-          <div className="grid grid-cols-2 gap-4" data-oid="daz._30">
-            <div className="space-y-3" data-oid="ssjvp5.">
-              <div data-oid="nfk5dmk">
-                <Label htmlFor="color-picker" data-oid="pxd:y-e">
+          <div className="grid grid-cols-2 gap-4" data-oid="guubfp6">
+            <div className="space-y-3" data-oid="fn1ti.p">
+              <div data-oid="c8dl05h">
+                <Label htmlFor="color-picker" data-oid="6kaxkgg">
                   Color
                 </Label>
                 <div
                   className="flex items-center gap-2 mt-1"
-                  data-oid="w4640uz"
+                  data-oid="1us417:"
                 >
                   <input
                     id="color-picker"
@@ -247,7 +247,7 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                     onChange={(e) => setColor(e.target.value)}
                     className="w-12 h-8 rounded border border-border cursor-pointer"
                     title="Pick annotation color"
-                    data-oid="era3ufd"
+                    data-oid="mm0mfvb"
                   />
 
                   <Input
@@ -255,43 +255,43 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                     onChange={(e) => setColor(e.target.value)}
                     placeholder="#ff0000"
                     className="flex-1"
-                    data-oid="aj_tfg0"
+                    data-oid="ecjpz8k"
                   />
                 </div>
               </div>
 
-              <div data-oid="-2tlg23">
-                <Label htmlFor="stroke-width" data-oid=".x099on">
+              <div data-oid="we9byv6">
+                <Label htmlFor="stroke-width" data-oid="-r593yd">
                   Stroke Width
                 </Label>
                 <Select
                   value={strokeWidth.toString()}
                   onValueChange={(v) => setStrokeWidth(parseInt(v))}
-                  data-oid="n-8hq.f"
+                  data-oid="wak0ibh"
                 >
-                  <SelectTrigger data-oid="d54lumo">
-                    <SelectValue data-oid="za2dh48" />
+                  <SelectTrigger data-oid="3n1p__i">
+                    <SelectValue data-oid=".y13kbx" />
                   </SelectTrigger>
-                  <SelectContent data-oid="6wrphod">
-                    <SelectItem value="1" data-oid="045l4-9">
+                  <SelectContent data-oid="vs9jco9">
+                    <SelectItem value="1" data-oid="p-:u0m.">
                       1px
                     </SelectItem>
-                    <SelectItem value="2" data-oid=":qauy1y">
+                    <SelectItem value="2" data-oid="3be59p:">
                       2px
                     </SelectItem>
-                    <SelectItem value="3" data-oid="z7789wl">
+                    <SelectItem value="3" data-oid="18w7w_v">
                       3px
                     </SelectItem>
-                    <SelectItem value="4" data-oid="usip0-_">
+                    <SelectItem value="4" data-oid="kt1q2yv">
                       4px
                     </SelectItem>
-                    <SelectItem value="5" data-oid="_m4gezx">
+                    <SelectItem value="5" data-oid="8h.nkc:">
                       5px
                     </SelectItem>
-                    <SelectItem value="8" data-oid="a1b.x-g">
+                    <SelectItem value="8" data-oid="ei5.jm5">
                       8px
                     </SelectItem>
-                    <SelectItem value="10" data-oid="xgf1r0i">
+                    <SelectItem value="10" data-oid="_1uutuj">
                       10px
                     </SelectItem>
                   </SelectContent>
@@ -300,48 +300,48 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
 
               {selectedTool === "text" && (
                 <>
-                  <div data-oid="futt8hn">
-                    <Label htmlFor="font-size" data-oid="mc91.m3">
+                  <div data-oid="8lfvfi7">
+                    <Label htmlFor="font-size" data-oid="mu:q5l.">
                       Font Size
                     </Label>
                     <Select
                       value={fontSize.toString()}
                       onValueChange={(v) => setFontSize(parseInt(v))}
-                      data-oid="gx:htbi"
+                      data-oid="0962-.l"
                     >
-                      <SelectTrigger data-oid="mvaw8bh">
-                        <SelectValue data-oid="ov7nqtc" />
+                      <SelectTrigger data-oid="6osa3:x">
+                        <SelectValue data-oid="c6inn0e" />
                       </SelectTrigger>
-                      <SelectContent data-oid="dovnw43">
-                        <SelectItem value="10" data-oid="pd_.nn.">
+                      <SelectContent data-oid="mx0z4ih">
+                        <SelectItem value="10" data-oid="wb64oyd">
                           10px
                         </SelectItem>
-                        <SelectItem value="12" data-oid="dazklq0">
+                        <SelectItem value="12" data-oid="s:ley8s">
                           12px
                         </SelectItem>
-                        <SelectItem value="14" data-oid="af38oda">
+                        <SelectItem value="14" data-oid="af9ex8v">
                           14px
                         </SelectItem>
-                        <SelectItem value="16" data-oid="n4-mjfn">
+                        <SelectItem value="16" data-oid="n60vgor">
                           16px
                         </SelectItem>
-                        <SelectItem value="18" data-oid="qklylen">
+                        <SelectItem value="18" data-oid="25e7h3:">
                           18px
                         </SelectItem>
-                        <SelectItem value="20" data-oid="g5b916:">
+                        <SelectItem value="20" data-oid="14dvwpn">
                           20px
                         </SelectItem>
-                        <SelectItem value="24" data-oid="fsyq2k3">
+                        <SelectItem value="24" data-oid="itb22nd">
                           24px
                         </SelectItem>
-                        <SelectItem value="32" data-oid="kwi_d3n">
+                        <SelectItem value="32" data-oid="k5o7_p1">
                           32px
                         </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                  <div data-oid="7kceq7s">
-                    <Label htmlFor="text-input" data-oid="84-x45e">
+                  <div data-oid="m:r-1cp">
+                    <Label htmlFor="text-input" data-oid="dput83r">
                       Text Content
                     </Label>
                     <Input
@@ -349,18 +349,18 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                       value={text}
                       onChange={(e) => setText(e.target.value)}
                       placeholder="Enter text to add"
-                      data-oid="q6:5k-e"
+                      data-oid="c-46g6n"
                     />
                   </div>
                 </>
               )}
             </div>
 
-            <div className="space-y-3" data-oid="ei::fgt">
-              <Label data-oid="u454bq2">Preview Canvas</Label>
+            <div className="space-y-3" data-oid="u3h-zlp">
+              <Label data-oid="52rv4sf">Preview Canvas</Label>
               <div
                 className="border border-border rounded bg-white"
-                data-oid="9zz40v3"
+                data-oid="r8xvg-z"
               >
                 <canvas
                   ref={drawingCanvasRef}
@@ -371,36 +371,36 @@ const AdvancedAnnotationTool: React.FC<AdvancedAnnotationToolProps> = ({
                   onMouseMove={draw}
                   onMouseUp={stopDrawing}
                   onMouseLeave={stopDrawing}
-                  data-oid="djty9:9"
+                  data-oid="w3a-i.n"
                 />
               </div>
-              <div className="flex gap-2" data-oid="7bu21fu">
+              <div className="flex gap-2" data-oid="xh4mman">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={clearCanvas}
-                  data-oid="arjpz:u"
+                  data-oid="va4dz_m"
                 >
-                  <Eraser className="w-4 h-4 mr-1" data-oid="8yi943-" />
+                  <Eraser className="w-4 h-4 mr-1" data-oid="kloao1t" />
                   Clear
                 </Button>
               </div>
             </div>
           </div>
 
-          <Separator data-oid="n1u64_3" />
+          <Separator data-oid="rs3pvse" />
 
           {/* Action Buttons */}
-          <div className="flex gap-3 justify-end" data-oid="hljpjyv">
-            <Button variant="outline" onClick={onClose} data-oid="l56spu.">
+          <div className="flex gap-3 justify-end" data-oid="gexn:7e">
+            <Button variant="outline" onClick={onClose} data-oid="vo:tmm6">
               Cancel
             </Button>
             <Button
               onClick={handleApplyAnnotation}
               className="bg-gradient-to-r from-primary via-secondary to-accent text-white"
-              data-oid="4si4mjw"
+              data-oid="twsj083"
             >
-              <Download className="w-4 h-4 mr-2" data-oid="lb06anq" />
+              <Download className="w-4 h-4 mr-2" data-oid="zgj1nos" />
               Apply Annotation
             </Button>
           </div>

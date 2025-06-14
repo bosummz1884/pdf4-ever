@@ -297,16 +297,16 @@ export function PDFDocumentManager({
   };
 
   return (
-    <div className="space-y-6" data-oid="rf52uqj">
+    <div className="space-y-6" data-oid="7z2y8d7">
       {/* Upload Section */}
-      <Card data-oid="_fd9nxg">
-        <CardHeader data-oid="pqczxyn">
-          <CardTitle className="flex items-center gap-2" data-oid="cqqo606">
-            <FileText className="h-5 w-5" data-oid="g:t0cab" />
+      <Card data-oid="pru3yny">
+        <CardHeader data-oid="qwt-l1l">
+          <CardTitle className="flex items-center gap-2" data-oid="vt3m99f">
+            <FileText className="h-5 w-5" data-oid="f8be-d-" />
             PDF Document Manager
           </CardTitle>
         </CardHeader>
-        <CardContent data-oid="e_e2gy8">
+        <CardContent data-oid="mbk1d-.">
           <div
             className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-8 text-center cursor-pointer hover:border-blue-500 transition-colors"
             onClick={() => fileInputRef.current?.click()}
@@ -316,21 +316,22 @@ export function PDFDocumentManager({
               if (files.length > 0) handleFileUpload(files);
             }}
             onDragOver={(e) => e.preventDefault()}
-            data-oid="nmf2no."
+            data-oid="m0jcve1"
           >
             <Upload
               className="h-12 w-12 mx-auto mb-4 text-gray-400"
-              data-oid="erif98o"
+              data-oid="21m4.eb"
             />
+
             <p
               className="text-lg font-medium text-gray-600 dark:text-gray-300 mb-2"
-              data-oid="m-ubk45"
+              data-oid="gdo-qlq"
             >
               Drop PDF files here or click to upload
             </p>
             <p
               className="text-sm text-gray-500 dark:text-gray-400"
-              data-oid="zpb1u5j"
+              data-oid="_p3tde5"
             >
               Support for multiple PDF files
             </p>
@@ -345,19 +346,20 @@ export function PDFDocumentManager({
               if (e.target.files) handleFileUpload(e.target.files);
             }}
             className="hidden"
-            data-oid="ohtaev1"
+            data-oid="4k_6pd0"
           />
 
           {isProcessing && (
-            <div className="mt-4" data-oid="a951_gx">
+            <div className="mt-4" data-oid="6u:ga24">
               <Progress
                 value={progress}
                 className="w-full"
-                data-oid="50jq:lh"
+                data-oid="eqy-70q"
               />
+
               <p
                 className="text-sm text-gray-600 text-center mt-2"
-                data-oid="rov48-6"
+                data-oid="om48cru"
               >
                 Processing documents... {progress.toFixed(0)}%
               </p>
@@ -368,68 +370,69 @@ export function PDFDocumentManager({
 
       {/* Document List */}
       {documents.length > 0 && (
-        <Card data-oid="af2tq7s">
-          <CardHeader data-oid="croazcd">
-            <CardTitle data-oid=".hz91m5">Loaded Documents</CardTitle>
+        <Card data-oid="ke24693">
+          <CardHeader data-oid="qygmnwf">
+            <CardTitle data-oid="g-n:ou5">Loaded Documents</CardTitle>
           </CardHeader>
-          <CardContent data-oid="za7.s70">
-            <ScrollArea className="h-64" data-oid="b7rzh4.">
-              <div className="space-y-2" data-oid=".8:3-ix">
+          <CardContent data-oid="82-.wf:">
+            <ScrollArea className="h-64" data-oid="s9qocj4">
+              <div className="space-y-2" data-oid="wsb9ugz">
                 {documents.map((doc, index) => (
                   <div
                     key={doc.id}
                     className="flex items-center justify-between p-3 border rounded-lg"
-                    data-oid=".pc6sth"
+                    data-oid="ty0jj_s"
                   >
-                    <div className="flex items-center gap-3" data-oid="8ibtn60">
+                    <div className="flex items-center gap-3" data-oid="to6wd.m">
                       <FileText
                         className="h-5 w-5 text-blue-600"
-                        data-oid="6j_bin2"
+                        data-oid="bg4hqke"
                       />
-                      <div data-oid="2j0-:zc">
-                        <p className="font-medium text-sm" data-oid="e-kdrq.">
+
+                      <div data-oid="27io5-6">
+                        <p className="font-medium text-sm" data-oid="a5.k:.:">
                           {doc.name}
                         </p>
                         <div
                           className="flex items-center gap-2 text-xs text-gray-500"
-                          data-oid="3lwb8ek"
+                          data-oid="eh1mxvt"
                         >
-                          <Badge variant="outline" data-oid="kr2y56o">
+                          <Badge variant="outline" data-oid="mbvc7wg">
                             {doc.pageCount} pages
                           </Badge>
-                          <span data-oid="p0uypk9">
+                          <span data-oid="y22xlci">
                             {formatFileSize(doc.size)}
                           </span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-1" data-oid="fm6_w_1">
+                    <div className="flex items-center gap-1" data-oid="og71hh7">
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => moveDocument(doc.id, "up")}
                         disabled={index === 0}
-                        data-oid="zx4oo2_"
+                        data-oid="e10wj6z"
                       >
-                        <ArrowUp className="h-3 w-3" data-oid="_hib779" />
+                        <ArrowUp className="h-3 w-3" data-oid="2h:mgdc" />
                       </Button>
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => moveDocument(doc.id, "down")}
                         disabled={index === documents.length - 1}
-                        data-oid="-831i_v"
+                        data-oid="ka856kn"
                       >
-                        <ArrowDown className="h-3 w-3" data-oid="g.t1_g_" />
+                        <ArrowDown className="h-3 w-3" data-oid="eocm4g8" />
                       </Button>
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => removeDocument(doc.id)}
-                        data-oid="qmzq.w."
+                        data-oid="n4rgcpm"
                       >
-                        <Trash2 className="h-3 w-3" data-oid="p551ly8" />
+                        <Trash2 className="h-3 w-3" data-oid="gup.btz" />
                       </Button>
                     </div>
                   </div>
@@ -442,39 +445,39 @@ export function PDFDocumentManager({
 
       {/* Operations */}
       {documents.length > 0 && (
-        <Card data-oid="w-n80rv">
-          <CardHeader data-oid="jmkzp:j">
-            <CardTitle data-oid=":u0q0df">Document Operations</CardTitle>
+        <Card data-oid="u8.m72v">
+          <CardHeader data-oid="ju5:8nf">
+            <CardTitle data-oid="-7939a2">Document Operations</CardTitle>
           </CardHeader>
-          <CardContent data-oid="tmgfn9_">
+          <CardContent data-oid="bqq76lw">
             <Tabs
               value={activeTab}
               onValueChange={setActiveTab}
-              data-oid="fivu75f"
+              data-oid="cvc3dvo"
             >
-              <TabsList className="grid w-full grid-cols-3" data-oid="u_-tjk.">
+              <TabsList className="grid w-full grid-cols-3" data-oid="n6k8irv">
                 <TabsTrigger
                   value="merge"
                   className="flex items-center gap-2"
-                  data-oid="qa493:l"
+                  data-oid="jp_e_1r"
                 >
-                  <Merge className="h-4 w-4" data-oid="34q99iq" />
+                  <Merge className="h-4 w-4" data-oid="jzr:rst" />
                   Merge
                 </TabsTrigger>
                 <TabsTrigger
                   value="split"
                   className="flex items-center gap-2"
-                  data-oid="cm8uunb"
+                  data-oid="i0ks:15"
                 >
-                  <Split className="h-4 w-4" data-oid="kdjg633" />
+                  <Split className="h-4 w-4" data-oid="_-4i3u8" />
                   Split
                 </TabsTrigger>
                 <TabsTrigger
                   value="compress"
                   className="flex items-center gap-2"
-                  data-oid="yehhng6"
+                  data-oid="u930o.r"
                 >
-                  <Archive className="h-4 w-4" data-oid="7wdfm5:" />
+                  <Archive className="h-4 w-4" data-oid="dujjljr" />
                   Compress
                 </TabsTrigger>
               </TabsList>
@@ -482,19 +485,19 @@ export function PDFDocumentManager({
               <TabsContent
                 value="merge"
                 className="space-y-4"
-                data-oid=".4_dixu"
+                data-oid="r9jwkfz"
               >
-                <div className="text-center" data-oid="zv73b:3">
-                  <p className="text-gray-600 mb-4" data-oid="-2fc58a">
+                <div className="text-center" data-oid=":g_ism_">
+                  <p className="text-gray-600 mb-4" data-oid="fle0bv4">
                     Merge {documents.length} PDF documents into a single file
                   </p>
                   <Button
                     onClick={mergePDFs}
                     disabled={documents.length < 2 || isProcessing}
                     className="w-full"
-                    data-oid=".p2sfhd"
+                    data-oid=":i6ov6j"
                   >
-                    <Package className="h-4 w-4 mr-2" data-oid="bfzbp8d" />
+                    <Package className="h-4 w-4 mr-2" data-oid="qn_m.fc" />
                     {isProcessing
                       ? "Merging..."
                       : `Merge ${documents.length} Documents`}
@@ -505,24 +508,24 @@ export function PDFDocumentManager({
               <TabsContent
                 value="split"
                 className="space-y-4"
-                data-oid="4x0h34f"
+                data-oid="yq7kw.e"
               >
                 {documents.length === 1 ? (
-                  <div className="space-y-4" data-oid="uj9rw.i">
+                  <div className="space-y-4" data-oid="hrqqgfd">
                     <div
                       className="flex items-center justify-between"
-                      data-oid="x3w1ykm"
+                      data-oid="csc0cf_"
                     >
-                      <h4 className="font-medium" data-oid=":sqby1:">
+                      <h4 className="font-medium" data-oid="hk85plz">
                         Split Ranges
                       </h4>
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={addSplitRange}
-                        data-oid="w1wpzoh"
+                        data-oid="ylwvvu:"
                       >
-                        <Plus className="h-3 w-3 mr-1" data-oid="r-fqnv4" />
+                        <Plus className="h-3 w-3 mr-1" data-oid="wxp2i7a" />
                         Add Range
                       </Button>
                     </div>
@@ -530,17 +533,17 @@ export function PDFDocumentManager({
                     {splitRanges.length === 0 ? (
                       <p
                         className="text-gray-600 text-center py-4"
-                        data-oid="c9mvlbu"
+                        data-oid="qra1kbr"
                       >
                         Add split ranges to divide the document
                       </p>
                     ) : (
-                      <div className="space-y-3" data-oid="edg0b_.">
+                      <div className="space-y-3" data-oid="7233at.">
                         {splitRanges.map((range, index) => (
                           <div
                             key={index}
                             className="flex items-center gap-2 p-3 border rounded-lg"
-                            data-oid="jxgmc12"
+                            data-oid="mjn-awq"
                           >
                             <Input
                               placeholder="Section name"
@@ -549,7 +552,7 @@ export function PDFDocumentManager({
                                 updateSplitRange(index, "name", e.target.value)
                               }
                               className="flex-1"
-                              data-oid="ye5h.z:"
+                              data-oid="coqzg92"
                             />
 
                             <Input
@@ -566,10 +569,10 @@ export function PDFDocumentManager({
                               className="w-20"
                               min={1}
                               max={documents[0].pageCount}
-                              data-oid="p3f-tfz"
+                              data-oid="bx2x2.9"
                             />
 
-                            <span className="text-gray-500" data-oid="77.yqdc">
+                            <span className="text-gray-500" data-oid="t6d.1wo">
                               to
                             </span>
                             <Input
@@ -586,16 +589,16 @@ export function PDFDocumentManager({
                               className="w-20"
                               min={range.start}
                               max={documents[0].pageCount}
-                              data-oid="mldnoi5"
+                              data-oid="ntrer0x"
                             />
 
                             <Button
                               variant="outline"
                               size="sm"
                               onClick={() => removeSplitRange(index)}
-                              data-oid="4nfw-.m"
+                              data-oid="k26.8p."
                             >
-                              <X className="h-3 w-3" data-oid="x4n0bl5" />
+                              <X className="h-3 w-3" data-oid=".2_vhd9" />
                             </Button>
                           </div>
                         ))}
@@ -607,9 +610,9 @@ export function PDFDocumentManager({
                         onClick={() => splitPDF(documents[0])}
                         disabled={isProcessing}
                         className="w-full"
-                        data-oid="k5-47g2"
+                        data-oid="_:v9g7a"
                       >
-                        <Scissors className="h-4 w-4 mr-2" data-oid="vupv5ma" />
+                        <Scissors className="h-4 w-4 mr-2" data-oid="4:fmgpr" />
                         {isProcessing
                           ? "Splitting..."
                           : `Split into ${splitRanges.length} Files`}
@@ -619,7 +622,7 @@ export function PDFDocumentManager({
                 ) : (
                   <p
                     className="text-gray-600 text-center py-4"
-                    data-oid="nt4:.sg"
+                    data-oid="3dvsdg."
                   >
                     Load exactly one PDF document to split it
                   </p>
@@ -629,11 +632,11 @@ export function PDFDocumentManager({
               <TabsContent
                 value="compress"
                 className="space-y-4"
-                data-oid="kq2fn-y"
+                data-oid="4ixn7yb"
               >
-                <div className="space-y-4" data-oid="xo44i7-">
-                  <div className="space-y-2" data-oid="kvg0jio">
-                    <Label data-oid="ud9y_ch">
+                <div className="space-y-4" data-oid="gfcfcq4">
+                  <div className="space-y-2" data-oid="q2utqrr">
+                    <Label data-oid="-3_fo5d">
                       Compression Level: {compressionLevel}%
                     </Label>
                     <input
@@ -645,32 +648,32 @@ export function PDFDocumentManager({
                         setCompressionLevel(parseInt(e.target.value))
                       }
                       className="w-full"
-                      data-oid="fp670is"
+                      data-oid="-jnb1g1"
                     />
 
                     <div
                       className="flex justify-between text-xs text-gray-500"
-                      data-oid="jp9z0-4"
+                      data-oid="qy-mzb3"
                     >
-                      <span data-oid="i9r4_r2">Lower quality</span>
-                      <span data-oid="m_0inys">Higher quality</span>
+                      <span data-oid="aq.-2kf">Lower quality</span>
+                      <span data-oid="._2oa6z">Higher quality</span>
                     </div>
                   </div>
 
-                  <div className="space-y-2" data-oid="ut6qmzx">
+                  <div className="space-y-2" data-oid="x2ulg51">
                     {documents.map((doc) => (
                       <div
                         key={doc.id}
                         className="flex items-center justify-between p-3 border rounded-lg"
-                        data-oid="qr:qil2"
+                        data-oid="ajxs69f"
                       >
-                        <div data-oid="maj0sd6">
-                          <p className="font-medium text-sm" data-oid="_d4t3fi">
+                        <div data-oid="1k_wm6u">
+                          <p className="font-medium text-sm" data-oid="e2zbzza">
                             {doc.name}
                           </p>
                           <p
                             className="text-xs text-gray-500"
-                            data-oid="itp_utj"
+                            data-oid="s3ju3rz"
                           >
                             Current size: {formatFileSize(doc.size)}
                           </p>
@@ -680,11 +683,11 @@ export function PDFDocumentManager({
                           size="sm"
                           onClick={() => compressPDF(doc)}
                           disabled={isProcessing}
-                          data-oid="1r20z_e"
+                          data-oid="e1:7wu."
                         >
                           <Archive
                             className="h-3 w-3 mr-1"
-                            data-oid="ne5-not"
+                            data-oid="yhpjew2"
                           />
                           Compress
                         </Button>

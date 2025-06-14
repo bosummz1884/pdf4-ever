@@ -16,34 +16,36 @@ function App() {
     <ThemeProvider
       defaultTheme="dark"
       storageKey="pdf4ever-theme"
-      data-oid="o7_o2bt"
+      data-oid="4ra5qxa"
     >
-      <TooltipProvider data-oid="vdy_7gw">
+      <TooltipProvider data-oid="meokn8b">
         <div
           className="h-screen bg-background text-foreground antialiased"
-          data-oid="0izju_s"
+          data-oid="tkra:ej"
         >
-          <Switch data-oid="it4gi7t">
-            <Route path="/" component={Home} data-oid="nacsukh" />
+          <Switch data-oid="j3o5bfm">
+            <Route path="/" component={Home} data-oid="ndsf8za" />
             <Route
               path="/privacy-policy"
               component={PrivacyPolicy}
-              data-oid="q2.lb01"
+              data-oid="_-h0978"
             />
+
             <Route
               path="/terms-of-service"
               component={TermsOfService}
-              data-oid="re49o1q"
+              data-oid=":hwou52"
             />
-            <Route component={NotFound} data-oid="3ck8fyh" />
+
+            <Route component={NotFound} data-oid="qu7n3:t" />
           </Switch>
-          <footer className="flex justify-end" data-oid="7skdx3s">
-            <p className="text-sm text-gray-400" data-oid="eg2i-y4">
+          <footer className="flex justify-end" data-oid="ipztzeg">
+            <p className="text-sm text-gray-400" data-oid="1_aia-q">
               PDF4EVER &copy; 2023
             </p>
           </footer>
         </div>
-        <Toaster data-oid="bbml8s2" />
+        <Toaster data-oid="x0mp:xo" />
       </TooltipProvider>
     </ThemeProvider>
   );

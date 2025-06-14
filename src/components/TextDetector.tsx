@@ -57,16 +57,16 @@ const TextDetector: React.FC<TextDetectorProps> = ({ onTextExtracted }) => {
       disabled={isProcessing}
       variant="outline"
       className="border-destructive text-destructive hover:bg-destructive/10"
-      data-oid="ap5xrb9"
+      data-oid="jd5c7pd"
     >
       {isProcessing ? (
         <>
-          <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="uc_6ojs" />
+          <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="fh2vznv" />
           Extracting...
         </>
       ) : (
         <>
-          <FileText className="w-4 h-4 mr-2" data-oid="t43m51w" />
+          <FileText className="w-4 h-4 mr-2" data-oid="kn98xi-" />
           Detect Text in PDF
         </>
       )}

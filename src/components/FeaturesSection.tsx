@@ -106,22 +106,22 @@ export default function FeaturesSection() {
     <section
       id="features"
       className="py-20 bg-background dark:bg-background"
-      data-oid="aki7kb5"
+      data-oid="5z--7is"
     >
       <div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        data-oid="ew:4lb-"
+        data-oid="1q3ytz7"
       >
-        <div className="text-center mb-16" data-oid="6z8o:2s">
+        <div className="text-center mb-16" data-oid="ygbc8qn">
           <h2
             className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
-            data-oid="gaivxtu"
+            data-oid="ecpdmdg"
           >
             Everything You Need for PDF Editing
           </h2>
           <p
             className="text-xl text-muted-foreground max-w-2xl mx-auto"
-            data-oid="aj7xdv:"
+            data-oid="yfnflyz"
           >
             Professional PDF tools at your fingertips. No software installation
             required.
@@ -130,39 +130,39 @@ export default function FeaturesSection() {
 
         <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          data-oid="0c6l_yk"
+          data-oid=":9a:6qz"
         >
           {features.map((feature, index) => (
             <div
               key={index}
               className="bg-card dark:bg-card rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 border border-border hover:border-primary/20 group"
-              data-oid="4v14-_w"
+              data-oid="99p-uey"
             >
               <div
                 className={`w-16 h-16 ${feature.iconBg} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200`}
-                data-oid="1o:k1kl"
+                data-oid="jr6n0b:"
               >
                 <feature.icon
                   className={`h-8 w-8 ${feature.iconColor}`}
-                  data-oid="9osfyk3"
+                  data-oid="e.53yy7"
                 />
               </div>
               <h3
                 className="text-xl font-semibold text-foreground mb-3"
-                data-oid="r3opzrt"
+                data-oid=".g02pzq"
               >
                 {feature.title}
               </h3>
               <p
                 className="text-muted-foreground mb-6 leading-relaxed"
-                data-oid=":uuko7x"
+                data-oid="cnii8w9"
               >
                 {feature.description}
               </p>
               <Button
                 onClick={feature.handler}
                 className={`w-full ${feature.buttonColor} text-white py-3 px-4 rounded-lg font-medium transition-colors duration-200`}
-                data-oid="g7_35nn"
+                data-oid="qoea.jk"
               >
                 {feature.buttonText}
               </Button>

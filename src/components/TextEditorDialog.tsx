@@ -122,23 +122,23 @@ export default function TextEditorDialog({
   if (!isVisible) return null;
 
   return (
-    <Dialog open={isVisible} onOpenChange={onClose} data-oid="lfac57p">
-      <DialogContent className="sm:max-w-[600px]" data-oid="2w62m-7">
-        <DialogHeader data-oid="npurnpc">
-          <DialogTitle className="flex items-center gap-2" data-oid="t644eqj">
-            <Type className="h-5 w-5" data-oid="jt6.9bm" />
+    <Dialog open={isVisible} onOpenChange={onClose} data-oid="h5ye7le">
+      <DialogContent className="sm:max-w-[600px]" data-oid="96etbts">
+        <DialogHeader data-oid="xmar_op">
+          <DialogTitle className="flex items-center gap-2" data-oid="ocu.i5p">
+            <Type className="h-5 w-5" data-oid="1649mo9" />
             Add Text to PDF
           </DialogTitle>
-          <DialogDescription data-oid="vfx2.v2">
+          <DialogDescription data-oid="pwm-q:7">
             Enter your text and customize its appearance. The text will be added
             to the current page.
           </DialogDescription>
         </DialogHeader>
 
-        <div className="grid gap-4 py-4" data-oid="hy9dwcy">
+        <div className="grid gap-4 py-4" data-oid="j0-qmgt">
           {/* Text Input */}
-          <div className="grid gap-2" data-oid="h7vzd23">
-            <Label htmlFor="text-input" data-oid="gbasmrk">
+          <div className="grid gap-2" data-oid="5g7m873">
+            <Label htmlFor="text-input" data-oid="w3olenl">
               Text Content
             </Label>
             <Textarea
@@ -147,29 +147,29 @@ export default function TextEditorDialog({
               value={text}
               onChange={(e) => setText(e.target.value)}
               className="min-h-[80px]"
-              data-oid="q8otxk-"
+              data-oid="zrgrma1"
             />
           </div>
 
           {/* Font Settings Row */}
           <div
             className="grid grid-cols-1 md:grid-cols-3 gap-4"
-            data-oid="s5_vhyr"
+            data-oid="c7vveww"
           >
-            <div className="grid gap-2" data-oid="4ypneyq">
-              <Label htmlFor="font-family" data-oid="yo-85a2">
+            <div className="grid gap-2" data-oid="s28626b">
+              <Label htmlFor="font-family" data-oid="moog5v2">
                 Font Family
               </Label>
-              <Select value={font} onValueChange={setFont} data-oid="0jd0849">
-                <SelectTrigger data-oid="935cnxl">
-                  <SelectValue data-oid="e8j_zsd" />
+              <Select value={font} onValueChange={setFont} data-oid="ofimsm.">
+                <SelectTrigger data-oid="oy9gwmb">
+                  <SelectValue data-oid="qr9cn7l" />
                 </SelectTrigger>
-                <SelectContent data-oid="yry3meu">
+                <SelectContent data-oid="mg1wvxn">
                   {availableFonts.map((fontName) => (
                     <SelectItem
                       key={fontName}
                       value={fontName}
-                      data-oid="0yk48hj"
+                      data-oid="mcm2buu"
                     >
                       {fontName}
                     </SelectItem>
@@ -178,21 +178,21 @@ export default function TextEditorDialog({
               </Select>
             </div>
 
-            <div className="grid gap-2" data-oid="4ekg7_2">
-              <Label htmlFor="font-size" data-oid="y-ujvry">
+            <div className="grid gap-2" data-oid="-u41wy8">
+              <Label htmlFor="font-size" data-oid="idbfspl">
                 Font Size
               </Label>
               <Select
                 value={fontSize}
                 onValueChange={setFontSize}
-                data-oid="_bu7ks1"
+                data-oid="5e73mjb"
               >
-                <SelectTrigger data-oid="paqcyn3">
-                  <SelectValue data-oid="abbkwhq" />
+                <SelectTrigger data-oid="9i5gojo">
+                  <SelectValue data-oid="b_y0goo" />
                 </SelectTrigger>
-                <SelectContent data-oid="ntm0yjd">
+                <SelectContent data-oid="ic0f-7k">
                   {fontSizes.map((size) => (
-                    <SelectItem key={size} value={size} data-oid=":bfc3-0">
+                    <SelectItem key={size} value={size} data-oid="9hxdq8t">
                       {size}px
                     </SelectItem>
                   ))}
@@ -200,18 +200,18 @@ export default function TextEditorDialog({
               </Select>
             </div>
 
-            <div className="grid gap-2" data-oid="xhx0pxk">
-              <Label htmlFor="text-color" data-oid="sx.zk62">
+            <div className="grid gap-2" data-oid="totx289">
+              <Label htmlFor="text-color" data-oid="qhqup8b">
                 Text Color
               </Label>
-              <div className="flex items-center gap-2" data-oid="-uc1.5c">
+              <div className="flex items-center gap-2" data-oid="oao3_oo">
                 <Input
                   id="text-color"
                   type="color"
                   value={color}
                   onChange={(e) => setColor(e.target.value)}
                   className="w-16 h-10 p-1 border rounded"
-                  data-oid="pd:4p65"
+                  data-oid="wj:81vo"
                 />
 
                 <Input
@@ -220,25 +220,25 @@ export default function TextEditorDialog({
                   onChange={(e) => setColor(e.target.value)}
                   className="flex-1"
                   placeholder="#000000"
-                  data-oid="x1znj7c"
+                  data-oid="s46d6do"
                 />
               </div>
             </div>
           </div>
 
           {/* Style Options */}
-          <div className="grid gap-2" data-oid="-huk6vd">
-            <Label data-oid="2_5qf:i">Text Style</Label>
-            <div className="flex items-center gap-2" data-oid=".:l.6v0">
+          <div className="grid gap-2" data-oid="7cimaos">
+            <Label data-oid="0j2o2eu">Text Style</Label>
+            <div className="flex items-center gap-2" data-oid=":ej00m4">
               <Button
                 type="button"
                 variant={isBold ? "default" : "outline"}
                 size="sm"
                 onClick={() => setIsBold(!isBold)}
                 className="flex items-center gap-2"
-                data-oid="vp.822t"
+                data-oid="8ql-5wn"
               >
-                <Bold className="h-4 w-4" data-oid="b1lfmwn" />
+                <Bold className="h-4 w-4" data-oid="1xvvox6" />
                 Bold
               </Button>
               <Button
@@ -247,51 +247,51 @@ export default function TextEditorDialog({
                 size="sm"
                 onClick={() => setIsItalic(!isItalic)}
                 className="flex items-center gap-2"
-                data-oid="lj57tib"
+                data-oid=".st_1ll"
               >
-                <Italic className="h-4 w-4" data-oid="38t52c." />
+                <Italic className="h-4 w-4" data-oid="da7_-3x" />
                 Italic
               </Button>
             </div>
           </div>
 
           {/* Alignment Options */}
-          <div className="grid gap-2" data-oid="o5bwcpn">
-            <Label data-oid="d3s5mcb">Text Alignment</Label>
-            <div className="flex items-center gap-2" data-oid="9.lmuq-">
+          <div className="grid gap-2" data-oid="nlqct88">
+            <Label data-oid="dil9rag">Text Alignment</Label>
+            <div className="flex items-center gap-2" data-oid="izgtbgb">
               <Button
                 type="button"
                 variant={alignment === "left" ? "default" : "outline"}
                 size="sm"
                 onClick={() => setAlignment("left")}
-                data-oid="uz-ua9c"
+                data-oid="8.17v72"
               >
-                <AlignLeft className="h-4 w-4" data-oid="0xbex11" />
+                <AlignLeft className="h-4 w-4" data-oid="ijuu:64" />
               </Button>
               <Button
                 type="button"
                 variant={alignment === "center" ? "default" : "outline"}
                 size="sm"
                 onClick={() => setAlignment("center")}
-                data-oid="uswd3o0"
+                data-oid="we_fxak"
               >
-                <AlignCenter className="h-4 w-4" data-oid="jqgxuvz" />
+                <AlignCenter className="h-4 w-4" data-oid="3cu9jh6" />
               </Button>
               <Button
                 type="button"
                 variant={alignment === "right" ? "default" : "outline"}
                 size="sm"
                 onClick={() => setAlignment("right")}
-                data-oid=".q.l61l"
+                data-oid="07chc4i"
               >
-                <AlignRight className="h-4 w-4" data-oid=".ehewv9" />
+                <AlignRight className="h-4 w-4" data-oid="lsbaa_." />
               </Button>
             </div>
           </div>
 
           {/* Preview */}
-          <div className="grid gap-2" data-oid="_0b3aaw">
-            <Label data-oid="qojyblm">Preview</Label>
+          <div className="grid gap-2" data-oid="ogvoj7c">
+            <Label data-oid="g48j0c7">Preview</Label>
             <div
               className="p-4 border rounded-lg bg-muted/50"
               style={{
@@ -302,24 +302,24 @@ export default function TextEditorDialog({
                 fontStyle: isItalic ? "italic" : "normal",
                 textAlign: alignment as any,
               }}
-              data-oid="evb35-0"
+              data-oid="bs8peo7"
             >
               {text || "Sample text preview..."}
             </div>
           </div>
         </div>
 
-        <DialogFooter data-oid="juzeha-">
-          <Button variant="outline" onClick={onClose} data-oid="ay5kv_f">
-            <X className="h-4 w-4 mr-2" data-oid="hz0.:f8" />
+        <DialogFooter data-oid="t6.zz9c">
+          <Button variant="outline" onClick={onClose} data-oid="sm3u.os">
+            <X className="h-4 w-4 mr-2" data-oid="a-y1u1-" />
             Cancel
           </Button>
           <Button
             onClick={handleAddText}
             disabled={!text.trim()}
-            data-oid="uay.iew"
+            data-oid="uspj79c"
           >
-            <Save className="h-4 w-4 mr-2" data-oid="p4tn9p-" />
+            <Save className="h-4 w-4 mr-2" data-oid="ir::7c9" />
             Add Text
           </Button>
         </DialogFooter>

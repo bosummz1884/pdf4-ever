@@ -143,7 +143,7 @@ export default function TextLayer({
         cursor: isActive ? "text" : "default",
       }}
       onClick={handleCanvasClick}
-      data-oid="vbaozd-"
+      data-oid="3700inz"
     >
       {textElements.map((element) => (
         <Rnd
@@ -175,7 +175,7 @@ export default function TextLayer({
             zIndex: selectedElementId === element.id ? 50 : 30,
             position: "absolute",
           }}
-          data-oid="hghq5vx"
+          data-oid="g-nnd.e"
         >
           <div
             style={{
@@ -190,7 +190,7 @@ export default function TextLayer({
               background: "transparent",
               borderRadius: "3px",
             }}
-            data-oid="vdw_n1l"
+            data-oid="-adhsyu"
           >
             {/* Floating toolbar above text field */}
             {selectedElementId === element.id && (
@@ -213,11 +213,11 @@ export default function TextLayer({
                   fontSize: "12px",
                 }}
                 onClick={(e) => e.stopPropagation()}
-                data-oid="l_lp_zc"
+                data-oid="zy9s785"
               >
                 <span
                   style={{ fontWeight: "bold", marginRight: "8px" }}
-                  data-oid="mlpcjr:"
+                  data-oid="z32_4i6"
                 >
                   Format Text:
                 </span>
@@ -241,10 +241,10 @@ export default function TextLayer({
                     padding: "2px 4px",
                   }}
                   onClick={(e) => e.stopPropagation()}
-                  data-oid="zg9aucs"
+                  data-oid="dbp8a7q"
                 >
                   {availableFonts.map((font) => (
-                    <option key={font} value={font} data-oid="tfb1jo1">
+                    <option key={font} value={font} data-oid="b0_87l8">
                       {font}
                     </option>
                   ))}
@@ -274,7 +274,7 @@ export default function TextLayer({
                   min="8"
                   max="72"
                   onClick={(e) => e.stopPropagation()}
-                  data-oid="he8hth7"
+                  data-oid=":0umu.p"
                 />
 
                 {/* Style buttons */}
@@ -290,9 +290,9 @@ export default function TextLayer({
                     })
                   }
                   style={{ height: "24px", padding: "0 8px" }}
-                  data-oid="8yvj24w"
+                  data-oid="pusvx6q"
                 >
-                  <Bold className="h-3 w-3" data-oid="u0011kl" />
+                  <Bold className="h-3 w-3" data-oid="y4dx66t" />
                 </Button>
                 <Button
                   variant={
@@ -306,13 +306,13 @@ export default function TextLayer({
                     })
                   }
                   style={{ height: "24px", padding: "0 8px" }}
-                  data-oid="bbojkag"
+                  data-oid="rca9six"
                 >
-                  <Italic className="h-3 w-3" data-oid="wz_8htl" />
+                  <Italic className="h-3 w-3" data-oid="knlokff" />
                 </Button>
 
                 {/* Color picker */}
-                <div style={{ position: "relative" }} data-oid="5_s.ke_">
+                <div style={{ position: "relative" }} data-oid="cso8tkv">
                   <div
                     style={{
                       width: "20px",
@@ -334,7 +334,7 @@ export default function TextLayer({
                       }
                     }}
                     title="Click to change color"
-                    data-oid="1_aq2sa"
+                    data-oid="vzr4t::"
                   />
 
                   <div
@@ -346,7 +346,7 @@ export default function TextLayer({
                       display: "none",
                       zIndex: 1000,
                     }}
-                    data-oid="pwdlqt8"
+                    data-oid="rbobdll"
                   >
                     <HexColorPicker
                       color={element.color}
@@ -354,7 +354,7 @@ export default function TextLayer({
                         updateTextElement(element.id, { color })
                       }
                       style={{ width: "150px", height: "100px" }}
-                      data-oid="tcm.hvl"
+                      data-oid="zn1:_zf"
                     />
                   </div>
                 </div>
@@ -369,9 +369,9 @@ export default function TextLayer({
                     padding: "0 8px",
                     marginLeft: "8px",
                   }}
-                  data-oid="b6en8fg"
+                  data-oid="b:tovqx"
                 >
-                  <Trash2 className="h-3 w-3" data-oid="65f2bjb" />
+                  <Trash2 className="h-3 w-3" data-oid="ghyq3a5" />
                 </Button>
               </div>
             )}
@@ -398,7 +398,7 @@ export default function TextLayer({
                 lineHeight: "1.2",
               }}
               placeholder="Type your text"
-              data-oid="n2edu:v"
+              data-oid="0xzegrl"
             />
           </div>
         </Rnd>

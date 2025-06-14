@@ -487,78 +487,78 @@ export default function AnnotationManager({
   return (
     <>
       {showControls && (
-        <Card className="mb-4" data-oid="hov_8g_">
-          <CardHeader data-oid=":5..nrr">
-            <CardTitle className="flex items-center gap-2" data-oid="ir3khrm">
-              <Edit3 className="h-5 w-5" data-oid="2wzi49i" />
+        <Card className="mb-4" data-oid="r:5ei9q">
+          <CardHeader data-oid="dxmzh:_">
+            <CardTitle className="flex items-center gap-2" data-oid="2oo3co0">
+              <Edit3 className="h-5 w-5" data-oid=":v3ep80" />
               Annotation Tools
             </CardTitle>
           </CardHeader>
-          <CardContent data-oid="6qrsww0">
-            <div className="space-y-4" data-oid="ko.hnrj">
+          <CardContent data-oid="xfrnpx4">
+            <div className="space-y-4" data-oid="in2wkf4">
               {/* Tool Selection */}
-              <div className="flex flex-wrap gap-2" data-oid="y21fcwe">
+              <div className="flex flex-wrap gap-2" data-oid="qo.qy66">
                 <Button
                   variant={currentTool === "select" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setCurrentTool("select")}
-                  data-oid="xgjjl9d"
+                  data-oid="4oh_ej1"
                 >
-                  <MousePointer className="h-4 w-4 mr-1" data-oid="hnc3zye" />
+                  <MousePointer className="h-4 w-4 mr-1" data-oid="jjpxy:u" />
                   Select
                 </Button>
                 <Button
                   variant={currentTool === "highlight" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setCurrentTool("highlight")}
-                  data-oid="9gam:yr"
+                  data-oid="4gybdmu"
                 >
-                  <Highlighter className="h-4 w-4 mr-1" data-oid="w7iro1u" />
+                  <Highlighter className="h-4 w-4 mr-1" data-oid="x4tboqr" />
                   Highlight
                 </Button>
                 <Button
                   variant={currentTool === "rectangle" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setCurrentTool("rectangle")}
-                  data-oid="r3h-796"
+                  data-oid="kh64vmi"
                 >
-                  <Square className="h-4 w-4 mr-1" data-oid="lfv_q4s" />
+                  <Square className="h-4 w-4 mr-1" data-oid="l.irxwb" />
                   Rectangle
                 </Button>
                 <Button
                   variant={currentTool === "circle" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setCurrentTool("circle")}
-                  data-oid="8gjnex5"
+                  data-oid=":xrgy0."
                 >
-                  <Circle className="h-4 w-4 mr-1" data-oid="hs_nc9a" />
+                  <Circle className="h-4 w-4 mr-1" data-oid="k8cxf65" />
                   Circle
                 </Button>
                 <Button
                   variant={currentTool === "freeform" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setCurrentTool("freeform")}
-                  data-oid="n8ih42s"
+                  data-oid="w6qd_cv"
                 >
-                  <PenTool className="h-4 w-4 mr-1" data-oid="7ipp7li" />
+                  <PenTool className="h-4 w-4 mr-1" data-oid="7.bqryv" />
                   Draw
                 </Button>
                 <Button
                   variant={currentTool === "signature" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setCurrentTool("signature")}
-                  data-oid="qritluj"
+                  data-oid="qyo1-e0"
                 >
-                  <Signature className="h-4 w-4 mr-1" data-oid="d9.44h0" />
+                  <Signature className="h-4 w-4 mr-1" data-oid="_u8fsu3" />
                   Sign
                 </Button>
                 <Button
                   variant={currentTool === "eraser" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setCurrentTool("eraser")}
-                  data-oid="hj7jnbq"
+                  data-oid="g02wt.o"
                 >
-                  <Eraser className="h-4 w-4 mr-1" data-oid="y8bncf." />
+                  <Eraser className="h-4 w-4 mr-1" data-oid="5at-be3" />
                   Eraser
                 </Button>
               </div>
@@ -566,25 +566,25 @@ export default function AnnotationManager({
               {/* Style Controls */}
               <div
                 className="flex items-center gap-4 flex-wrap"
-                data-oid="_y3c4lg"
+                data-oid="wdeb2zi"
               >
-                <div className="flex items-center gap-2" data-oid="d_v6ec-">
-                  <Palette className="h-4 w-4" data-oid=":c297om" />
+                <div className="flex items-center gap-2" data-oid="ssnkvc5">
+                  <Palette className="h-4 w-4" data-oid="5fhccc3" />
                   <input
                     type="color"
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
                     className="w-8 h-8 rounded border cursor-pointer"
-                    data-oid="-je93l6"
+                    data-oid="w66vxje"
                   />
                 </div>
 
                 {currentTool !== "eraser" && (
                   <div
                     className="flex items-center gap-2 min-w-32"
-                    data-oid="v23yki3"
+                    data-oid="pwqk6e0"
                   >
-                    <span className="text-sm" data-oid="d655kwc">
+                    <span className="text-sm" data-oid="yoaaipu">
                       Stroke:
                     </span>
                     <Slider
@@ -594,10 +594,10 @@ export default function AnnotationManager({
                       min={1}
                       step={1}
                       className="flex-1"
-                      data-oid="nr44d:."
+                      data-oid="15rl47s"
                     />
 
-                    <span className="text-sm w-6" data-oid="6r9k1r5">
+                    <span className="text-sm w-6" data-oid="p1n-.9:">
                       {strokeWidth}
                     </span>
                   </div>
@@ -606,9 +606,9 @@ export default function AnnotationManager({
                 {currentTool === "eraser" && (
                   <div
                     className="flex items-center gap-2 min-w-32"
-                    data-oid="2ogjdeb"
+                    data-oid="aideqwg"
                   >
-                    <span className="text-sm" data-oid="9-r690o">
+                    <span className="text-sm" data-oid="hnszeqy">
                       Size:
                     </span>
                     <Slider
@@ -618,10 +618,10 @@ export default function AnnotationManager({
                       min={5}
                       step={5}
                       className="flex-1"
-                      data-oid="il:naps"
+                      data-oid="iis38co"
                     />
 
-                    <span className="text-sm w-8" data-oid="11:omae">
+                    <span className="text-sm w-8" data-oid="av9x5y_">
                       {eraserSize}px
                     </span>
                   </div>
@@ -631,16 +631,16 @@ export default function AnnotationManager({
               {/* Action Buttons */}
               <div
                 className="flex items-center gap-2 flex-wrap"
-                data-oid="q3gju:g"
+                data-oid="lyd_yb0"
               >
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={undo}
                   disabled={historyIndex <= 0}
-                  data-oid="bo.ncii"
+                  data-oid="834fbve"
                 >
-                  <Undo className="h-4 w-4 mr-1" data-oid="2u_-fmn" />
+                  <Undo className="h-4 w-4 mr-1" data-oid="a977i0s" />
                   Undo
                 </Button>
                 <Button
@@ -648,9 +648,9 @@ export default function AnnotationManager({
                   size="sm"
                   onClick={redo}
                   disabled={historyIndex >= history.length - 1}
-                  data-oid="56fhem."
+                  data-oid="ddasqh7"
                 >
-                  <Redo className="h-4 w-4 mr-1" data-oid="ge306_7" />
+                  <Redo className="h-4 w-4 mr-1" data-oid="_oc5mmm" />
                   Redo
                 </Button>
                 <Button
@@ -658,9 +658,9 @@ export default function AnnotationManager({
                   size="sm"
                   onClick={clearAnnotations}
                   disabled={currentPageAnnotations.length === 0}
-                  data-oid="l0q5oez"
+                  data-oid="d7ga8bi"
                 >
-                  <Trash2 className="h-4 w-4 mr-1" data-oid="rlz3.jb" />
+                  <Trash2 className="h-4 w-4 mr-1" data-oid="4ggcylm" />
                   Clear All
                 </Button>
                 <Button
@@ -668,16 +668,16 @@ export default function AnnotationManager({
                   size="sm"
                   onClick={exportAnnotations}
                   disabled={annotations.length === 0}
-                  data-oid="ubwm930"
+                  data-oid="o_4ap7g"
                 >
-                  <Download className="h-4 w-4 mr-1" data-oid="7cy6u78" />
+                  <Download className="h-4 w-4 mr-1" data-oid="-2hbrox" />
                   Export
                 </Button>
 
                 <Badge
                   variant="secondary"
                   className="ml-auto"
-                  data-oid="vmswygh"
+                  data-oid="d1f6q7m"
                 >
                   {currentPageAnnotations.length} annotation(s)
                 </Badge>
@@ -706,7 +706,7 @@ export default function AnnotationManager({
                 : "crosshair",
           zIndex: 10,
         }}
-        data-oid="zcg:i7d"
+        data-oid="9d5u-ou"
       />
     </>
   );

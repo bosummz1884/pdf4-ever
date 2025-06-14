@@ -257,29 +257,29 @@ export default function FontManager({
   const selectedFontInfo = availableFonts.find((f) => f.name === selectedFont);
 
   return (
-    <div className="space-y-4" data-oid="uprsghr">
+    <div className="space-y-4" data-oid="jgvea.q">
       {/* Font Selection */}
-      <div className="flex items-center gap-2 flex-wrap" data-oid="-r9brhz">
+      <div className="flex items-center gap-2 flex-wrap" data-oid="i6kewe.">
         <Select
           value={selectedFont}
           onValueChange={onFontChange}
-          data-oid="f3w9:12"
+          data-oid="gamr-qx"
         >
-          <SelectTrigger className="w-48" data-oid="evlep1j">
-            <SelectValue placeholder="Select font" data-oid="ve96igr" />
+          <SelectTrigger className="w-48" data-oid="mqru4ru">
+            <SelectValue placeholder="Select font" data-oid="b92.p0g" />
           </SelectTrigger>
-          <SelectContent className="max-h-60" data-oid="t3cz83_">
+          <SelectContent className="max-h-60" data-oid="bb2654y">
             {filteredFonts.map((font) => (
-              <SelectItem key={font.name} value={font.name} data-oid="nkri3o0">
-                <div className="flex items-center gap-2" data-oid="d64bf-s">
-                  <span style={{ fontFamily: font.family }} data-oid="ptsv0r2">
+              <SelectItem key={font.name} value={font.name} data-oid="rr5a2qf">
+                <div className="flex items-center gap-2" data-oid="sgjpica">
+                  <span style={{ fontFamily: font.family }} data-oid="vzhwu1l">
                     {font.name}
                   </span>
                   {!font.loaded && (
                     <Badge
                       variant="outline"
                       className="text-xs"
-                      data-oid="rbnwzl2"
+                      data-oid="8l.5.e4"
                     >
                       Not loaded
                     </Badge>
@@ -298,7 +298,7 @@ export default function FontManager({
           min={8}
           max={144}
           placeholder="Size"
-          data-oid="gh-fehu"
+          data-oid="8vezap8"
         />
 
         <Button
@@ -307,9 +307,9 @@ export default function FontManager({
           onClick={() =>
             onFontWeightChange(fontWeight === "bold" ? "normal" : "bold")
           }
-          data-oid="g8oxuyo"
+          data-oid="bt3..nv"
         >
-          <strong data-oid="vcwrfi7">B</strong>
+          <strong data-oid="kdrur78">B</strong>
         </Button>
 
         <Button
@@ -318,9 +318,9 @@ export default function FontManager({
           onClick={() =>
             onFontStyleChange(fontStyle === "italic" ? "normal" : "italic")
           }
-          data-oid="gqnog9p"
+          data-oid="0ar12vl"
         >
-          <em data-oid="7:f8whp">I</em>
+          <em data-oid=".u6xdei">I</em>
         </Button>
 
         {!loadingFonts && (
@@ -328,9 +328,9 @@ export default function FontManager({
             variant="outline"
             size="sm"
             onClick={loadFonts}
-            data-oid="rnwqnu."
+            data-oid="37z6kjx"
           >
-            <Download className="h-4 w-4 mr-1" data-oid="k9t0cj5" />
+            <Download className="h-4 w-4 mr-1" data-oid="ylz70f:" />
             Load More Fonts
           </Button>
         )}
@@ -338,9 +338,9 @@ export default function FontManager({
 
       {/* Loading Progress */}
       {loadingFonts && (
-        <div className="space-y-2" data-oid="wzj1wpc">
-          <Progress value={loadProgress} data-oid="f-rkt4q" />
-          <p className="text-sm text-gray-500" data-oid="1kblb.4">
+        <div className="space-y-2" data-oid="8idt:88">
+          <Progress value={loadProgress} data-oid="t4aww4." />
+          <p className="text-sm text-gray-500" data-oid="3inc7id">
             Loading fonts... {Math.round(loadProgress)}%
           </p>
         </div>
@@ -348,39 +348,40 @@ export default function FontManager({
 
       {/* Advanced Controls */}
       {showAdvanced && (
-        <Card data-oid="4b1a26s">
-          <CardHeader data-oid="5chk86v">
-            <CardTitle className="flex items-center gap-2" data-oid="qj4fyot">
-              <Type className="h-5 w-5" data-oid="jgli7mj" />
+        <Card data-oid="wcxby-3">
+          <CardHeader data-oid="f7_6:u1">
+            <CardTitle className="flex items-center gap-2" data-oid="6-2h1k.">
+              <Type className="h-5 w-5" data-oid="k3fjk70" />
               Font Tools
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4" data-oid="t7pyt_:">
+          <CardContent className="space-y-4" data-oid="28ke:1g">
             {/* Font Search */}
-            <div className="relative" data-oid="m644z1y">
+            <div className="relative" data-oid="qr0ap:y">
               <Search
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
-                data-oid="psi0.ai"
+                data-oid="65ojjng"
               />
+
               <Input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search fonts..."
                 className="pl-10"
-                data-oid="qptdgii"
+                data-oid="tdi0cu9"
               />
             </div>
 
             {/* Font Preview */}
-            <div className="space-y-2" data-oid="wiy_anf">
-              <label className="text-sm font-medium" data-oid="atck4n-">
+            <div className="space-y-2" data-oid="zrw8.yg">
+              <label className="text-sm font-medium" data-oid="-e4m2xg">
                 Preview Text:
               </label>
               <Input
                 value={fontPreview}
                 onChange={(e) => setFontPreview(e.target.value)}
                 placeholder="Enter preview text..."
-                data-oid="dcf5.mr"
+                data-oid=".ytn2g9"
               />
 
               {selectedFontInfo && (
@@ -392,7 +393,7 @@ export default function FontManager({
                     fontWeight: fontWeight,
                     fontStyle: fontStyle,
                   }}
-                  data-oid="pfuhl7_"
+                  data-oid="s6xy7bd"
                 >
                   {fontPreview}
                 </div>
@@ -401,31 +402,31 @@ export default function FontManager({
 
             {/* Font Info */}
             {selectedFontInfo && (
-              <div className="space-y-2 text-sm" data-oid="-pigl8b">
-                <h4 className="font-medium" data-oid="5gwv-5r">
+              <div className="space-y-2 text-sm" data-oid="v7v.h30">
+                <h4 className="font-medium" data-oid="7iwhr9r">
                   Font Information:
                 </h4>
-                <div className="grid grid-cols-2 gap-2" data-oid="5rv76j6">
-                  <div data-oid="8::yjoq">
-                    <span className="text-gray-500" data-oid="ypsxfhu">
+                <div className="grid grid-cols-2 gap-2" data-oid=":2mgrap">
+                  <div data-oid=":v2umlp">
+                    <span className="text-gray-500" data-oid="up52to3">
                       Family:
                     </span>{" "}
                     {selectedFontInfo.family}
                   </div>
-                  <div data-oid="2j5ooax">
-                    <span className="text-gray-500" data-oid=".wu1ro6">
+                  <div data-oid="e59hm42">
+                    <span className="text-gray-500" data-oid="wouep-x">
                       Style:
                     </span>{" "}
                     {selectedFontInfo.style}
                   </div>
-                  <div data-oid="h7m1wqy">
-                    <span className="text-gray-500" data-oid="rf2-wbi">
+                  <div data-oid="a9e:3:w">
+                    <span className="text-gray-500" data-oid=".-u79r_">
                       Weight:
                     </span>{" "}
                     {selectedFontInfo.weight}
                   </div>
-                  <div data-oid="s-.3d69">
-                    <span className="text-gray-500" data-oid="o8drlrl">
+                  <div data-oid="wzc26uw">
+                    <span className="text-gray-500" data-oid="wwuc9v7">
                       Status:
                     </span>
                     <Badge
@@ -433,7 +434,7 @@ export default function FontManager({
                         selectedFontInfo.loaded ? "default" : "secondary"
                       }
                       className="ml-2"
-                      data-oid="_38dnfi"
+                      data-oid="ad3u3dg"
                     >
                       {selectedFontInfo.loaded ? "Loaded" : "Not Loaded"}
                     </Badge>
@@ -441,17 +442,17 @@ export default function FontManager({
                 </div>
 
                 {selectedFontInfo.variants && (
-                  <div data-oid="q:2_ss8">
-                    <span className="text-gray-500" data-oid="ig8d_9r">
+                  <div data-oid="llnmqya">
+                    <span className="text-gray-500" data-oid="05qa8b2">
                       Available weights:
                     </span>
-                    <div className="flex gap-1 mt-1" data-oid="66n.8bw">
+                    <div className="flex gap-1 mt-1" data-oid=".ndpc.0">
                       {selectedFontInfo.variants.map((variant) => (
                         <Badge
                           key={variant}
                           variant="outline"
                           className="text-xs"
-                          data-oid="xvjyaqt"
+                          data-oid="khl5:vs"
                         >
                           {variant}
                         </Badge>
@@ -463,9 +464,9 @@ export default function FontManager({
             )}
 
             {/* Font Statistics */}
-            <div className="text-sm text-gray-500" data-oid="r.5y6y5">
-              <p data-oid="640pmvn">Available fonts: {availableFonts.length}</p>
-              <p data-oid="7kcl.ri">
+            <div className="text-sm text-gray-500" data-oid="fws5sj6">
+              <p data-oid="-w8z8zq">Available fonts: {availableFonts.length}</p>
+              <p data-oid="gofj9kt">
                 Loaded fonts: {availableFonts.filter((f) => f.loaded).length}
               </p>
             </div>

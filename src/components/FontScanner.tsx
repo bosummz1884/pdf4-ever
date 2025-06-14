@@ -144,22 +144,22 @@ const FontScanner: React.FC<FontScannerProps> = ({ onFontDetected }) => {
   };
 
   return (
-    <div className="space-y-2" data-oid="ql6xsnz">
+    <div className="space-y-2" data-oid="vapy8fo">
       <Button
         onClick={handleFontScan}
         disabled={isScanning}
         variant="outline"
         className="border-accent text-accent hover:bg-accent/10"
-        data-oid="go00qrd"
+        data-oid="1rsc-jh"
       >
         {isScanning ? (
           <>
-            <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="kp67r_8" />
+            <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="reqksa1" />
             Scanning...
           </>
         ) : (
           <>
-            <Type className="w-4 h-4 mr-2" data-oid="_79no0d" />
+            <Type className="w-4 h-4 mr-2" data-oid="nd6tig0" />
             Scan Font From Image
           </>
         )}
@@ -167,7 +167,7 @@ const FontScanner: React.FC<FontScannerProps> = ({ onFontDetected }) => {
       {status && (
         <div
           className="text-sm text-muted-foreground bg-muted/50 p-2 rounded"
-          data-oid="cxn1m80"
+          data-oid="6jvwkyl"
         >
           {status}
         </div>

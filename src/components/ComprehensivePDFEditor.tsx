@@ -1716,21 +1716,21 @@ export default function ComprehensivePDFEditor({
   return (
     <div
       className={`flex flex-col h-full bg-gray-50 dark:bg-gray-900 ${className}`}
-      data-oid="s3jvrhl"
+      data-oid="thcgfai"
     >
       {/* Top Toolbar */}
       <div
         className="bg-white dark:bg-gray-800 border-b shadow-sm"
-        data-oid="cji5m5u"
+        data-oid="ikbm8a8"
       >
         {/* Main Toolbar */}
         <div
           className="flex items-center justify-between px-4 py-2"
-          data-oid="hrivjxd"
+          data-oid="3xv680i"
         >
           {/* Left Side - File Upload */}
-          <div className="flex items-center gap-4" data-oid="j517wi1">
-            <Label htmlFor="file-upload" className="sr-only" data-oid="5vag7gr">
+          <div className="flex items-center gap-4" data-oid="bdsq1gu">
+            <Label htmlFor="file-upload" className="sr-only" data-oid="6w62o.w">
               Upload PDF
             </Label>
             <input
@@ -1742,7 +1742,7 @@ export default function ComprehensivePDFEditor({
               className="hidden"
               title="Choose a PDF file to upload"
               placeholder="Select a PDF file"
-              data-oid="d158w.m"
+              data-oid="1:iwcbb"
             />
 
             <Button
@@ -1751,16 +1751,16 @@ export default function ComprehensivePDFEditor({
               size="sm"
               disabled={isLoading}
               title="Upload PDF"
-              data-oid="x:2hg4c"
+              data-oid="pyrk07i"
             >
-              <Upload className="h-4 w-4 mr-2" data-oid="oppvuyu" />
+              <Upload className="h-4 w-4 mr-2" data-oid="wry0tog" />
               {isLoading ? "Loading..." : "Upload PDF"}
             </Button>
             {fileName && (
               <span
                 className="text-sm text-muted-foreground truncate max-w-48"
                 title={fileName}
-                data-oid="wvzmpfp"
+                data-oid="14fgjeu"
               >
                 {fileName}
               </span>
@@ -1768,50 +1768,50 @@ export default function ComprehensivePDFEditor({
           </div>
 
           {/* Right Side - Mode Selector */}
-          <div className="flex items-center gap-2" data-oid=":uc1w2h">
+          <div className="flex items-center gap-2" data-oid="_-s39po">
             <Button
               variant={activeMode === "edit" ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveMode("edit")}
-              data-oid="f8w5.z:"
+              data-oid="w_4s1zw"
             >
-              <Edit3 className="h-4 w-4 mr-1" data-oid="acg:4.a" />
+              <Edit3 className="h-4 w-4 mr-1" data-oid="9fsxbws" />
               Edit
             </Button>
             <Button
               variant={activeMode === "merge" ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveMode("merge")}
-              data-oid="f-290_t"
+              data-oid="iqv-4_9"
             >
-              <Merge className="h-4 w-4 mr-1" data-oid="mic0nbq" />
+              <Merge className="h-4 w-4 mr-1" data-oid="tq:3pkd" />
               Merge
             </Button>
             <Button
               variant={activeMode === "split" ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveMode("split")}
-              data-oid="f3n_m44"
+              data-oid="bn5kqcc"
             >
-              <Split className="h-4 w-4 mr-1" data-oid="mi56uu1" />
+              <Split className="h-4 w-4 mr-1" data-oid="9v173bg" />
               Split
             </Button>
             <Button
               variant={activeMode === "forms" ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveMode("forms")}
-              data-oid="11blzpj"
+              data-oid="jp462vu"
             >
-              <FormInput className="h-4 w-4 mr-1" data-oid="akiq3e5" />
+              <FormInput className="h-4 w-4 mr-1" data-oid="okyd2s9" />
               Forms
             </Button>
             <Button
               variant={activeMode === "fill" ? "default" : "outline"}
               size="sm"
               onClick={() => setActiveMode("fill")}
-              data-oid="_-e:twe"
+              data-oid="4gk3d:n"
             >
-              <FileText className="h-4 w-4 mr-1" data-oid="5obsvst" />
+              <FileText className="h-4 w-4 mr-1" data-oid="hzvbmgg" />
               Fill
             </Button>
           </div>
@@ -1821,11 +1821,11 @@ export default function ComprehensivePDFEditor({
         {pdfDocument && activeMode === "edit" && (
           <div
             className="border-t bg-gray-50 dark:bg-gray-900 px-4 py-2"
-            data-oid="i6_yxug"
+            data-oid="jn-aca_"
           >
             <div
               className="flex items-center gap-2 flex-wrap"
-              data-oid="x317obc"
+              data-oid="rp4271l"
             >
               {/* Unified Text Tool */}
               <Button
@@ -1835,9 +1835,9 @@ export default function ComprehensivePDFEditor({
                   setCurrentTool("text");
                   setShowShapeDropdown(false);
                 }}
-                data-oid="::o3wr8"
+                data-oid=":geda_6"
               >
-                <Type className="h-4 w-4 mr-1" data-oid="wr7i648" />
+                <Type className="h-4 w-4 mr-1" data-oid="k1-.j-r" />
                 Text
               </Button>
 
@@ -1851,9 +1851,9 @@ export default function ComprehensivePDFEditor({
                       onClick={() =>
                         textBoxManagerRef.current?.duplicateTextBox()
                       }
-                      data-oid="dy4okp-"
+                      data-oid="dk23o1o"
                     >
-                      <Copy className="h-4 w-4 mr-1" data-oid="_kkni7r" />
+                      <Copy className="h-4 w-4 mr-1" data-oid="da5pm5l" />
                       Copy
                     </Button>
                   )}
@@ -1865,9 +1865,9 @@ export default function ComprehensivePDFEditor({
                       onClick={() =>
                         textBoxManagerRef.current?.clearAllTextBoxes()
                       }
-                      data-oid="a-9_3g8"
+                      data-oid="84ew5wf"
                     >
-                      <Trash2 className="h-4 w-4 mr-1" data-oid="at-.o7b" />
+                      <Trash2 className="h-4 w-4 mr-1" data-oid="9:agzbb" />
                       Clear All ({textBoxCount})
                     </Button>
                   )}
@@ -1875,7 +1875,7 @@ export default function ComprehensivePDFEditor({
               )}
 
               {/* Annotation Tools */}
-              <div className="relative" data-oid="tbwpg3q">
+              <div className="relative" data-oid="aqwj62r">
                 <Button
                   variant={currentTool === "highlight" ? "default" : "outline"}
                   size="sm"
@@ -1893,27 +1893,27 @@ export default function ComprehensivePDFEditor({
                     }
                     setShowShapeDropdown(false);
                   }}
-                  data-oid="8xa9d9w"
+                  data-oid="2zhv9an"
                 >
-                  <Highlighter className="h-4 w-4 mr-1" data-oid="od_7mo:" />
+                  <Highlighter className="h-4 w-4 mr-1" data-oid="e6fatnx" />
                   Highlight
                 </Button>
 
                 {showHighlightDropdown && currentTool === "highlight" && (
                   <div
                     className="absolute top-full left-0 mt-1 z-50 bg-white border border-gray-200 rounded-md shadow-lg p-3 min-w-[160px] pdf4ever-highlight-dropdown"
-                    data-oid="eu2xvaj"
+                    data-oid="-1ffqvl"
                   >
-                    <div className="space-y-2" data-oid="os-q:et">
+                    <div className="space-y-2" data-oid="bz5un.9">
                       <div
                         className="text-sm font-medium text-black mb-2"
-                        data-oid="3m5vai9"
+                        data-oid="sdas_2x"
                       >
                         Highlight Colors
                       </div>
                       <div
                         className="grid grid-cols-3 gap-2"
-                        data-oid="vuf1u.0"
+                        data-oid="9456kbr"
                       >
                         {[
                           { color: "#FFFF00", name: "Yellow" },
@@ -1933,7 +1933,7 @@ export default function ComprehensivePDFEditor({
                             title={name}
                             style={{ backgroundColor: color + "60" }}
                             variant="ghost"
-                            data-oid="s-jpofj"
+                            data-oid="oq6-s02"
                           />
                         ))}
                       </div>
@@ -1942,7 +1942,7 @@ export default function ComprehensivePDFEditor({
                 )}
               </div>
 
-              <div className="relative" data-oid="yni:5c0">
+              <div className="relative" data-oid=".ybxiax">
                 <Button
                   variant={
                     currentTool === "rectangle" ||
@@ -1972,9 +1972,9 @@ export default function ComprehensivePDFEditor({
                       setShowShapeDropdown(true);
                     }
                   }}
-                  data-oid="m7.gc7-"
+                  data-oid="qbgy7.9"
                 >
-                  <Square className="h-4 w-4 mr-1" data-oid="nz-g0a6" />
+                  <Square className="h-4 w-4 mr-1" data-oid="0h4ewre" />
                   Shapes
                 </Button>
 
@@ -1985,9 +1985,9 @@ export default function ComprehensivePDFEditor({
                     currentTool === "x-mark") && (
                     <div
                       className="absolute top-full left-0 mt-1 z-50 bg-white border border-gray-200 rounded-md shadow-lg p-2 min-w-[120px] pdf4ever-shape-dropdown"
-                      data-oid="iz5fdqk"
+                      data-oid="4u5jjwc"
                     >
-                      <div className="space-y-1" data-oid="wlmcg_e">
+                      <div className="space-y-1" data-oid="dyk6g4p">
                         <Button
                           variant={
                             selectedShape === "rectangle"
@@ -2009,9 +2009,9 @@ export default function ComprehensivePDFEditor({
                             setCurrentTool("rectangle");
                             setShowShapeDropdown(false);
                           }}
-                          data-oid="0ua1ut5"
+                          data-oid="fbw-vma"
                         >
-                          <Square className="h-4 w-4 mr-2" data-oid=":07z15:" />
+                          <Square className="h-4 w-4 mr-2" data-oid="6s.-kyq" />
                           Rectangle
                         </Button>
                         <Button
@@ -2030,9 +2030,9 @@ export default function ComprehensivePDFEditor({
                             setCurrentTool("circle");
                             setShowShapeDropdown(false);
                           }}
-                          data-oid="ar27ugf"
+                          data-oid="b.a9wun"
                         >
-                          <Circle className="h-4 w-4 mr-2" data-oid="0apvyz5" />
+                          <Circle className="h-4 w-4 mr-2" data-oid=".r6ssqd" />
                           Circle
                         </Button>
                         <Button
@@ -2055,7 +2055,7 @@ export default function ComprehensivePDFEditor({
                             setCurrentTool("checkmark");
                             setShowShapeDropdown(false);
                           }}
-                          data-oid="tomiklg"
+                          data-oid="mmw07s0"
                         >
                           ✓ Checkmark
                         </Button>
@@ -2075,7 +2075,7 @@ export default function ComprehensivePDFEditor({
                             setCurrentTool("x-mark");
                             setShowShapeDropdown(false);
                           }}
-                          data-oid="6_a3y8u"
+                          data-oid="86wuu1d"
                         >
                           ✕ X Mark
                         </Button>
@@ -2101,14 +2101,14 @@ export default function ComprehensivePDFEditor({
                   }
                   setShowShapeDropdown(false);
                 }}
-                data-oid="_:ttso5"
+                data-oid="6g:qmep"
               >
-                <Signature className="h-4 w-4 mr-1" data-oid="qfb9gqw" />
+                <Signature className="h-4 w-4 mr-1" data-oid="s1ybc90" />
                 Sign
               </Button>
 
               {/* Line Tool */}
-              <div className="relative" data-oid="jtl050x">
+              <div className="relative" data-oid="zwylq2p">
                 <Button
                   variant={currentTool === "line" ? "default" : "outline"}
                   size="sm"
@@ -2119,29 +2119,29 @@ export default function ComprehensivePDFEditor({
                     setShowShapeDropdown(false);
                   }}
                   className="flex items-center gap-2 h-10"
-                  data-oid="7sl12.8"
+                  data-oid="pgc0d7a"
                 >
-                  <Minus className="h-4 w-4" data-oid="wp8zr5k" />
+                  <Minus className="h-4 w-4" data-oid="2byk9na" />
                   Line
-                  <ChevronDown className="h-3 w-3" data-oid="ds6bom." />
+                  <ChevronDown className="h-3 w-3" data-oid="4dq1tdi" />
                 </Button>
                 {showLineDropdown && (
                   <div
                     className="absolute top-12 left-0 z-50 bg-white border rounded-lg shadow-lg p-2 min-w-[200px]"
-                    data-oid="xv-akp_"
+                    data-oid="zwmqe9."
                   >
-                    <div className="space-y-3" data-oid="l_ar0cb">
+                    <div className="space-y-3" data-oid=".w5.q8p">
                       <div
                         className="text-sm font-medium text-black"
-                        data-oid="m300c4s"
+                        data-oid="mm85p55"
                       >
                         Line Settings
                       </div>
 
-                      <div className="space-y-2" data-oid="qlgzmgj">
+                      <div className="space-y-2" data-oid="0c:9ksj">
                         <label
                           className="text-sm text-black"
-                          data-oid="4g:ut-8"
+                          data-oid="043b..r"
                         >
                           Stroke Width: {lineStrokeWidth}px
                         </label>
@@ -2156,20 +2156,20 @@ export default function ComprehensivePDFEditor({
                           className="w-full"
                           title="Adjust line stroke width"
                           placeholder="Line stroke width"
-                          data-oid="y7sjil2"
+                          data-oid="zr:7wbn"
                         />
                       </div>
 
-                      <div className="space-y-2" data-oid="fr07th4">
+                      <div className="space-y-2" data-oid="1xddry-">
                         <label
                           className="text-sm text-black"
-                          data-oid=":cadrp:"
+                          data-oid="khgtyp."
                         >
                           Color
                         </label>
                         <div
                           className="grid grid-cols-4 gap-2"
-                          data-oid="uq6_m3t"
+                          data-oid="voszea-"
                         >
                           {[
                             { color: "#000000", name: "Black" },
@@ -2184,15 +2184,15 @@ export default function ComprehensivePDFEditor({
                                 setShowLineDropdown(false);
                               }}
                               className="flex flex-col items-center gap-1 p-2 hover:bg-gray-100 rounded text-black"
-                              data-oid="4t_3jdt"
+                              data-oid=":au.9n:"
                             >
                               <div
                                 className="w-4 h-4 rounded border pdf4ever-line-color-preview"
                                 data-color={color}
-                                data-oid="r1kxtwp"
+                                data-oid="kqv-h3g"
                               />
 
-                              <span className="text-xs" data-oid="vxokn:.">
+                              <span className="text-xs" data-oid="paf28gb">
                                 {name}
                               </span>
                             </button>
@@ -2213,7 +2213,7 @@ export default function ComprehensivePDFEditor({
                 className="hidden"
                 title="Upload image file"
                 placeholder="Select an image file"
-                data-oid="33kagnu"
+                data-oid="dtgezki"
               />
 
               <Button
@@ -2227,9 +2227,9 @@ export default function ComprehensivePDFEditor({
                     imageInputRef.current?.click();
                   }
                 }}
-                data-oid="wcj94yf"
+                data-oid="sheocxm"
               >
-                <ImageIcon className="h-4 w-4 mr-1" data-oid="8ti:k1c" />
+                <ImageIcon className="h-4 w-4 mr-1" data-oid="1qt6lw9" />
                 {selectedImage ? "Place Image" : "Upload Image"}
               </Button>
 
@@ -2243,32 +2243,32 @@ export default function ComprehensivePDFEditor({
                     setCurrentTool("select");
                   }
                 }}
-                data-oid="cd-kocd"
+                data-oid="yr:26mc"
               >
-                <Square className="h-4 w-4 mr-1" data-oid="hh7-xdq" />
+                <Square className="h-4 w-4 mr-1" data-oid="q74vvcu" />
                 Whiteout
               </Button>
 
               {/* Separator */}
-              <div className="h-6 w-px bg-gray-300 mx-2" data-oid="38whre2" />
+              <div className="h-6 w-px bg-gray-300 mx-2" data-oid="aamhp3-" />
 
               {/* Annotation Color */}
-              <Popover data-oid="v0ye4t8">
-                <PopoverTrigger asChild data-oid="s641dzg">
-                  <Button variant="outline" size="sm" data-oid=".xgl44s">
-                    <Palette className="h-4 w-4 mr-1" data-oid="90t4uir" />
+              <Popover data-oid="qh.0:ja">
+                <PopoverTrigger asChild data-oid="aw72vyi">
+                  <Button variant="outline" size="sm" data-oid="szbnxes">
+                    <Palette className="h-4 w-4 mr-1" data-oid="byznirt" />
                     <div
                       className="w-4 h-4 rounded border"
                       style={{ backgroundColor: annotationColor }}
-                      data-oid="7q.7ik:"
+                      data-oid="yn_p6v2"
                     />
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" data-oid="vkbr6mh">
+                <PopoverContent className="w-auto p-0" data-oid="e_mpr4o">
                   <ChromePicker
                     color={annotationColor}
                     onChange={(color) => setAnnotationColor(color.hex)}
-                    data-oid="1dtjn4c"
+                    data-oid="opwppmb"
                   />
                 </PopoverContent>
               </Popover>
@@ -2276,10 +2276,10 @@ export default function ComprehensivePDFEditor({
               {/* Eraser Size */}
               {currentTool === "eraser" && (
                 <>
-                  <span className="text-sm text-gray-600" data-oid="53f-3s.">
+                  <span className="text-sm text-gray-600" data-oid="vkf5q.m">
                     Size:
                   </span>
-                  <div className="w-24" data-oid="qb:52l1">
+                  <div className="w-24" data-oid="s:i:0h8">
                     <Slider
                       value={[eraserSize]}
                       onValueChange={(value) => setEraserSize(value[0])}
@@ -2287,17 +2287,17 @@ export default function ComprehensivePDFEditor({
                       min={5}
                       step={5}
                       className="h-6"
-                      data-oid="g::u-t6"
+                      data-oid="ghdv7zp"
                     />
                   </div>
-                  <span className="text-xs text-gray-500" data-oid="fknd8a5">
+                  <span className="text-xs text-gray-500" data-oid="b1qxmm.">
                     {eraserSize}px
                   </span>
                 </>
               )}
 
               {/* Separator */}
-              <div className="h-6 w-px bg-gray-300 mx-2" data-oid="0cbx.dm" />
+              <div className="h-6 w-px bg-gray-300 mx-2" data-oid="3osz:um" />
 
               {/* Undo/Redo */}
               <Button
@@ -2309,18 +2309,18 @@ export default function ComprehensivePDFEditor({
                 }}
                 disabled={historyIndex <= 0}
                 title={`Undo (${historyIndex}/${history.length - 1})`}
-                data-oid="ol9tn8c"
+                data-oid="wdill:b"
               >
-                <Undo className="h-4 w-4" data-oid="-28_vb_" />
+                <Undo className="h-4 w-4" data-oid="ei37m40" />
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={redo}
                 disabled={historyIndex >= history.length - 1}
-                data-oid="3a3u405"
+                data-oid="0mey7r8"
               >
-                <Redo className="h-4 w-4" data-oid="8mpzk6g" />
+                <Redo className="h-4 w-4" data-oid="bai8liy" />
               </Button>
             </div>
           </div>
@@ -2331,21 +2331,21 @@ export default function ComprehensivePDFEditor({
       {pdfDocument && (
         <div
           className="bg-white dark:bg-gray-800 border-b px-4 py-2"
-          data-oid="ctx3v::"
+          data-oid="mj956jl"
         >
-          <div className="flex items-center justify-between" data-oid="umw6o4v">
+          <div className="flex items-center justify-between" data-oid="pxawvgt">
             {/* Page Navigation */}
-            <div className="flex items-center gap-2" data-oid="n2rvbbv">
+            <div className="flex items-center gap-2" data-oid="t1h87tn">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={goToPreviousPage}
                 disabled={currentPage <= 1}
-                data-oid="4j3igzj"
+                data-oid="w4b5:e8"
               >
-                <ChevronLeft className="h-4 w-4" data-oid="wpmsj-b" />
+                <ChevronLeft className="h-4 w-4" data-oid="jv3yi42" />
               </Button>
-              <span className="text-sm font-medium" data-oid="_cupd08">
+              <span className="text-sm font-medium" data-oid="i4e3p1g">
                 Page {currentPage} of {totalPages}
               </span>
               <Button
@@ -2353,26 +2353,26 @@ export default function ComprehensivePDFEditor({
                 size="sm"
                 onClick={goToNextPage}
                 disabled={currentPage >= totalPages}
-                data-oid="rl-.bq9"
+                data-oid="hkr-krf"
               >
-                <ChevronRight className="h-4 w-4" data-oid="giokh3h" />
+                <ChevronRight className="h-4 w-4" data-oid="s43ws14" />
               </Button>
             </div>
 
             {/* Zoom Controls */}
-            <div className="flex items-center gap-2" data-oid="2ow9s0:">
+            <div className="flex items-center gap-2" data-oid="_rrtix-">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleZoomOut}
                 disabled={zoom <= 50}
-                data-oid="4twd6_f"
+                data-oid="_6p_4p."
               >
-                <ZoomOut className="h-4 w-4" data-oid="bogi62f" />
+                <ZoomOut className="h-4 w-4" data-oid="7kuli0c" />
               </Button>
               <span
                 className="text-sm font-medium min-w-16 text-center"
-                data-oid="wvziyod"
+                data-oid="2r.ptxh"
               >
                 {zoom}%
               </span>
@@ -2381,9 +2381,9 @@ export default function ComprehensivePDFEditor({
                 size="sm"
                 onClick={handleZoomIn}
                 disabled={zoom >= 200}
-                data-oid="-cso7az"
+                data-oid="597pjq_"
               >
-                <ZoomIn className="h-4 w-4" data-oid="4zkqu8-" />
+                <ZoomIn className="h-4 w-4" data-oid="gqx0qhf" />
               </Button>
             </div>
 
@@ -2393,9 +2393,9 @@ export default function ComprehensivePDFEditor({
               size="sm"
               onClick={exportPDF}
               disabled={!pdfDocument || isLoading}
-              data-oid="kek0029"
+              data-oid="khjcfq7"
             >
-              <Download className="h-4 w-4 mr-1" data-oid="lmjjvqg" />
+              <Download className="h-4 w-4 mr-1" data-oid="qbpdks0" />
               {isLoading ? "Exporting..." : "Download"}
             </Button>
           </div>
@@ -2405,7 +2405,7 @@ export default function ComprehensivePDFEditor({
       {/* Main PDF Content Area */}
       <div
         className="flex-1 overflow-auto bg-gray-100 dark:bg-gray-800 p-4"
-        data-oid="a18z-0v"
+        data-oid="19pxp1s"
       >
         {pdfDocument ? (
           <>
@@ -2413,9 +2413,9 @@ export default function ComprehensivePDFEditor({
             {activeMode === "fill" && (
               <div
                 className="flex justify-center items-start min-h-full"
-                data-oid="1qvui33"
+                data-oid="a8hlvux"
               >
-                <div className="w-full max-w-4xl" data-oid="nldczam">
+                <div className="w-full max-w-4xl" data-oid="-wr7iic">
                   <FillablePDFViewer
                     file={null}
                     pdfDocument={pdfDocument}
@@ -2423,7 +2423,7 @@ export default function ComprehensivePDFEditor({
                     onFieldsDetected={handleFormFieldsDetected}
                     onSave={handleFormDataSave}
                     className="bg-white rounded-lg shadow-lg"
-                    data-oid="e8g04lj"
+                    data-oid="eq_o7lp"
                   />
                 </div>
               </div>
@@ -2433,17 +2433,17 @@ export default function ComprehensivePDFEditor({
             {activeMode !== "fill" && (
               <div
                 className="flex justify-center items-start min-h-full"
-                data-oid="ejfyd:-"
+                data-oid="zgx7e2z"
               >
                 <div
                   className="relative bg-white shadow-lg"
                   id="pdf-canvas-container"
-                  data-oid="4rv_b_6"
+                  data-oid="r5i-:e:"
                 >
                   <canvas
                     ref={canvasRef}
                     className="block"
-                    data-oid="7y8ka02"
+                    data-oid="j4wiczg"
                   />
 
                   <canvas
@@ -2490,13 +2490,13 @@ export default function ComprehensivePDFEditor({
                       pointerEvents: "auto",
                       zIndex: 10,
                     }}
-                    data-oid="2401z88"
+                    data-oid="2j-0rmg"
                   />
 
                   {/* Text boxes - rendered persistently outside tabs */}
                   <div
                     className={`pdf4ever-textbox-manager-container${["rectangle", "circle", "line", "checkmark", "x-mark", "signature", "highlight", "image"].includes(currentTool) ? " pointer-events-none" : ""}`}
-                    data-oid="1:t-hos"
+                    data-oid="x6-tzr1"
                   >
                     <TextBoxManager
                       canvasRef={canvasRef}
@@ -2505,7 +2505,7 @@ export default function ComprehensivePDFEditor({
                       onTextBoxesChange={setTextBoxes}
                       showControls={false}
                       originalPdfData={originalFileData ?? undefined}
-                      data-oid="72g4qfn"
+                      data-oid="_0jeafq"
                     />
                   </div>
 
@@ -2519,7 +2519,7 @@ export default function ComprehensivePDFEditor({
                         zIndex: 15,
                         pointerEvents: "auto",
                       }}
-                      data-oid="-uo7cas"
+                      data-oid="9smkkoh"
                     >
                       <TextBoxManager
                         canvasRef={canvasRef}
@@ -2528,7 +2528,7 @@ export default function ComprehensivePDFEditor({
                         onTextBoxesChange={setTextBoxes}
                         showControls={true}
                         originalPdfData={originalFileData ?? undefined}
-                        data-oid="4itawk6"
+                        data-oid=":s59frj"
                       />
                     </div>
                   )}
@@ -2536,14 +2536,14 @@ export default function ComprehensivePDFEditor({
                   {/* Whiteout Layer */}
                   <div
                     className={`pdf4ever-whiteout-layer-container${["rectangle", "circle", "checkmark", "x-mark"].includes(currentTool) ? " pointer-events-none" : ""}`}
-                    data-oid="l:brg_1"
+                    data-oid="3fubb3o"
                   >
                     <WhiteoutLayer
                       isActive={whiteoutMode}
                       canvasRef={canvasRef}
                       scale={zoom / 100}
                       onBlocksChange={setWhiteoutBlocks}
-                      data-oid="qb10yha"
+                      data-oid="993_pa4"
                     />
                   </div>
 
@@ -2559,14 +2559,14 @@ export default function ComprehensivePDFEditor({
                         ? "none"
                         : "auto",
                     }}
-                    data-oid="nw63zqh"
+                    data-oid="zwoktqx"
                   >
                     <TextLayer
                       isActive={currentTool === "text"}
                       canvasRef={canvasRef}
                       scale={zoom / 100}
                       onTextElementsChange={setTextLayerElements}
-                      data-oid="jqxmm6t"
+                      data-oid="xn76doy"
                     />
                   </div>
                 </div>
@@ -2576,22 +2576,23 @@ export default function ComprehensivePDFEditor({
         ) : (
           <div
             className="flex items-center justify-center h-full"
-            data-oid="_ha46x_"
+            data-oid="ca2paz_"
           >
-            <div className="text-center" data-oid="fehrh-s">
+            <div className="text-center" data-oid="j:23z6o">
               <Upload
                 className="h-12 w-12 mx-auto text-gray-400 mb-4"
-                data-oid="n5xan:z"
+                data-oid="6atl956"
               />
+
               <h3
                 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2"
-                data-oid="ejar57w"
+                data-oid="lrmp4b8"
               >
                 Upload a PDF to get started
               </h3>
               <p
                 className="text-gray-500 dark:text-gray-400"
-                data-oid="-.1qtsj"
+                data-oid="ox_13f1"
               >
                 Choose a PDF file to edit, merge, split, fill forms, or add
                 content
@@ -2605,15 +2606,15 @@ export default function ComprehensivePDFEditor({
       <Dialog
         open={showSignatureDialog}
         onOpenChange={setShowSignatureDialog}
-        data-oid="pk-d7jp"
+        data-oid="pab.xp."
       >
-        <DialogContent className="sm:max-w-md" data-oid="wyg-bum">
-          <DialogHeader data-oid="00s5i-x">
-            <DialogTitle data-oid="imgw.k_">Enter Your Signature</DialogTitle>
+        <DialogContent className="sm:max-w-md" data-oid="nelw1si">
+          <DialogHeader data-oid="0mq_2u-">
+            <DialogTitle data-oid="ye.zryn">Enter Your Signature</DialogTitle>
           </DialogHeader>
-          <div className="space-y-4" data-oid="i-zot1f">
-            <div data-oid="66qy9mi">
-              <Label htmlFor="signature-name" data-oid="y6.gv3h">
+          <div className="space-y-4" data-oid="ycecltv">
+            <div data-oid="vzzzi6q">
+              <Label htmlFor="signature-name" data-oid="lcpzyta">
                 Full Name
               </Label>
               <Input
@@ -2622,12 +2623,12 @@ export default function ComprehensivePDFEditor({
                 onChange={(e) => setSignatureName(e.target.value)}
                 placeholder="Enter your full name"
                 className="mt-1"
-                data-oid="loi5ik3"
+                data-oid="5w:t.ag"
               />
             </div>
 
-            <div data-oid="-t6_7ow">
-              <Label htmlFor="signature-font" data-oid="mju_fzn">
+            <div data-oid="z::e5ig">
+              <Label htmlFor="signature-font" data-oid="zldf0qj">
                 Signature Style
               </Label>
               <select
@@ -2636,33 +2637,33 @@ export default function ComprehensivePDFEditor({
                 onChange={(e) => setSignatureFont(e.target.value)}
                 className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black signature-select"
                 title="Signature Style"
-                data-oid="_z7e.q4"
+                data-oid="j:emqqz"
               >
-                <option value="Dancing Script" data-oid="io9w8wt">
+                <option value="Dancing Script" data-oid="2cwyrbd">
                   Dancing Script (Cursive)
                 </option>
-                <option value="Great Vibes" data-oid="vec9wee">
+                <option value="Great Vibes" data-oid="_pkrfmb">
                   Great Vibes (Elegant)
                 </option>
-                <option value="Allura" data-oid="vcfgfxi">
+                <option value="Allura" data-oid="5ttb0rv">
                   Allura (Flowing)
                 </option>
-                <option value="Pacifico" data-oid="jq89j0a">
+                <option value="Pacifico" data-oid="o-lgp_s">
                   Pacifico (Friendly)
                 </option>
-                <option value="Satisfy" data-oid="e:6-wcb">
+                <option value="Satisfy" data-oid="vjr2evo">
                   Satisfy (Casual)
                 </option>
-                <option value="Kaushan Script" data-oid="jj6bvfx">
+                <option value="Kaushan Script" data-oid="2s:ci4l">
                   Kaushan Script (Modern)
                 </option>
-                <option value="Courgette" data-oid="mr73qld">
+                <option value="Courgette" data-oid="g1b9iel">
                   Courgette (Rounded)
                 </option>
-                <option value="serif" data-oid="z:3zo76">
+                <option value="serif" data-oid="tb:-7.x">
                   Times New Roman (Traditional)
                 </option>
-                <option value="sans-serif" data-oid=".::hpw3">
+                <option value="sans-serif" data-oid="hbcx:yx">
                   Arial (Clean)
                 </option>
               </select>
@@ -2671,9 +2672,9 @@ export default function ComprehensivePDFEditor({
             {signatureName && (
               <div
                 className="mt-4 p-4 bg-gray-50 rounded-lg"
-                data-oid="6mi4r.w"
+                data-oid="jc6wtn-"
               >
-                <Label data-oid="i.rud5n">Preview:</Label>
+                <Label data-oid="36h3rbl">Preview:</Label>
                 <div
                   style={{
                     fontFamily: signatureFont,
@@ -2682,17 +2683,17 @@ export default function ComprehensivePDFEditor({
                     textAlign: "center",
                     padding: "10px",
                   }}
-                  data-oid="8ayc5yr"
+                  data-oid="tq38mee"
                 >
                   {signatureName}
                 </div>
               </div>
             )}
-            <div className="flex justify-end space-x-2" data-oid="k:jx-2c">
+            <div className="flex justify-end space-x-2" data-oid="rgztz0_">
               <Button
                 variant="outline"
                 onClick={() => setShowSignatureDialog(false)}
-                data-oid="n3dqhha"
+                data-oid="ttvoltj"
               >
                 Cancel
               </Button>
@@ -2709,7 +2710,7 @@ export default function ComprehensivePDFEditor({
                   }
                 }}
                 disabled={!signatureName.trim()}
-                data-oid="7f9hywq"
+                data-oid="ys4ehzw"
               >
                 Use Signature
               </Button>

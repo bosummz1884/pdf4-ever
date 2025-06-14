@@ -35,35 +35,35 @@ export default function Footer() {
   return (
     <footer
       className="bg-card dark:bg-card border-t border-border"
-      data-oid="4orftvg"
+      data-oid="6.m.4hx"
     >
       <div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
-        data-oid="_d_-_05"
+        data-oid="hmozoa1"
       >
         <div
           className="grid grid-cols-1 md:grid-cols-4 gap-8"
-          data-oid=".r77ywx"
+          data-oid="8j-u_ix"
         >
           {/* Company Info */}
-          <div className="col-span-1 md:col-span-2" data-oid="yv93ob7">
-            <h3 className="text-2xl font-bold mb-4" data-oid="1q4itls">
-              <span className="text-muted-foreground" data-oid="xvtk7bp">
+          <div className="col-span-1 md:col-span-2" data-oid="qqp3iu4">
+            <h3 className="text-2xl font-bold mb-4" data-oid="kpnve3k">
+              <span className="text-muted-foreground" data-oid="0cjs.qo">
                 PDF
               </span>
-              <span className="text-primary" data-oid="zyjhwbo">
+              <span className="text-primary" data-oid="e7vy_5a">
                 4EVER
               </span>
             </h3>
             <p
               className="text-muted-foreground mb-6 max-w-md"
-              data-oid="sqxoi_l"
+              data-oid="d63ek70"
             >
               The most powerful online PDF editor. Edit, convert, and manage
               your PDFs with ease.
             </p>
             {/* Social Media Links */}
-            <div className="flex space-x-4" data-oid="2061ein">
+            <div className="flex space-x-4" data-oid="3h_qg2d">
               {socialLinks.map((social) => (
                 <Button
                   key={social.platform}
@@ -71,10 +71,10 @@ export default function Footer() {
                   size="icon"
                   onClick={() => handleSocial(social.platform)}
                   className="w-10 h-10 bg-muted dark:bg-muted rounded-lg hover:bg-primary transition-colors duration-200 text-muted-foreground hover:text-white"
-                  data-oid="he31i-_"
+                  data-oid="sgh8vto"
                 >
-                  <social.icon className="h-5 w-5" data-oid="dizmoxc" />
-                  <span className="sr-only" data-oid="a3rfn_u">
+                  <social.icon className="h-5 w-5" data-oid="byhroyv" />
+                  <span className="sr-only" data-oid="5fvo6h5">
                     {social.label}
                   </span>
                 </Button>
@@ -83,46 +83,46 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div data-oid=".6mq._p">
+          <div data-oid="r8o7fyv">
             <h4
               className="text-lg font-semibold text-foreground mb-4"
-              data-oid="pd.l4k0"
+              data-oid="nhq9:7d"
             >
               Product
             </h4>
-            <ul className="space-y-3" data-oid="dapyzc9">
-              <li data-oid="ng151:q">
+            <ul className="space-y-3" data-oid="arbdfc3">
+              <li data-oid="krl1_2k">
                 <button
                   onClick={() => scrollToSection("#features")}
                   className="hover:text-primary transition-colors duration-200 text-left text-muted-foreground"
-                  data-oid="a_60ugb"
+                  data-oid="i1szqsw"
                 >
                   Features
                 </button>
               </li>
-              <li data-oid="hd63vyz">
+              <li data-oid="7l4x:kg">
                 <button
                   onClick={() => scrollToSection("#pricing")}
                   className="hover:text-primary transition-colors duration-200 text-left text-muted-foreground"
-                  data-oid="ad703pm"
+                  data-oid="g2gj19s"
                 >
                   Pricing
                 </button>
               </li>
-              <li data-oid="7y6jstj">
+              <li data-oid="1ogh60c">
                 <a
                   href="#"
                   className="hover:text-primary transition-colors duration-200 text-muted-foreground"
-                  data-oid="l:33-uj"
+                  data-oid="mjs-lqt"
                 >
                   API
                 </a>
               </li>
-              <li data-oid="v3amhm8">
+              <li data-oid="te23pvh">
                 <a
                   href="#"
                   className="hover:text-primary transition-colors duration-200 text-muted-foreground"
-                  data-oid="u3fa9zy"
+                  data-oid="zvop386"
                 >
                   Integrations
                 </a>
@@ -131,46 +131,46 @@ export default function Footer() {
           </div>
 
           {/* Support Links */}
-          <div data-oid="qlfbr.d">
+          <div data-oid="nv.da:b">
             <h4
               className="text-lg font-semibold text-foreground mb-4"
-              data-oid="l73c9u3"
+              data-oid="vo8ebht"
             >
               Support
             </h4>
-            <ul className="space-y-3" data-oid="su8q_fm">
-              <li data-oid="2095nb9">
+            <ul className="space-y-3" data-oid="k3frqhb">
+              <li data-oid="azffxly">
                 <button
                   onClick={handleContact}
                   className="hover:text-primary transition-colors duration-200 text-left text-muted-foreground"
-                  data-oid="m6.1jgq"
+                  data-oid="b52kccy"
                 >
                   Contact
                 </button>
               </li>
-              <li data-oid="wlntoua">
+              <li data-oid="t9fk.mu">
                 <button
                   onClick={handlePrivacy}
                   className="hover:text-primary transition-colors duration-200 text-left text-muted-foreground"
-                  data-oid="1jikoe0"
+                  data-oid="5mcyia6"
                 >
                   Privacy Policy
                 </button>
               </li>
-              <li data-oid="v4l57a4">
+              <li data-oid="f:._jzl">
                 <button
                   onClick={handleTerms}
                   className="hover:text-primary transition-colors duration-200 text-left text-muted-foreground"
-                  data-oid="qh34ya:"
+                  data-oid=".74s1cf"
                 >
                   Terms of Service
                 </button>
               </li>
-              <li data-oid="n7g:7l:">
+              <li data-oid="h_ddl40">
                 <a
                   href="#"
                   className="hover:text-primary transition-colors duration-200 text-muted-foreground"
-                  data-oid="4en9xyq"
+                  data-oid="i-9abbo"
                 >
                   Help Center
                 </a>
@@ -182,36 +182,36 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div
           className="border-t border-border mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center"
-          data-oid="etiijsl"
+          data-oid="0yl5e4n"
         >
-          <p className="text-muted-foreground text-sm" data-oid="3r378ef">
+          <p className="text-muted-foreground text-sm" data-oid="sy63jo1">
             © 2024{" "}
-            <span className="text-muted-foreground" data-oid="lb-9ooo">
+            <span className="text-muted-foreground" data-oid="i5h5e32">
               PDF
             </span>
-            <span className="text-primary" data-oid="403bitr">
+            <span className="text-primary" data-oid="wgibioj">
               4EVER
             </span>
             . All rights reserved.
           </p>
           <p
             className="text-muted-foreground text-sm mt-2 sm:mt-0 max-w-md text-right"
-            data-oid="8y1f_hc"
+            data-oid="e-ywbvr"
           >
             Thank you for choosing{" "}
-            <span className="text-muted-foreground" data-oid="ww_4j1h">
+            <span className="text-muted-foreground" data-oid="nmqhqgi">
               PDF
             </span>
-            <span className="text-primary" data-oid="owzrdg:">
+            <span className="text-primary" data-oid="18xvsjt">
               4EVER
             </span>
             , we appreciate you utilizing our service. If you have any
             suggestions, or ideas on how we could make the experience better for
             you please email Admin@
-            <span className="text-muted-foreground" data-oid="s-ezkuo">
+            <span className="text-muted-foreground" data-oid="gk5t2xl">
               PDF
             </span>
-            <span className="text-primary" data-oid="db2t9gq">
+            <span className="text-primary" data-oid="jojg8g7">
               4EVER
             </span>
             .org with your comments and suggestions. Always remember to stay

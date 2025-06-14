@@ -131,38 +131,39 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({
   return (
     <div
       className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-      data-oid="5my2qe4"
+      data-oid="54zyaeu"
     >
       <Card
         className="w-full max-w-4xl max-h-[80vh] overflow-hidden"
-        data-oid="kvodeev"
+        data-oid="h06cend"
       >
-        <CardHeader data-oid="guvx1om">
-          <div className="flex justify-between items-center" data-oid="e5:lueb">
-            <CardTitle data-oid="shkk3m:">Split PDF - Extract Pages</CardTitle>
+        <CardHeader data-oid="f:0t2:m">
+          <div className="flex justify-between items-center" data-oid="duq0xum">
+            <CardTitle data-oid="j1m1u09">Split PDF - Extract Pages</CardTitle>
             <Button
               variant="ghost"
               size="sm"
               onClick={onClose}
-              data-oid="1r83lbj"
+              data-oid="smrk1i5"
             >
-              <X className="w-4 h-4" data-oid="0u2g8hc" />
+              <X className="w-4 h-4" data-oid="p-rabp9" />
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4" data-oid="cxbmqzf">
+        <CardContent className="space-y-4" data-oid="bl4r:zz">
           {!selectedFile && (
             <div
               className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center"
-              data-oid="1e7ohxh"
+              data-oid="ica0pwd"
             >
               <Upload
                 className="w-8 h-8 mx-auto mb-2 text-muted-foreground"
-                data-oid="l-:8pkt"
+                data-oid="y3aeamx"
               />
+
               <p
                 className="text-sm text-muted-foreground mb-2"
-                data-oid="zgq1kxz"
+                data-oid="l1bm1.s"
               >
                 Select a PDF file to split
               </p>
@@ -172,14 +173,14 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({
                 onChange={handleFileUpload}
                 className="hidden"
                 id="pdf-upload"
-                data-oid="m-oxab8"
+                data-oid="7avr2jd"
               />
 
-              <label htmlFor="pdf-upload" data-oid="m70nv65">
+              <label htmlFor="pdf-upload" data-oid="in:8yet">
                 <Button
                   variant="outline"
                   className="cursor-pointer"
-                  data-oid="7x1.n8_"
+                  data-oid="98v5ri0"
                 >
                   Choose PDF File
                 </Button>
@@ -191,16 +192,16 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({
             <>
               <div
                 className="flex items-center gap-2 p-3 bg-muted/50 rounded"
-                data-oid="9d.f2xk"
+                data-oid="wv83:xz"
               >
-                <FileText className="w-5 h-5 text-primary" data-oid="ur3ebd5" />
-                <div data-oid="xfro9r3">
-                  <p className="font-medium" data-oid="rdl_fej">
+                <FileText className="w-5 h-5 text-primary" data-oid="dp07kiw" />
+                <div data-oid="fvhzli7">
+                  <p className="font-medium" data-oid=".nbgw8j">
                     {selectedFile.name}
                   </p>
                   <p
                     className="text-sm text-muted-foreground"
-                    data-oid="ek40cov"
+                    data-oid="1vv30b1"
                   >
                     {totalPages} pages •{" "}
                     {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB
@@ -208,9 +209,9 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({
                 </div>
               </div>
 
-              <div className="space-y-3" data-oid="su2tu8q">
-                <div data-oid="g3xng7_">
-                  <Label htmlFor="page-range" data-oid="4r83c1d">
+              <div className="space-y-3" data-oid="-rahzh8">
+                <div data-oid="dt603-y">
+                  <Label htmlFor="page-range" data-oid="s5tmv1m">
                     Page Range (e.g., 1-3, 5, 7-9)
                   </Label>
                   <Input
@@ -218,39 +219,39 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({
                     value={pageRange}
                     onChange={(e) => handleRangeInput(e.target.value)}
                     placeholder="Enter page numbers or ranges"
-                    data-oid="r.r357y"
+                    data-oid=":ik4dnc"
                   />
                 </div>
 
                 <div
                   className="max-h-40 overflow-y-auto border rounded p-3"
-                  data-oid="8-9z5b-"
+                  data-oid="3in_t_-"
                 >
                   <Label
                     className="text-sm font-medium mb-2 block"
-                    data-oid="r.f2:4h"
+                    data-oid="j613z5u"
                   >
                     Select Pages ({selectedPages.length} selected):
                   </Label>
-                  <div className="grid grid-cols-10 gap-1" data-oid="4zn3ze2">
+                  <div className="grid grid-cols-10 gap-1" data-oid="cbgshe.">
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                       (pageNum) => (
                         <div
                           key={pageNum}
                           className="flex items-center space-x-1"
-                          data-oid="4_0f0wl"
+                          data-oid="zl_r9tc"
                         >
                           <Checkbox
                             id={`page-${pageNum}`}
                             checked={selectedPages.includes(pageNum)}
                             onCheckedChange={() => handlePageToggle(pageNum)}
-                            data-oid="cj_qe6r"
+                            data-oid="x8vepzn"
                           />
 
                           <Label
                             htmlFor={`page-${pageNum}`}
                             className="text-xs cursor-pointer"
-                            data-oid="3asa49p"
+                            data-oid="k148:60"
                           >
                             {pageNum}
                           </Label>
@@ -263,21 +264,21 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({
                 {selectedPages.length > 0 && (
                   <div
                     className="p-2 bg-primary/10 rounded text-sm"
-                    data-oid="8232wks"
+                    data-oid=".wf-qce"
                   >
                     Selected pages: {selectedPages.join(", ")}
                   </div>
                 )}
               </div>
 
-              <div className="flex gap-2 pt-4" data-oid="aaekt1e">
+              <div className="flex gap-2 pt-4" data-oid="nm0h4gf">
                 <Button
                   onClick={handleSplit}
                   disabled={selectedPages.length === 0 || isProcessing}
                   className="flex-1 bg-gradient-to-r from-primary via-secondary to-accent text-white"
-                  data-oid="sacvr5t"
+                  data-oid="w:nphnm"
                 >
-                  <Download className="w-4 h-4 mr-2" data-oid="g2km1qc" />
+                  <Download className="w-4 h-4 mr-2" data-oid="4gelyj_" />
                   {isProcessing
                     ? "Extracting..."
                     : `Extract ${selectedPages.length} Pages`}
@@ -285,11 +286,11 @@ const PDFSplitTool: React.FC<PDFSplitToolProps> = ({
                 <Button
                   variant="outline"
                   onClick={() => setSelectedFile(null)}
-                  data-oid="ldui-:q"
+                  data-oid="niv8:et"
                 >
                   Choose Different File
                 </Button>
-                <Button variant="outline" onClick={onClose} data-oid="6anhm_4">
+                <Button variant="outline" onClick={onClose} data-oid="s_2zj93">
                   Cancel
                 </Button>
               </div>

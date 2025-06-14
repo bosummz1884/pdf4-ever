@@ -51,16 +51,16 @@ const OcrExtractor: React.FC<OcrExtractorProps> = ({ onTextExtracted }) => {
       disabled={isProcessing}
       variant="outline"
       className="border-secondary text-secondary hover:bg-secondary/10"
-      data-oid="enijzqd"
+      data-oid="3vmfu_7"
     >
       {isProcessing ? (
         <>
-          <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="fibnwxz" />
+          <Loader2 className="w-4 h-4 mr-2 animate-spin" data-oid="eekwzn1" />
           OCR Processing... {progress}%
         </>
       ) : (
         <>
-          <Camera className="w-4 h-4 mr-2" data-oid="cbiye:k" />
+          <Camera className="w-4 h-4 mr-2" data-oid="l7xj:cz" />
           Extract Text from Image (OCR)
         </>
       )}

@@ -129,7 +129,7 @@ const AnnotationCanvas = forwardRef<AnnotationCanvasRef, AnnotationCanvasProps>(
         onMouseMove={draw}
         onMouseUp={stopDrawing}
         onMouseLeave={stopDrawing}
-        data-oid="c.uc6i3"
+        data-oid="i03fkeo"
       />
     );
   },

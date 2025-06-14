@@ -134,7 +134,7 @@ export default function WhiteoutLayer({
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      data-oid="kh4y64f"
+      data-oid="9daau6g"
     >
       {/* Render drawing block while dragging */}
       {drawingBlock && (
@@ -150,7 +150,7 @@ export default function WhiteoutLayer({
             pointerEvents: "none",
             zIndex: 25,
           }}
-          data-oid="qed0p3i"
+          data-oid="i20kfq7"
         />
       )}
 
@@ -180,7 +180,7 @@ export default function WhiteoutLayer({
             zIndex: selectedBlockId === block.id ? 50 : 30,
             position: "absolute",
           }}
-          data-oid="el-hnw5"
+          data-oid="saljq0i"
         >
           <div
             style={{
@@ -193,7 +193,7 @@ export default function WhiteoutLayer({
               position: "relative",
               cursor: isActive ? "move" : "default",
             }}
-            data-oid="33y_km4"
+            data-oid="73x:mps"
           >
             {selectedBlockId === block.id && (
               <div
@@ -209,7 +209,7 @@ export default function WhiteoutLayer({
                   minWidth: "200px",
                 }}
                 onClick={(e) => e.stopPropagation()}
-                data-oid="ex70jac"
+                data-oid="kk19xuy"
               >
                 <div
                   style={{
@@ -217,7 +217,7 @@ export default function WhiteoutLayer({
                     fontSize: "12px",
                     fontWeight: "bold",
                   }}
-                  data-oid="hk2sz.j"
+                  data-oid="g.-rbmd"
                 >
                   Whiteout Color
                 </div>
@@ -225,7 +225,7 @@ export default function WhiteoutLayer({
                   color={block.color}
                   onChange={(color) => updateBlock(block.id, { color })}
                   style={{ width: "100%", height: "120px" }}
-                  data-oid="kwo8528"
+                  data-oid="6z64_s."
                 />
 
                 <button
@@ -244,7 +244,7 @@ export default function WhiteoutLayer({
                     e.stopPropagation();
                     removeBlock(block.id);
                   }}
-                  data-oid="zgjz3t_"
+                  data-oid="9jx_9.z"
                 >
                   Delete Block
                 </button>

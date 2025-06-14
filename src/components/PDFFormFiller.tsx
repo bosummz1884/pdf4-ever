@@ -363,23 +363,23 @@ export function PDFFormFiller({
   const getFieldIcon = (type: FormField["type"]) => {
     switch (type) {
       case "email":
-        return <Mail className="h-4 w-4" data-oid="_4yv95t" />;
+        return <Mail className="h-4 w-4" data-oid="m5wzro8" />;
       case "phone":
-        return <Phone className="h-4 w-4" data-oid="x-r.hiw" />;
+        return <Phone className="h-4 w-4" data-oid=".-48yk:" />;
       case "date":
-        return <Calendar className="h-4 w-4" data-oid="c3bo.vk" />;
+        return <Calendar className="h-4 w-4" data-oid="t2r06m8" />;
       case "number":
-        return <Hash className="h-4 w-4" data-oid="zg28hj0" />;
+        return <Hash className="h-4 w-4" data-oid="_wf3vb9" />;
       case "checkbox":
-        return <CheckSquare className="h-4 w-4" data-oid="_ot9b7k" />;
+        return <CheckSquare className="h-4 w-4" data-oid="h8rcc7d" />;
       case "radio":
-        return <Circle className="h-4 w-4" data-oid="aqsmy9i" />;
+        return <Circle className="h-4 w-4" data-oid="j4e:_ez" />;
       case "dropdown":
-        return <Square className="h-4 w-4" data-oid="k.7k4-5" />;
+        return <Square className="h-4 w-4" data-oid="oc510et" />;
       case "textarea":
-        return <FileText className="h-4 w-4" data-oid="7x07hu9" />;
+        return <FileText className="h-4 w-4" data-oid="d8lfccw" />;
       default:
-        return <Type className="h-4 w-4" data-oid="51dxbtq" />;
+        return <Type className="h-4 w-4" data-oid="mf1504." />;
     }
   };
 
@@ -409,7 +409,7 @@ export function PDFFormFiller({
             value={field.value.toString()}
             onChange={(e) => updateFieldValue(field.id, e.target.value)}
             placeholder={field.placeholder}
-            data-oid="t7amzm0"
+            data-oid="si.aj_x"
           />
         );
 
@@ -421,23 +421,23 @@ export function PDFFormFiller({
             onChange={(e) => updateFieldValue(field.id, e.target.value)}
             placeholder={field.placeholder}
             rows={3}
-            data-oid="avw2p7c"
+            data-oid="zb2tfu5"
           />
         );
 
       case "checkbox":
         return (
-          <div className="flex items-center space-x-2" data-oid="w9h4tdn">
+          <div className="flex items-center space-x-2" data-oid="xw.tv1c">
             <Checkbox
               id={field.id}
               checked={!!field.value}
               onCheckedChange={(checked) =>
                 updateFieldValue(field.id, !!checked)
               }
-              data-oid="zl6w4t4"
+              data-oid="rcnbvpj"
             />
 
-            <Label htmlFor={field.id} className="text-sm" data-oid="hg1gjo:">
+            <Label htmlFor={field.id} className="text-sm" data-oid="fv6hxxz">
               {field.name}
             </Label>
           </div>
@@ -448,20 +448,21 @@ export function PDFFormFiller({
           <RadioGroup
             value={field.value.toString()}
             onValueChange={(value) => updateFieldValue(field.id, value)}
-            data-oid="osva7rd"
+            data-oid="939aj6q"
           >
             {field.options?.map((option) => (
               <div
                 key={option}
                 className="flex items-center space-x-2"
-                data-oid="j717cj-"
+                data-oid="p8ysl2i"
               >
                 <RadioGroupItem
                   value={option}
                   id={`${field.id}_${option}`}
-                  data-oid="0:mc9ls"
+                  data-oid="zgybmqw"
                 />
-                <Label htmlFor={`${field.id}_${option}`} data-oid="shke2_t">
+
+                <Label htmlFor={`${field.id}_${option}`} data-oid="z2-2c0r">
                   {option}
                 </Label>
               </div>
@@ -474,17 +475,17 @@ export function PDFFormFiller({
           <Select
             value={field.value.toString()}
             onValueChange={(value) => updateFieldValue(field.id, value)}
-            data-oid="9fuajfh"
+            data-oid="n0bst63"
           >
             <SelectTrigger
               className={error ? "border-red-300" : ""}
-              data-oid="witldin"
+              data-oid="7o5zytf"
             >
-              <SelectValue placeholder={field.placeholder} data-oid="j_tvpf5" />
+              <SelectValue placeholder={field.placeholder} data-oid="e5tp736" />
             </SelectTrigger>
-            <SelectContent data-oid="9z3k3b:">
+            <SelectContent data-oid="tbduxns">
               {field.options?.map((option) => (
-                <SelectItem key={option} value={option} data-oid="_hkfazd">
+                <SelectItem key={option} value={option} data-oid="3wf0:cu">
                   {option}
                 </SelectItem>
               ))}
@@ -499,7 +500,7 @@ export function PDFFormFiller({
             value={field.value.toString()}
             onChange={(e) => updateFieldValue(field.id, e.target.value)}
             placeholder={field.placeholder}
-            data-oid="hul_fld"
+            data-oid="fzdb9n8"
           />
         );
     }
@@ -507,19 +508,20 @@ export function PDFFormFiller({
 
   if (!pdfDocument) {
     return (
-      <Card data-oid="p1qg613">
-        <CardContent className="p-8 text-center" data-oid="fo6jpjz">
+      <Card data-oid="67fhwa6">
+        <CardContent className="p-8 text-center" data-oid="dnm_d59">
           <FileText
             className="h-12 w-12 mx-auto mb-4 text-gray-400"
-            data-oid="dabkeda"
+            data-oid="ema78ae"
           />
+
           <h3
             className="text-lg font-medium text-gray-900 mb-2"
-            data-oid="qgfnyxc"
+            data-oid="qm7_tkn"
           >
             No PDF Loaded
           </h3>
-          <p className="text-gray-600" data-oid=":x4ms6o">
+          <p className="text-gray-600" data-oid="d74dtna">
             Load a PDF document to detect and fill form fields
           </p>
         </CardContent>
@@ -528,80 +530,81 @@ export function PDFFormFiller({
   }
 
   return (
-    <div className="space-y-6" data-oid="_0a_3te">
+    <div className="space-y-6" data-oid="ixkkk-r">
       {/* Header */}
-      <Card data-oid="85cq_fq">
-        <CardHeader data-oid="83948y5">
-          <div className="flex items-center justify-between" data-oid="2yze1i5">
-            <CardTitle className="flex items-center gap-2" data-oid="ey1.2e2">
-              <FileText className="h-5 w-5" data-oid="uofvsnw" />
+      <Card data-oid="s7trk0g">
+        <CardHeader data-oid="9l7_a:3">
+          <div className="flex items-center justify-between" data-oid="292vi8w">
+            <CardTitle className="flex items-center gap-2" data-oid="wa6oen6">
+              <FileText className="h-5 w-5" data-oid="o9fhdba" />
               PDF Form Filler
             </CardTitle>
-            <div className="flex items-center gap-2" data-oid="4.0j8f8">
+            <div className="flex items-center gap-2" data-oid="241b86v">
               <Badge
                 variant={formFields.length > 0 ? "default" : "secondary"}
-                data-oid="o4t.:86"
+                data-oid="nruaa9l"
               >
                 {formFields.length} fields detected
               </Badge>
               {isDirty && (
-                <Badge variant="outline" data-oid="f2oc3yp">
+                <Badge variant="outline" data-oid="zovlv-8">
                   Unsaved changes
                 </Badge>
               )}
             </div>
           </div>
         </CardHeader>
-        <CardContent data-oid="qpsggr5">
-          <div className="flex items-center justify-between" data-oid="ymgpusi">
-            <div className="flex items-center gap-4" data-oid="w-7a0ve">
+        <CardContent data-oid="2_4edtb">
+          <div className="flex items-center justify-between" data-oid=":2y00fb">
+            <div className="flex items-center gap-4" data-oid="ou-28.j">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={detectFormFields}
                 disabled={isProcessing}
-                data-oid="-:pn3i-"
+                data-oid="411hyzv"
               >
                 <RefreshCw
                   className={`h-4 w-4 mr-2 ${isProcessing ? "animate-spin" : ""}`}
-                  data-oid="363:n33"
+                  data-oid="fc3s0vi"
                 />
+
                 {isProcessing ? "Detecting..." : "Refresh Fields"}
               </Button>
 
-              <div className="flex items-center space-x-2" data-oid="fg6fbl6">
+              <div className="flex items-center space-x-2" data-oid="6j9b:zb">
                 <Checkbox
                   id="autosave"
                   checked={autoSave}
                   onCheckedChange={(checked) => setAutoSave(checked === true)}
-                  data-oid="z0irt9j"
+                  data-oid="e0rqptk"
                 />
 
                 <Label
                   htmlFor="autosave"
                   className="text-sm"
-                  data-oid="-wg8s.z"
+                  data-oid="uu5bazd"
                 >
                   Auto-save
                 </Label>
               </div>
             </div>
 
-            <div className="flex items-center gap-2" data-oid="cay9o3l">
+            <div className="flex items-center gap-2" data-oid="ch60_7n">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={resetForm}
-                data-oid="17gv_-p"
+                data-oid="ylj5xmz"
               >
                 Reset Form
               </Button>
               <Button
                 onClick={downloadFilledPDF}
                 disabled={isProcessing}
-                data-oid="f5qcvg1"
+                data-oid="yglf54r"
               >
-                <Download className="h-4 w-4 mr-2" data-oid="1a.-y02" />
+                <Download className="h-4 w-4 mr-2" data-oid="vdix3:-" />
                 Download Filled PDF
               </Button>
             </div>
@@ -611,27 +614,27 @@ export function PDFFormFiller({
 
       {/* Form Fields */}
       {formFields.length > 0 && (
-        <Card data-oid="wixyp2e">
-          <CardHeader data-oid="rsgu_kj">
-            <CardTitle data-oid="p_9e2gg">Form Fields</CardTitle>
+        <Card data-oid="v2pie27">
+          <CardHeader data-oid="x6hggu-">
+            <CardTitle data-oid="c.fumrt">Form Fields</CardTitle>
           </CardHeader>
-          <CardContent data-oid="kposwtg">
-            <ScrollArea className="h-96" data-oid="if_n1kr">
-              <div className="space-y-4" data-oid="vespp2k">
+          <CardContent data-oid="m3g8adb">
+            <ScrollArea className="h-96" data-oid="1:pxu3c">
+              <div className="space-y-4" data-oid="ahq49f7">
                 {formFields.map((field, index) => (
-                  <div key={field.id} className="space-y-2" data-oid="772zl0w">
-                    <div className="flex items-center gap-2" data-oid="tei-0_y">
+                  <div key={field.id} className="space-y-2" data-oid="7i0brvy">
+                    <div className="flex items-center gap-2" data-oid="5cs4t97">
                       {getFieldIcon(field.type)}
                       <Label
                         htmlFor={field.id}
                         className="font-medium"
-                        data-oid="7d0:0oi"
+                        data-oid="l:c7qss"
                       >
                         {field.name}
                         {field.required && (
                           <span
                             className="text-red-500 ml-1"
-                            data-oid="yxdwc9u"
+                            data-oid="h:mnt7c"
                           >
                             *
                           </span>
@@ -640,7 +643,7 @@ export function PDFFormFiller({
                       <Badge
                         variant="outline"
                         className="text-xs"
-                        data-oid="ug8rk_0"
+                        data-oid="c7ap9mr"
                       >
                         {field.type}
                       </Badge>
@@ -649,13 +652,13 @@ export function PDFFormFiller({
                     {renderField(field)}
 
                     {validationErrors[field.id] && (
-                      <p className="text-sm text-red-600" data-oid=".xetmg:">
+                      <p className="text-sm text-red-600" data-oid="ri3_5ge">
                         {validationErrors[field.id]}
                       </p>
                     )}
 
                     {index < formFields.length - 1 && (
-                      <Separator className="my-4" data-oid="hpu9uwt" />
+                      <Separator className="my-4" data-oid="nh9u0fk" />
                     )}
                   </div>
                 ))}
@@ -666,28 +669,29 @@ export function PDFFormFiller({
       )}
 
       {formFields.length === 0 && !isProcessing && (
-        <Card data-oid="rfpjvsa">
-          <CardContent className="p-8 text-center" data-oid="xs8w85d">
+        <Card data-oid="zbmgfjl">
+          <CardContent className="p-8 text-center" data-oid="xhjq.zl">
             <FileText
               className="h-12 w-12 mx-auto mb-4 text-gray-400"
-              data-oid="dmt_1r9"
+              data-oid="a4jqld8"
             />
+
             <h3
               className="text-lg font-medium text-gray-900 mb-2"
-              data-oid="jr:o127"
+              data-oid="as:9dvm"
             >
               No Form Fields Detected
             </h3>
-            <p className="text-gray-600 mb-4" data-oid="lw2.-75">
+            <p className="text-gray-600 mb-4" data-oid="0vkfcqs">
               This PDF doesn't appear to contain fillable form fields, or they
               couldn't be detected.
             </p>
             <Button
               variant="outline"
               onClick={detectFormFields}
-              data-oid="jiszvlp"
+              data-oid="mukfytp"
             >
-              <RefreshCw className="h-4 w-4 mr-2" data-oid="o021dql" />
+              <RefreshCw className="h-4 w-4 mr-2" data-oid="yzecn4x" />
               Try Again
             </Button>
           </CardContent>

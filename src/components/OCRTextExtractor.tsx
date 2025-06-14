@@ -250,31 +250,33 @@ export function OCRTextExtractor({
   const getConfidenceIcon = (confidence: number) => {
     if (confidence >= 80)
       return (
-        <CheckCircle className="h-4 w-4 text-green-600" data-oid="7vjz-sp" />
+        <CheckCircle className="h-4 w-4 text-green-600" data-oid="hdlsq6e" />
       );
+
     if (confidence >= 60)
       return (
-        <AlertTriangle className="h-4 w-4 text-yellow-600" data-oid="ytkes3g" />
+        <AlertTriangle className="h-4 w-4 text-yellow-600" data-oid="19ei3v7" />
       );
-    return <XCircle className="h-4 w-4 text-red-600" data-oid="43btjmo" />;
+
+    return <XCircle className="h-4 w-4 text-red-600" data-oid="nl2umnw" />;
   };
 
   return (
-    <div className="space-y-4" data-oid="z.2iqmj">
-      <Card data-oid=":2e8jkp">
-        <CardHeader data-oid="2c55c.1">
-          <CardTitle className="flex items-center gap-2" data-oid="4xsrcdw">
-            <ScanText className="h-5 w-5" data-oid="z2xl-37" />
+    <div className="space-y-4" data-oid="qn3luym">
+      <Card data-oid="-59lkf6">
+        <CardHeader data-oid="e3osz44">
+          <CardTitle className="flex items-center gap-2" data-oid="wvkmpp8">
+            <ScanText className="h-5 w-5" data-oid="w.ho422" />
             OCR Text Extraction
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4" data-oid="f.jc8o8">
+        <CardContent className="space-y-4" data-oid="mxz1ulg">
           {/* Language Selection */}
-          <div className="space-y-2" data-oid="wqck7c:">
-            <label className="text-sm font-medium" data-oid="z.8jvtx">
+          <div className="space-y-2" data-oid="uxwc2qj">
+            <label className="text-sm font-medium" data-oid="057jd.n">
               Languages
             </label>
-            <div className="flex flex-wrap gap-2" data-oid=".tszyq3">
+            <div className="flex flex-wrap gap-2" data-oid="9qz.fig">
               {supportedLanguages.slice(0, 6).map((lang) => (
                 <Badge
                   key={lang.code}
@@ -291,7 +293,7 @@ export function OCRTextExtractor({
                         : [...prev, lang.code],
                     );
                   }}
-                  data-oid="41f085r"
+                  data-oid="i2h-qme"
                 >
                   {lang.name}
                 </Badge>
@@ -304,16 +306,16 @@ export function OCRTextExtractor({
             onClick={processCurrentImage}
             disabled={isProcessing || !imageData}
             className="w-full"
-            data-oid="bc0nnmp"
+            data-oid="oiwy2qh"
           >
             {isProcessing ? (
               <>
-                <Zap className="h-4 w-4 mr-2 animate-spin" data-oid="w0wqzk4" />
+                <Zap className="h-4 w-4 mr-2 animate-spin" data-oid="op:.g8d" />
                 Processing...
               </>
             ) : (
               <>
-                <ScanText className="h-4 w-4 mr-2" data-oid="p.i05.a" />
+                <ScanText className="h-4 w-4 mr-2" data-oid="iqeh.kr" />
                 Extract Text
               </>
             )}
@@ -321,15 +323,16 @@ export function OCRTextExtractor({
 
           {/* Progress */}
           {isProcessing && (
-            <div className="space-y-2" data-oid="jszuj7d">
+            <div className="space-y-2" data-oid=".w:wzgp">
               <Progress
                 value={progress}
                 className="w-full"
-                data-oid="vg2tp__"
+                data-oid="-qqld-4"
               />
+
               <p
                 className="text-sm text-gray-600 text-center"
-                data-oid="9hk3wd_"
+                data-oid="qtyxhv0"
               >
                 {progress < 25
                   ? "Initializing..."
@@ -344,9 +347,9 @@ export function OCRTextExtractor({
           {error && (
             <div
               className="p-3 bg-red-50 border border-red-200 rounded-md"
-              data-oid="lf:mxk3"
+              data-oid="-_b8:nh"
             >
-              <p className="text-sm text-red-700" data-oid="5rjt5fl">
+              <p className="text-sm text-red-700" data-oid="1:8.j6a">
                 {error}
               </p>
             </div>
@@ -356,34 +359,34 @@ export function OCRTextExtractor({
 
       {/* Results */}
       {ocrResult && (
-        <Card data-oid="m286ul4">
-          <CardHeader data-oid="gydbsdt">
+        <Card data-oid="b8eicg.">
+          <CardHeader data-oid="4xhh679">
             <CardTitle
               className="flex items-center justify-between"
-              data-oid="1_9s2wk"
+              data-oid="ces0u_w"
             >
-              <span data-oid="ipo87d7">Extraction Results</span>
-              <div className="flex items-center gap-2" data-oid="nr5uxgt">
+              <span data-oid="q1b5_cm">Extraction Results</span>
+              <div className="flex items-center gap-2" data-oid="m3up1vg">
                 {getConfidenceIcon(ocrResult.confidence)}
                 <span
                   className={`text-sm ${getConfidenceColor(ocrResult.confidence)}`}
-                  data-oid="rv3b577"
+                  data-oid="ct8vbc_"
                 >
                   {ocrResult.confidence.toFixed(1)}% confidence
                 </span>
               </div>
             </CardTitle>
           </CardHeader>
-          <CardContent data-oid="04yezkd">
-            <Tabs defaultValue="text" className="w-full" data-oid="dj4ex8b">
-              <TabsList className="grid w-full grid-cols-3" data-oid=":z_8n7_">
-                <TabsTrigger value="text" data-oid="yn_9h.q">
+          <CardContent data-oid="cf8sl5v">
+            <Tabs defaultValue="text" className="w-full" data-oid="fvnog6m">
+              <TabsList className="grid w-full grid-cols-3" data-oid="82khars">
+                <TabsTrigger value="text" data-oid="mvjqpi7">
                   Full Text
                 </TabsTrigger>
-                <TabsTrigger value="regions" data-oid="plf8ix7">
+                <TabsTrigger value="regions" data-oid="7l32wcb">
                   Text Regions
                 </TabsTrigger>
-                <TabsTrigger value="stats" data-oid="t18-fi_">
+                <TabsTrigger value="stats" data-oid="9jf3mog">
                   Statistics
                 </TabsTrigger>
               </TabsList>
@@ -391,15 +394,16 @@ export function OCRTextExtractor({
               <TabsContent
                 value="text"
                 className="space-y-4"
-                data-oid="t8ixn7."
+                data-oid="sv3w72d"
               >
                 {/* Search */}
-                <div className="flex gap-2" data-oid="w0b2_l6">
-                  <div className="relative flex-1" data-oid=".hswun.">
+                <div className="flex gap-2" data-oid="yzzvhz9">
+                  <div className="relative flex-1" data-oid="11ylg-r">
                     <Search
                       className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
-                      data-oid="081yhph"
+                      data-oid="7hc9jyf"
                     />
+
                     <input
                       type="text"
                       placeholder="Search in extracted text..."
@@ -409,43 +413,43 @@ export function OCRTextExtractor({
                         searchInText(e.target.value);
                       }}
                       className="pl-10 pr-4 py-2 border rounded-md w-full"
-                      data-oid="x-i-cjr"
+                      data-oid="msbzv-y"
                     />
                   </div>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => copyToClipboard(ocrResult.text)}
-                    data-oid="m1iogsi"
+                    data-oid="oc081ji"
                   >
-                    <Copy className="h-4 w-4" data-oid="ajfgj.n" />
+                    <Copy className="h-4 w-4" data-oid="d9v9ejm" />
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => downloadText(ocrResult.text)}
-                    data-oid="y-3mlh-"
+                    data-oid="96:gyuk"
                   >
-                    <Download className="h-4 w-4" data-oid="va:68ld" />
+                    <Download className="h-4 w-4" data-oid="blerh7c" />
                   </Button>
                 </div>
 
                 {/* Extracted Text */}
                 <ScrollArea
                   className="h-64 w-full border rounded-md p-4"
-                  data-oid="ym3g1hg"
+                  data-oid="1jp-_nj"
                 >
                   <div
                     className="text-sm whitespace-pre-wrap"
                     dangerouslySetInnerHTML={{
                       __html: highlightText(ocrResult.text),
                     }}
-                    data-oid="a1o1vbl"
+                    data-oid="y978-80"
                   />
                 </ScrollArea>
 
                 {searchTerm && highlightedText.length > 0 && (
-                  <p className="text-sm text-gray-600" data-oid="adi-mdo">
+                  <p className="text-sm text-gray-600" data-oid="vy9jgv.">
                     Found {highlightedText.length} matches for "{searchTerm}"
                   </p>
                 )}
@@ -454,41 +458,41 @@ export function OCRTextExtractor({
               <TabsContent
                 value="regions"
                 className="space-y-4"
-                data-oid="a68kyys"
+                data-oid="ts_1ow0"
               >
-                <ScrollArea className="h-64 w-full" data-oid="6p3peuf">
-                  <div className="space-y-3" data-oid="8r.jzt_">
+                <ScrollArea className="h-64 w-full" data-oid="z2cn2z:">
+                  <div className="space-y-3" data-oid="brybwfr">
                     {ocrResult.regions.map((region, index) => (
-                      <Card key={region.id} className="p-3" data-oid="hjkbsj4">
+                      <Card key={region.id} className="p-3" data-oid="9s12-r8">
                         <div
                           className="flex items-start justify-between mb-2"
-                          data-oid="g4dmm1q"
+                          data-oid="l9hs.-n"
                         >
                           <span
                             className="text-xs font-medium text-gray-500"
-                            data-oid="bw1zka8"
+                            data-oid="vm9-ke7"
                           >
                             Region {index + 1}
                           </span>
                           <div
                             className="flex items-center gap-1"
-                            data-oid="qhfsaiw"
+                            data-oid="at2mq6u"
                           >
                             {getConfidenceIcon(region.confidence)}
                             <span
                               className={`text-xs ${getConfidenceColor(region.confidence)}`}
-                              data-oid="0ye-4n1"
+                              data-oid="ku0w:io"
                             >
                               {region.confidence.toFixed(1)}%
                             </span>
                           </div>
                         </div>
-                        <p className="text-sm" data-oid=":foulim">
+                        <p className="text-sm" data-oid="ryi00ae">
                           {region.text}
                         </p>
                         <div
                           className="mt-2 text-xs text-gray-500"
-                          data-oid="s6sis6m"
+                          data-oid="olygmlo"
                         >
                           Position: ({region.bbox.x0}, {region.bbox.y0}) to (
                           {region.bbox.x1}, {region.bbox.y1})
@@ -502,75 +506,79 @@ export function OCRTextExtractor({
               <TabsContent
                 value="stats"
                 className="space-y-4"
-                data-oid="y8x0:df"
+                data-oid="3702w3m"
               >
-                <div className="grid grid-cols-2 gap-4" data-oid="jy7v-jb">
-                  <Card className="p-4" data-oid="3g-x3jv">
-                    <div className="text-center" data-oid="7dbtl5i">
+                <div className="grid grid-cols-2 gap-4" data-oid="9n3crgl">
+                  <Card className="p-4" data-oid="sc7lj_3">
+                    <div className="text-center" data-oid="m-s2.1m">
                       <FileText
                         className="h-8 w-8 mx-auto mb-2 text-blue-600"
-                        data-oid="fj9kyve"
+                        data-oid="hvp3esa"
                       />
-                      <div className="text-2xl font-bold" data-oid="4hot9-r">
+
+                      <div className="text-2xl font-bold" data-oid="vh_-2wn">
                         {ocrResult.text.split(/\s+/).length}
                       </div>
-                      <div className="text-sm text-gray-600" data-oid="a7es4rj">
+                      <div className="text-sm text-gray-600" data-oid="ybi:g.n">
                         Words
                       </div>
                     </div>
                   </Card>
 
-                  <Card className="p-4" data-oid="aptotg_">
-                    <div className="text-center" data-oid="p8se_aj">
+                  <Card className="p-4" data-oid="wnl6vzb">
+                    <div className="text-center" data-oid="zod.5hc">
                       <Languages
                         className="h-8 w-8 mx-auto mb-2 text-green-600"
-                        data-oid="pm:8xk6"
+                        data-oid="-s18v6r"
                       />
-                      <div className="text-2xl font-bold" data-oid="ddxbjst">
+
+                      <div className="text-2xl font-bold" data-oid="_qdh5g0">
                         {ocrResult.text.length}
                       </div>
-                      <div className="text-sm text-gray-600" data-oid="4ov5fze">
+                      <div className="text-sm text-gray-600" data-oid="3-h7kv9">
                         Characters
                       </div>
                     </div>
                   </Card>
 
-                  <Card className="p-4" data-oid="e2bshti">
-                    <div className="text-center" data-oid="kt722pd">
+                  <Card className="p-4" data-oid="2m35phr">
+                    <div className="text-center" data-oid="iyflgw_">
                       <Zap
                         className="h-8 w-8 mx-auto mb-2 text-purple-600"
-                        data-oid=":78bbdp"
+                        data-oid="hbe5fcs"
                       />
-                      <div className="text-2xl font-bold" data-oid=":49na::">
+
+                      <div className="text-2xl font-bold" data-oid="j1nnpq6">
                         {(ocrResult.processingTime / 1000).toFixed(1)}s
                       </div>
-                      <div className="text-sm text-gray-600" data-oid="1tr398.">
+                      <div className="text-sm text-gray-600" data-oid="3gxji1q">
                         Processing Time
                       </div>
                     </div>
                   </Card>
 
-                  <Card className="p-4" data-oid="91d6zc5">
-                    <div className="text-center" data-oid="at2p.._">
+                  <Card className="p-4" data-oid="unzt3dg">
+                    <div className="text-center" data-oid="wbel4kv">
                       <CheckCircle
                         className="h-8 w-8 mx-auto mb-2 text-orange-600"
-                        data-oid="gbq2m0r"
+                        data-oid="-d2a2vx"
                       />
-                      <div className="text-2xl font-bold" data-oid="5h1umbc">
+
+                      <div className="text-2xl font-bold" data-oid="ocn4v:k">
                         {ocrResult.regions.length}
                       </div>
-                      <div className="text-sm text-gray-600" data-oid="kmm0n2c">
+                      <div className="text-sm text-gray-600" data-oid="uk-.q2q">
                         Text Regions
                       </div>
                     </div>
                   </Card>
                 </div>
 
-                <Card className="p-4" data-oid="sc84na8">
-                  <h4 className="font-medium mb-2" data-oid="ulvehj2">
+                <Card className="p-4" data-oid="3-t__v0">
+                  <h4 className="font-medium mb-2" data-oid="wa-q7er">
                     Language Detection
                   </h4>
-                  <p className="text-sm text-gray-600" data-oid="3qid33m">
+                  <p className="text-sm text-gray-600" data-oid=".oysu6g">
                     Processed with:{" "}
                     {ocrResult.language
                       .split("+")
