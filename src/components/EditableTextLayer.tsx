@@ -65,7 +65,6 @@ const EditableTextLayer: React.FC<EditableTextLayerProps> = ({
       className="absolute top-0 left-0 w-full h-full pointer-events-auto cursor-text"
       style={{ zIndex: 5 }}
       onClick={handleCanvasClick}
-      data-oid="omku3l6"
     >
       {editingText && (
         <div
@@ -76,7 +75,6 @@ const EditableTextLayer: React.FC<EditableTextLayerProps> = ({
             transform: "translate(-50%, -50%)",
             zIndex: 20,
           }}
-          data-oid="x:gf7-4"
         >
           <Input
             type="text"
@@ -95,18 +93,16 @@ const EditableTextLayer: React.FC<EditableTextLayerProps> = ({
               color: fontOptions.color || "#000000",
               fontFamily: fontOptions.family || "Helvetica",
             }}
-            data-oid="8bf_8lc"
           />
 
-          <div className="flex gap-2" data-oid="wwjbe2c">
-            <Button onClick={handleTextSubmit} size="sm" data-oid="-k_onrg">
+          <div className="flex gap-2">
+            <Button onClick={handleTextSubmit} size="sm">
               Add
             </Button>
             <Button
               onClick={() => setEditingText(null)}
               variant="outline"
               size="sm"
-              data-oid="vrb:_yb"
             >
               Cancel
             </Button>

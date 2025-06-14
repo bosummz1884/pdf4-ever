@@ -108,7 +108,6 @@ export default function AdvancedTextLayer({
           gap: "1rem",
           alignItems: "center",
         }}
-        data-oid="61y18:m"
       >
         <button
           onClick={() => setIsAddMode(!isAddMode)}
@@ -121,7 +120,6 @@ export default function AdvancedTextLayer({
             cursor: "pointer",
             fontSize: "12px",
           }}
-          data-oid=":9:wl_o"
         >
           {isAddMode ? "Cancel" : "Add Text"}
         </button>
@@ -134,17 +132,10 @@ export default function AdvancedTextLayer({
             borderRadius: "4px",
             border: "1px solid #ccc",
           }}
-          data-oid="-mo6-3i"
         >
-          <option value="Helvetica" data-oid="1xjx_rw">
-            Helvetica
-          </option>
-          <option value="Times New Roman" data-oid="2k5kx-0">
-            Times New Roman
-          </option>
-          <option value="Courier New" data-oid="8zxfus7">
-            Courier New
-          </option>
+          <option value="Helvetica">Helvetica</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Courier New">Courier New</option>
         </select>
 
         <input
@@ -159,7 +150,6 @@ export default function AdvancedTextLayer({
             borderRadius: "4px",
             border: "1px solid #ccc",
           }}
-          data-oid="dabug6p"
         />
 
         <input
@@ -173,7 +163,6 @@ export default function AdvancedTextLayer({
             border: "1px solid #ccc",
             cursor: "pointer",
           }}
-          data-oid="juhfuig"
         />
       </div>
 
@@ -185,7 +174,6 @@ export default function AdvancedTextLayer({
           cursor: isAddMode ? "crosshair" : "default",
         }}
         onClick={handleCanvasClick}
-        data-oid="qhd77lp"
       >
         {textBoxes
           .filter((box) => box.page === page)
@@ -205,19 +193,14 @@ export default function AdvancedTextLayer({
                 })
               }
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
-              data-oid="0wp5vvc"
             >
-              <div className="group relative" data-oid="_ad9.-v">
+              <div className="group relative">
                 {/* Hover Controls */}
-                <div
-                  className="absolute -top-8 left-0 hidden group-hover:flex gap-1 bg-white border rounded p-1 shadow-lg z-20"
-                  data-oid="eae85ve"
-                >
+                <div className="absolute -top-8 left-0 hidden group-hover:flex gap-1 bg-white border rounded p-1 shadow-lg z-20">
                   <button
                     onClick={() => toggleStyle(box.id, "bold")}
                     className={`px-2 py-1 text-xs font-bold rounded ${box.bold ? "bg-blue-500 text-white" : "bg-gray-200"}`}
                     title="Bold"
-                    data-oid="x2t6n9p"
                   >
                     B
                   </button>
@@ -225,7 +208,6 @@ export default function AdvancedTextLayer({
                     onClick={() => toggleStyle(box.id, "italic")}
                     className={`px-2 py-1 text-xs italic rounded ${box.italic ? "bg-blue-500 text-white" : "bg-gray-200"}`}
                     title="Italic"
-                    data-oid="5aykjs_"
                   >
                     I
                   </button>
@@ -233,7 +215,6 @@ export default function AdvancedTextLayer({
                     onClick={() => toggleStyle(box.id, "underline")}
                     className={`px-2 py-1 text-xs underline rounded ${box.underline ? "bg-blue-500 text-white" : "bg-gray-200"}`}
                     title="Underline"
-                    data-oid="mm_-tu_"
                   >
                     U
                   </button>
@@ -241,7 +222,6 @@ export default function AdvancedTextLayer({
                     onClick={() => deleteTextBox(box.id)}
                     className="px-2 py-1 text-xs bg-red-500 text-white rounded hover:bg-red-600"
                     title="Delete"
-                    data-oid="leata-h"
                   >
                     ×
                   </button>
@@ -282,7 +262,6 @@ export default function AdvancedTextLayer({
                       e.currentTarget.blur();
                     }
                   }}
-                  data-oid="377haxd"
                 >
                   {box.value}
                 </div>

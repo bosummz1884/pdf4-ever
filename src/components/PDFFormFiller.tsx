@@ -363,23 +363,23 @@ export function PDFFormFiller({
   const getFieldIcon = (type: FormField["type"]) => {
     switch (type) {
       case "email":
-        return <Mail className="h-4 w-4" data-oid="m5wzro8" />;
+        return <Mail className="h-4 w-4" />;
       case "phone":
-        return <Phone className="h-4 w-4" data-oid=".-48yk:" />;
+        return <Phone className="h-4 w-4" />;
       case "date":
-        return <Calendar className="h-4 w-4" data-oid="t2r06m8" />;
+        return <Calendar className="h-4 w-4" />;
       case "number":
-        return <Hash className="h-4 w-4" data-oid="_wf3vb9" />;
+        return <Hash className="h-4 w-4" />;
       case "checkbox":
-        return <CheckSquare className="h-4 w-4" data-oid="h8rcc7d" />;
+        return <CheckSquare className="h-4 w-4" />;
       case "radio":
-        return <Circle className="h-4 w-4" data-oid="j4e:_ez" />;
+        return <Circle className="h-4 w-4" />;
       case "dropdown":
-        return <Square className="h-4 w-4" data-oid="oc510et" />;
+        return <Square className="h-4 w-4" />;
       case "textarea":
-        return <FileText className="h-4 w-4" data-oid="d8lfccw" />;
+        return <FileText className="h-4 w-4" />;
       default:
-        return <Type className="h-4 w-4" data-oid="mf1504." />;
+        return <Type className="h-4 w-4" />;
     }
   };
 
@@ -409,7 +409,6 @@ export function PDFFormFiller({
             value={field.value.toString()}
             onChange={(e) => updateFieldValue(field.id, e.target.value)}
             placeholder={field.placeholder}
-            data-oid="si.aj_x"
           />
         );
 
@@ -421,23 +420,21 @@ export function PDFFormFiller({
             onChange={(e) => updateFieldValue(field.id, e.target.value)}
             placeholder={field.placeholder}
             rows={3}
-            data-oid="zb2tfu5"
           />
         );
 
       case "checkbox":
         return (
-          <div className="flex items-center space-x-2" data-oid="xw.tv1c">
+          <div className="flex items-center space-x-2">
             <Checkbox
               id={field.id}
               checked={!!field.value}
               onCheckedChange={(checked) =>
                 updateFieldValue(field.id, !!checked)
               }
-              data-oid="rcnbvpj"
             />
 
-            <Label htmlFor={field.id} className="text-sm" data-oid="fv6hxxz">
+            <Label htmlFor={field.id} className="text-sm">
               {field.name}
             </Label>
           </div>
@@ -448,23 +445,12 @@ export function PDFFormFiller({
           <RadioGroup
             value={field.value.toString()}
             onValueChange={(value) => updateFieldValue(field.id, value)}
-            data-oid="939aj6q"
           >
             {field.options?.map((option) => (
-              <div
-                key={option}
-                className="flex items-center space-x-2"
-                data-oid="p8ysl2i"
-              >
-                <RadioGroupItem
-                  value={option}
-                  id={`${field.id}_${option}`}
-                  data-oid="zgybmqw"
-                />
+              <div key={option} className="flex items-center space-x-2">
+                <RadioGroupItem value={option} id={`${field.id}_${option}`} />
 
-                <Label htmlFor={`${field.id}_${option}`} data-oid="z2-2c0r">
-                  {option}
-                </Label>
+                <Label htmlFor={`${field.id}_${option}`}>{option}</Label>
               </div>
             ))}
           </RadioGroup>
@@ -475,17 +461,13 @@ export function PDFFormFiller({
           <Select
             value={field.value.toString()}
             onValueChange={(value) => updateFieldValue(field.id, value)}
-            data-oid="n0bst63"
           >
-            <SelectTrigger
-              className={error ? "border-red-300" : ""}
-              data-oid="7o5zytf"
-            >
-              <SelectValue placeholder={field.placeholder} data-oid="e5tp736" />
+            <SelectTrigger className={error ? "border-red-300" : ""}>
+              <SelectValue placeholder={field.placeholder} />
             </SelectTrigger>
-            <SelectContent data-oid="tbduxns">
+            <SelectContent>
               {field.options?.map((option) => (
-                <SelectItem key={option} value={option} data-oid="3wf0:cu">
+                <SelectItem key={option} value={option}>
                   {option}
                 </SelectItem>
               ))}
@@ -500,7 +482,6 @@ export function PDFFormFiller({
             value={field.value.toString()}
             onChange={(e) => updateFieldValue(field.id, e.target.value)}
             placeholder={field.placeholder}
-            data-oid="fzdb9n8"
           />
         );
     }
@@ -508,20 +489,14 @@ export function PDFFormFiller({
 
   if (!pdfDocument) {
     return (
-      <Card data-oid="67fhwa6">
-        <CardContent className="p-8 text-center" data-oid="dnm_d59">
-          <FileText
-            className="h-12 w-12 mx-auto mb-4 text-gray-400"
-            data-oid="ema78ae"
-          />
+      <Card>
+        <CardContent className="p-8 text-center">
+          <FileText className="h-12 w-12 mx-auto mb-4 text-gray-400" />
 
-          <h3
-            className="text-lg font-medium text-gray-900 mb-2"
-            data-oid="qm7_tkn"
-          >
+          <h3 className="text-lg font-medium text-gray-900 mb-2">
             No PDF Loaded
           </h3>
-          <p className="text-gray-600" data-oid="d74dtna">
+          <p className="text-gray-600">
             Load a PDF document to detect and fill form fields
           </p>
         </CardContent>
@@ -530,81 +505,58 @@ export function PDFFormFiller({
   }
 
   return (
-    <div className="space-y-6" data-oid="ixkkk-r">
+    <div className="space-y-6">
       {/* Header */}
-      <Card data-oid="s7trk0g">
-        <CardHeader data-oid="9l7_a:3">
-          <div className="flex items-center justify-between" data-oid="292vi8w">
-            <CardTitle className="flex items-center gap-2" data-oid="wa6oen6">
-              <FileText className="h-5 w-5" data-oid="o9fhdba" />
+      <Card>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <CardTitle className="flex items-center gap-2">
+              <FileText className="h-5 w-5" />
               PDF Form Filler
             </CardTitle>
-            <div className="flex items-center gap-2" data-oid="241b86v">
-              <Badge
-                variant={formFields.length > 0 ? "default" : "secondary"}
-                data-oid="nruaa9l"
-              >
+            <div className="flex items-center gap-2">
+              <Badge variant={formFields.length > 0 ? "default" : "secondary"}>
                 {formFields.length} fields detected
               </Badge>
-              {isDirty && (
-                <Badge variant="outline" data-oid="zovlv-8">
-                  Unsaved changes
-                </Badge>
-              )}
+              {isDirty && <Badge variant="outline">Unsaved changes</Badge>}
             </div>
           </div>
         </CardHeader>
-        <CardContent data-oid="2_4edtb">
-          <div className="flex items-center justify-between" data-oid=":2y00fb">
-            <div className="flex items-center gap-4" data-oid="ou-28.j">
+        <CardContent>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={detectFormFields}
                 disabled={isProcessing}
-                data-oid="411hyzv"
               >
                 <RefreshCw
                   className={`h-4 w-4 mr-2 ${isProcessing ? "animate-spin" : ""}`}
-                  data-oid="fc3s0vi"
                 />
 
                 {isProcessing ? "Detecting..." : "Refresh Fields"}
               </Button>
 
-              <div className="flex items-center space-x-2" data-oid="6j9b:zb">
+              <div className="flex items-center space-x-2">
                 <Checkbox
                   id="autosave"
                   checked={autoSave}
                   onCheckedChange={(checked) => setAutoSave(checked === true)}
-                  data-oid="e0rqptk"
                 />
 
-                <Label
-                  htmlFor="autosave"
-                  className="text-sm"
-                  data-oid="uu5bazd"
-                >
+                <Label htmlFor="autosave" className="text-sm">
                   Auto-save
                 </Label>
               </div>
             </div>
 
-            <div className="flex items-center gap-2" data-oid="ch60_7n">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={resetForm}
-                data-oid="ylj5xmz"
-              >
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm" onClick={resetForm}>
                 Reset Form
               </Button>
-              <Button
-                onClick={downloadFilledPDF}
-                disabled={isProcessing}
-                data-oid="yglf54r"
-              >
-                <Download className="h-4 w-4 mr-2" data-oid="vdix3:-" />
+              <Button onClick={downloadFilledPDF} disabled={isProcessing}>
+                <Download className="h-4 w-4 mr-2" />
                 Download Filled PDF
               </Button>
             </div>
@@ -614,37 +566,24 @@ export function PDFFormFiller({
 
       {/* Form Fields */}
       {formFields.length > 0 && (
-        <Card data-oid="v2pie27">
-          <CardHeader data-oid="x6hggu-">
-            <CardTitle data-oid="c.fumrt">Form Fields</CardTitle>
+        <Card>
+          <CardHeader>
+            <CardTitle>Form Fields</CardTitle>
           </CardHeader>
-          <CardContent data-oid="m3g8adb">
-            <ScrollArea className="h-96" data-oid="1:pxu3c">
-              <div className="space-y-4" data-oid="ahq49f7">
+          <CardContent>
+            <ScrollArea className="h-96">
+              <div className="space-y-4">
                 {formFields.map((field, index) => (
-                  <div key={field.id} className="space-y-2" data-oid="7i0brvy">
-                    <div className="flex items-center gap-2" data-oid="5cs4t97">
+                  <div key={field.id} className="space-y-2">
+                    <div className="flex items-center gap-2">
                       {getFieldIcon(field.type)}
-                      <Label
-                        htmlFor={field.id}
-                        className="font-medium"
-                        data-oid="l:c7qss"
-                      >
+                      <Label htmlFor={field.id} className="font-medium">
                         {field.name}
                         {field.required && (
-                          <span
-                            className="text-red-500 ml-1"
-                            data-oid="h:mnt7c"
-                          >
-                            *
-                          </span>
+                          <span className="text-red-500 ml-1">*</span>
                         )}
                       </Label>
-                      <Badge
-                        variant="outline"
-                        className="text-xs"
-                        data-oid="c7ap9mr"
-                      >
+                      <Badge variant="outline" className="text-xs">
                         {field.type}
                       </Badge>
                     </div>
@@ -652,13 +591,13 @@ export function PDFFormFiller({
                     {renderField(field)}
 
                     {validationErrors[field.id] && (
-                      <p className="text-sm text-red-600" data-oid="ri3_5ge">
+                      <p className="text-sm text-red-600">
                         {validationErrors[field.id]}
                       </p>
                     )}
 
                     {index < formFields.length - 1 && (
-                      <Separator className="my-4" data-oid="nh9u0fk" />
+                      <Separator className="my-4" />
                     )}
                   </div>
                 ))}
@@ -669,29 +608,19 @@ export function PDFFormFiller({
       )}
 
       {formFields.length === 0 && !isProcessing && (
-        <Card data-oid="zbmgfjl">
-          <CardContent className="p-8 text-center" data-oid="xhjq.zl">
-            <FileText
-              className="h-12 w-12 mx-auto mb-4 text-gray-400"
-              data-oid="a4jqld8"
-            />
+        <Card>
+          <CardContent className="p-8 text-center">
+            <FileText className="h-12 w-12 mx-auto mb-4 text-gray-400" />
 
-            <h3
-              className="text-lg font-medium text-gray-900 mb-2"
-              data-oid="as:9dvm"
-            >
+            <h3 className="text-lg font-medium text-gray-900 mb-2">
               No Form Fields Detected
             </h3>
-            <p className="text-gray-600 mb-4" data-oid="0vkfcqs">
+            <p className="text-gray-600 mb-4">
               This PDF doesn't appear to contain fillable form fields, or they
               couldn't be detected.
             </p>
-            <Button
-              variant="outline"
-              onClick={detectFormFields}
-              data-oid="mukfytp"
-            >
-              <RefreshCw className="h-4 w-4 mr-2" data-oid="yzecn4x" />
+            <Button variant="outline" onClick={detectFormFields}>
+              <RefreshCw className="h-4 w-4 mr-2" />
               Try Again
             </Button>
           </CardContent>

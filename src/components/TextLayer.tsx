@@ -143,7 +143,6 @@ export default function TextLayer({
         cursor: isActive ? "text" : "default",
       }}
       onClick={handleCanvasClick}
-      data-oid="3700inz"
     >
       {textElements.map((element) => (
         <Rnd
@@ -175,7 +174,6 @@ export default function TextLayer({
             zIndex: selectedElementId === element.id ? 50 : 30,
             position: "absolute",
           }}
-          data-oid="g-nnd.e"
         >
           <div
             style={{
@@ -190,7 +188,6 @@ export default function TextLayer({
               background: "transparent",
               borderRadius: "3px",
             }}
-            data-oid="-adhsyu"
           >
             {/* Floating toolbar above text field */}
             {selectedElementId === element.id && (
@@ -213,12 +210,8 @@ export default function TextLayer({
                   fontSize: "12px",
                 }}
                 onClick={(e) => e.stopPropagation()}
-                data-oid="zy9s785"
               >
-                <span
-                  style={{ fontWeight: "bold", marginRight: "8px" }}
-                  data-oid="z32_4i6"
-                >
+                <span style={{ fontWeight: "bold", marginRight: "8px" }}>
                   Format Text:
                 </span>
 
@@ -241,10 +234,9 @@ export default function TextLayer({
                     padding: "2px 4px",
                   }}
                   onClick={(e) => e.stopPropagation()}
-                  data-oid="dbp8a7q"
                 >
                   {availableFonts.map((font) => (
-                    <option key={font} value={font} data-oid="b0_87l8">
+                    <option key={font} value={font}>
                       {font}
                     </option>
                   ))}
@@ -274,7 +266,6 @@ export default function TextLayer({
                   min="8"
                   max="72"
                   onClick={(e) => e.stopPropagation()}
-                  data-oid=":0umu.p"
                 />
 
                 {/* Style buttons */}
@@ -290,9 +281,8 @@ export default function TextLayer({
                     })
                   }
                   style={{ height: "24px", padding: "0 8px" }}
-                  data-oid="pusvx6q"
                 >
-                  <Bold className="h-3 w-3" data-oid="y4dx66t" />
+                  <Bold className="h-3 w-3" />
                 </Button>
                 <Button
                   variant={
@@ -306,13 +296,12 @@ export default function TextLayer({
                     })
                   }
                   style={{ height: "24px", padding: "0 8px" }}
-                  data-oid="rca9six"
                 >
-                  <Italic className="h-3 w-3" data-oid="knlokff" />
+                  <Italic className="h-3 w-3" />
                 </Button>
 
                 {/* Color picker */}
-                <div style={{ position: "relative" }} data-oid="cso8tkv">
+                <div style={{ position: "relative" }}>
                   <div
                     style={{
                       width: "20px",
@@ -334,7 +323,6 @@ export default function TextLayer({
                       }
                     }}
                     title="Click to change color"
-                    data-oid="vzr4t::"
                   />
 
                   <div
@@ -346,7 +334,6 @@ export default function TextLayer({
                       display: "none",
                       zIndex: 1000,
                     }}
-                    data-oid="rbobdll"
                   >
                     <HexColorPicker
                       color={element.color}
@@ -354,7 +341,6 @@ export default function TextLayer({
                         updateTextElement(element.id, { color })
                       }
                       style={{ width: "150px", height: "100px" }}
-                      data-oid="zn1:_zf"
                     />
                   </div>
                 </div>
@@ -369,9 +355,8 @@ export default function TextLayer({
                     padding: "0 8px",
                     marginLeft: "8px",
                   }}
-                  data-oid="b:tovqx"
                 >
-                  <Trash2 className="h-3 w-3" data-oid="ghyq3a5" />
+                  <Trash2 className="h-3 w-3" />
                 </Button>
               </div>
             )}
@@ -398,7 +383,6 @@ export default function TextLayer({
                 lineHeight: "1.2",
               }}
               placeholder="Type your text"
-              data-oid="0xzegrl"
             />
           </div>
         </Rnd>

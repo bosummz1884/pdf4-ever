@@ -5,4 +5,4 @@ import "pdfjs-dist/web/pdf_viewer.css";
 import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
 pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
-createRoot(document.getElementById("root")!).render(<App data-oid="a:k8i.4" />);
+createRoot(document.getElementById("root")!).render(<App />);

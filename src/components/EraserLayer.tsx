@@ -50,11 +50,7 @@ export default function EraserLayer({
   );
 
   return (
-    <div
-      ref={layerRef}
-      className="absolute top-0 left-0 pointer-events-none"
-      data-oid="_:3tc0b"
-    >
+    <div ref={layerRef} className="absolute top-0 left-0 pointer-events-none">
       {currentPageBlocks.map((block) => (
         <div
           key={block.id}
@@ -70,7 +66,6 @@ export default function EraserLayer({
             zIndex: 15,
             borderRadius: "2px",
           }}
-          data-oid="9k9a8n9"
         />
       ))}
     </div>

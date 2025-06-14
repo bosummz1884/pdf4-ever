@@ -97,41 +97,21 @@ const PDFMergeTool: React.FC<PDFMergeToolProps> = ({ onClose }) => {
   };
 
   return (
-    <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-      data-oid="6-f3gqw"
-    >
-      <Card
-        className="w-full max-w-2xl max-h-[80vh] overflow-hidden"
-        data-oid="o08::8y"
-      >
-        <CardHeader data-oid="4twgqav">
-          <div className="flex justify-between items-center" data-oid="bnh:jrd">
-            <CardTitle data-oid="gldlvg9">Merge PDF Files</CardTitle>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onClose}
-              data-oid="7s::emo"
-            >
-              <X className="w-4 h-4" data-oid="hrbuhxa" />
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <Card className="w-full max-w-2xl max-h-[80vh] overflow-hidden">
+        <CardHeader>
+          <div className="flex justify-between items-center">
+            <CardTitle>Merge PDF Files</CardTitle>
+            <Button variant="ghost" size="sm" onClick={onClose}>
+              <X className="w-4 h-4" />
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4" data-oid="b460vp9">
-          <div
-            className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center"
-            data-oid="-2r84t2"
-          >
-            <Upload
-              className="w-8 h-8 mx-auto mb-2 text-muted-foreground"
-              data-oid="hfmd22k"
-            />
+        <CardContent className="space-y-4">
+          <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
+            <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
 
-            <p
-              className="text-sm text-muted-foreground mb-2"
-              data-oid="_y-:fu_"
-            >
+            <p className="text-sm text-muted-foreground mb-2">
               Select PDF files to merge
             </p>
             <input
@@ -141,74 +121,56 @@ const PDFMergeTool: React.FC<PDFMergeToolProps> = ({ onClose }) => {
               onChange={handleFileUpload}
               className="hidden"
               id="pdf-upload"
-              data-oid="z:a8a1y"
             />
 
-            <label htmlFor="pdf-upload" data-oid="4bts8rx">
-              <Button
-                variant="outline"
-                className="cursor-pointer"
-                data-oid="exyj505"
-              >
+            <label htmlFor="pdf-upload">
+              <Button variant="outline" className="cursor-pointer">
                 Choose PDF Files
               </Button>
             </label>
           </div>
 
           {pdfFiles.length > 0 && (
-            <div
-              className="space-y-2 max-h-60 overflow-y-auto"
-              data-oid="pcr1me5"
-            >
-              <h3 className="font-medium" data-oid="-vdyjvd">
+            <div className="space-y-2 max-h-60 overflow-y-auto">
+              <h3 className="font-medium">
                 Files to merge ({pdfFiles.length}):
               </h3>
               {pdfFiles.map((pdfFile, index) => (
                 <div
                   key={pdfFile.id}
                   className="flex items-center gap-2 p-2 border rounded"
-                  data-oid="mpmj5bh"
                 >
-                  <div className="flex-1 min-w-0" data-oid="m4edhuc">
-                    <p
-                      className="text-sm font-medium truncate"
-                      data-oid="64mbwgy"
-                    >
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium truncate">
                       {pdfFile.name}
                     </p>
-                    <p
-                      className="text-xs text-muted-foreground"
-                      data-oid="x1sn0g6"
-                    >
+                    <p className="text-xs text-muted-foreground">
                       {formatFileSize(pdfFile.size)}
                     </p>
                   </div>
-                  <div className="flex gap-1" data-oid="qlnebuq">
+                  <div className="flex gap-1">
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => moveFileUp(index)}
                       disabled={index === 0}
-                      data-oid="5waihv1"
                     >
-                      <ArrowUp className="w-3 h-3" data-oid=".2b7_wk" />
+                      <ArrowUp className="w-3 h-3" />
                     </Button>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => moveFileDown(index)}
                       disabled={index === pdfFiles.length - 1}
-                      data-oid="7616idn"
                     >
-                      <ArrowDown className="w-3 h-3" data-oid=":zlktq7" />
+                      <ArrowDown className="w-3 h-3" />
                     </Button>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => removeFile(pdfFile.id)}
-                      data-oid="q4wncq3"
                     >
-                      <X className="w-3 h-3" data-oid="nbwdb-s" />
+                      <X className="w-3 h-3" />
                     </Button>
                   </div>
                 </div>
@@ -216,17 +178,16 @@ const PDFMergeTool: React.FC<PDFMergeToolProps> = ({ onClose }) => {
             </div>
           )}
 
-          <div className="flex gap-2 pt-4" data-oid="c-yz089">
+          <div className="flex gap-2 pt-4">
             <Button
               onClick={handleMerge}
               disabled={pdfFiles.length < 2 || isProcessing}
               className="flex-1 bg-gradient-to-r from-primary via-secondary to-accent text-white"
-              data-oid="mfst2hg"
             >
-              <Download className="w-4 h-4 mr-2" data-oid="0zq9vb." />
+              <Download className="w-4 h-4 mr-2" />
               {isProcessing ? "Merging..." : "Merge PDFs"}
             </Button>
-            <Button variant="outline" onClick={onClose} data-oid="244dqwf">
+            <Button variant="outline" onClick={onClose}>
               Cancel
             </Button>
           </div>

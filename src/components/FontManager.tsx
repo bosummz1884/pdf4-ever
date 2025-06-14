@@ -257,30 +257,20 @@ export default function FontManager({
   const selectedFontInfo = availableFonts.find((f) => f.name === selectedFont);
 
   return (
-    <div className="space-y-4" data-oid="jgvea.q">
+    <div className="space-y-4">
       {/* Font Selection */}
-      <div className="flex items-center gap-2 flex-wrap" data-oid="i6kewe.">
-        <Select
-          value={selectedFont}
-          onValueChange={onFontChange}
-          data-oid="gamr-qx"
-        >
-          <SelectTrigger className="w-48" data-oid="mqru4ru">
-            <SelectValue placeholder="Select font" data-oid="b92.p0g" />
+      <div className="flex items-center gap-2 flex-wrap">
+        <Select value={selectedFont} onValueChange={onFontChange}>
+          <SelectTrigger className="w-48">
+            <SelectValue placeholder="Select font" />
           </SelectTrigger>
-          <SelectContent className="max-h-60" data-oid="bb2654y">
+          <SelectContent className="max-h-60">
             {filteredFonts.map((font) => (
-              <SelectItem key={font.name} value={font.name} data-oid="rr5a2qf">
-                <div className="flex items-center gap-2" data-oid="sgjpica">
-                  <span style={{ fontFamily: font.family }} data-oid="vzhwu1l">
-                    {font.name}
-                  </span>
+              <SelectItem key={font.name} value={font.name}>
+                <div className="flex items-center gap-2">
+                  <span style={{ fontFamily: font.family }}>{font.name}</span>
                   {!font.loaded && (
-                    <Badge
-                      variant="outline"
-                      className="text-xs"
-                      data-oid="8l.5.e4"
-                    >
+                    <Badge variant="outline" className="text-xs">
                       Not loaded
                     </Badge>
                   )}
@@ -298,7 +288,6 @@ export default function FontManager({
           min={8}
           max={144}
           placeholder="Size"
-          data-oid="8vezap8"
         />
 
         <Button
@@ -307,9 +296,8 @@ export default function FontManager({
           onClick={() =>
             onFontWeightChange(fontWeight === "bold" ? "normal" : "bold")
           }
-          data-oid="bt3..nv"
         >
-          <strong data-oid="kdrur78">B</strong>
+          <strong>B</strong>
         </Button>
 
         <Button
@@ -318,19 +306,13 @@ export default function FontManager({
           onClick={() =>
             onFontStyleChange(fontStyle === "italic" ? "normal" : "italic")
           }
-          data-oid="0ar12vl"
         >
-          <em data-oid=".u6xdei">I</em>
+          <em>I</em>
         </Button>
 
         {!loadingFonts && (
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={loadFonts}
-            data-oid="37z6kjx"
-          >
-            <Download className="h-4 w-4 mr-1" data-oid="ylz70f:" />
+          <Button variant="outline" size="sm" onClick={loadFonts}>
+            <Download className="h-4 w-4 mr-1" />
             Load More Fonts
           </Button>
         )}
@@ -338,9 +320,9 @@ export default function FontManager({
 
       {/* Loading Progress */}
       {loadingFonts && (
-        <div className="space-y-2" data-oid="8idt:88">
-          <Progress value={loadProgress} data-oid="t4aww4." />
-          <p className="text-sm text-gray-500" data-oid="3inc7id">
+        <div className="space-y-2">
+          <Progress value={loadProgress} />
+          <p className="text-sm text-gray-500">
             Loading fonts... {Math.round(loadProgress)}%
           </p>
         </div>
@@ -348,40 +330,33 @@ export default function FontManager({
 
       {/* Advanced Controls */}
       {showAdvanced && (
-        <Card data-oid="wcxby-3">
-          <CardHeader data-oid="f7_6:u1">
-            <CardTitle className="flex items-center gap-2" data-oid="6-2h1k.">
-              <Type className="h-5 w-5" data-oid="k3fjk70" />
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Type className="h-5 w-5" />
               Font Tools
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4" data-oid="28ke:1g">
+          <CardContent className="space-y-4">
             {/* Font Search */}
-            <div className="relative" data-oid="qr0ap:y">
-              <Search
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
-                data-oid="65ojjng"
-              />
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
 
               <Input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search fonts..."
                 className="pl-10"
-                data-oid="tdi0cu9"
               />
             </div>
 
             {/* Font Preview */}
-            <div className="space-y-2" data-oid="zrw8.yg">
-              <label className="text-sm font-medium" data-oid="-e4m2xg">
-                Preview Text:
-              </label>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Preview Text:</label>
               <Input
                 value={fontPreview}
                 onChange={(e) => setFontPreview(e.target.value)}
                 placeholder="Enter preview text..."
-                data-oid=".ytn2g9"
               />
 
               {selectedFontInfo && (
@@ -393,7 +368,6 @@ export default function FontManager({
                     fontWeight: fontWeight,
                     fontStyle: fontStyle,
                   }}
-                  data-oid="s6xy7bd"
                 >
                   {fontPreview}
                 </div>
@@ -402,39 +376,28 @@ export default function FontManager({
 
             {/* Font Info */}
             {selectedFontInfo && (
-              <div className="space-y-2 text-sm" data-oid="v7v.h30">
-                <h4 className="font-medium" data-oid="7iwhr9r">
-                  Font Information:
-                </h4>
-                <div className="grid grid-cols-2 gap-2" data-oid=":2mgrap">
-                  <div data-oid=":v2umlp">
-                    <span className="text-gray-500" data-oid="up52to3">
-                      Family:
-                    </span>{" "}
+              <div className="space-y-2 text-sm">
+                <h4 className="font-medium">Font Information:</h4>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <span className="text-gray-500">Family:</span>{" "}
                     {selectedFontInfo.family}
                   </div>
-                  <div data-oid="e59hm42">
-                    <span className="text-gray-500" data-oid="wouep-x">
-                      Style:
-                    </span>{" "}
+                  <div>
+                    <span className="text-gray-500">Style:</span>{" "}
                     {selectedFontInfo.style}
                   </div>
-                  <div data-oid="a9e:3:w">
-                    <span className="text-gray-500" data-oid=".-u79r_">
-                      Weight:
-                    </span>{" "}
+                  <div>
+                    <span className="text-gray-500">Weight:</span>{" "}
                     {selectedFontInfo.weight}
                   </div>
-                  <div data-oid="wzc26uw">
-                    <span className="text-gray-500" data-oid="wwuc9v7">
-                      Status:
-                    </span>
+                  <div>
+                    <span className="text-gray-500">Status:</span>
                     <Badge
                       variant={
                         selectedFontInfo.loaded ? "default" : "secondary"
                       }
                       className="ml-2"
-                      data-oid="ad3u3dg"
                     >
                       {selectedFontInfo.loaded ? "Loaded" : "Not Loaded"}
                     </Badge>
@@ -442,17 +405,14 @@ export default function FontManager({
                 </div>
 
                 {selectedFontInfo.variants && (
-                  <div data-oid="llnmqya">
-                    <span className="text-gray-500" data-oid="05qa8b2">
-                      Available weights:
-                    </span>
-                    <div className="flex gap-1 mt-1" data-oid=".ndpc.0">
+                  <div>
+                    <span className="text-gray-500">Available weights:</span>
+                    <div className="flex gap-1 mt-1">
                       {selectedFontInfo.variants.map((variant) => (
                         <Badge
                           key={variant}
                           variant="outline"
                           className="text-xs"
-                          data-oid="khl5:vs"
                         >
                           {variant}
                         </Badge>
@@ -464,9 +424,9 @@ export default function FontManager({
             )}
 
             {/* Font Statistics */}
-            <div className="text-sm text-gray-500" data-oid="fws5sj6">
-              <p data-oid="-w8z8zq">Available fonts: {availableFonts.length}</p>
-              <p data-oid="gofj9kt">
+            <div className="text-sm text-gray-500">
+              <p>Available fonts: {availableFonts.length}</p>
+              <p>
                 Loaded fonts: {availableFonts.filter((f) => f.loaded).length}
               </p>
             </div>

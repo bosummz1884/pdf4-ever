@@ -180,11 +180,8 @@ export default function LivePdfViewer({
     return (
       <div
         className={`flex items-center justify-center min-h-[400px] bg-muted/20 rounded-lg ${className}`}
-        data-oid="zncnlix"
       >
-        <p className="text-muted-foreground" data-oid="tj9xh-:">
-          No PDF loaded
-        </p>
+        <p className="text-muted-foreground">No PDF loaded</p>
       </div>
     );
   }
@@ -194,25 +191,20 @@ export default function LivePdfViewer({
       className={`relative bg-white dark:bg-gray-900 rounded-lg shadow-sm border ${className}`}
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      data-oid="sm8bav_"
     >
       {/* Controls */}
-      <div
-        className="flex items-center justify-between p-3 border-b bg-muted/10"
-        data-oid="xyr9653"
-      >
-        <div className="flex items-center gap-2" data-oid="qzes.23">
+      <div className="flex items-center justify-between p-3 border-b bg-muted/10">
+        <div className="flex items-center gap-2">
           <Button
             onClick={goToPreviousPage}
             disabled={currentPage <= 1}
             size="sm"
             variant="outline"
-            data-oid="f1vx4mo"
           >
-            <ChevronLeft className="h-4 w-4" data-oid="nvmp341" />
+            <ChevronLeft className="h-4 w-4" />
           </Button>
 
-          <span className="text-sm font-medium px-2" data-oid="n-o_j_0">
+          <span className="text-sm font-medium px-2">
             {currentPage} / {totalPages}
           </span>
 
@@ -221,53 +213,29 @@ export default function LivePdfViewer({
             disabled={currentPage >= totalPages}
             size="sm"
             variant="outline"
-            data-oid="n6sc1dg"
           >
-            <ChevronRight className="h-4 w-4" data-oid="0m:ppxr" />
+            <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
 
-        <div className="flex items-center gap-2" data-oid="t83y_a5">
-          <Button
-            onClick={zoomOut}
-            size="sm"
-            variant="outline"
-            data-oid="zp0lghw"
-          >
-            <ZoomOut className="h-4 w-4" data-oid="m9y09pu" />
+        <div className="flex items-center gap-2">
+          <Button onClick={zoomOut} size="sm" variant="outline">
+            <ZoomOut className="h-4 w-4" />
           </Button>
 
-          <span
-            className="text-sm px-2 min-w-[60px] text-center"
-            data-oid="y2kv5ae"
-          >
+          <span className="text-sm px-2 min-w-[60px] text-center">
             {Math.round(scale * 100)}%
           </span>
 
-          <Button
-            onClick={zoomIn}
-            size="sm"
-            variant="outline"
-            data-oid="p3gpbuy"
-          >
-            <ZoomIn className="h-4 w-4" data-oid="mua39hq" />
+          <Button onClick={zoomIn} size="sm" variant="outline">
+            <ZoomIn className="h-4 w-4" />
           </Button>
 
-          <Button
-            onClick={rotatePage}
-            size="sm"
-            variant="outline"
-            data-oid="io:_az0"
-          >
-            <RotateCcw className="h-4 w-4" data-oid="s457q_y" />
+          <Button onClick={rotatePage} size="sm" variant="outline">
+            <RotateCcw className="h-4 w-4" />
           </Button>
 
-          <Button
-            onClick={resetZoom}
-            size="sm"
-            variant="outline"
-            data-oid="il:_yu1"
-          >
+          <Button onClick={resetZoom} size="sm" variant="outline">
             Reset
           </Button>
         </div>
@@ -277,18 +245,14 @@ export default function LivePdfViewer({
       <div
         ref={containerRef}
         className="relative overflow-auto max-h-[600px] bg-gray-100 dark:bg-gray-800"
-        data-oid="6agu12."
       >
         {isLoading && (
-          <div
-            className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-900/80 z-10"
-            data-oid="3lo1zn9"
-          >
-            <Loader2 className="h-8 w-8 animate-spin" data-oid="rn1g5dx" />
+          <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-gray-900/80 z-10">
+            <Loader2 className="h-8 w-8 animate-spin" />
           </div>
         )}
 
-        <div className="flex justify-center p-4" data-oid="1w65j9o">
+        <div className="flex justify-center p-4">
           <canvas
             ref={canvasRef}
             onClick={handleCanvasClick}
@@ -297,17 +261,13 @@ export default function LivePdfViewer({
               transform: `scale(${Math.min(1, (containerRef.current?.clientWidth || 800) / 800)})`,
               transformOrigin: "top center",
             }}
-            data-oid="tcy_q.8"
           />
         </div>
       </div>
 
       {/* Status indicator */}
       {isLoading && (
-        <div
-          className="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded text-xs"
-          data-oid="5094ucs"
-        >
+        <div className="absolute top-4 right-4 bg-blue-500 text-white px-2 py-1 rounded text-xs">
           Processing...
         </div>
       )}
