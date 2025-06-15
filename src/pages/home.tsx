@@ -29,7 +29,7 @@ function Home() {
 
       {/* Full-height PDF Editor */}
       <div className="flex-1 overflow-hidden" data-oid="u:y_tnx">
-        <ComprehensivePDFEditor className="h-full" data-oid="jpbhns." />
+        <ComprehensivePDFEditor className="h-full" data-oid="jpbhns" />
       </div>
     </div>
   );
